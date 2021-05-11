@@ -1,0 +1,28 @@
+@keyframes aff-fondu {
+    0% {
+        transform: translateY(2.0rem);
+        opacity: 0;
+    }
+
+    75% {
+        transform: translateY(0);
+    }
+
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes btn-popup {
+    0% {
+        width: 30.0rem;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        width: 20.0rem;
+    }
+}

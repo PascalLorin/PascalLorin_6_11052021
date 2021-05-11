@@ -1,0 +1,24 @@
+body {
+    width: 100%;
+    max-width: 1440px;
+    position: relative;
+    background-color: white;
+}
+
+* {
+    box-sizing: border-box;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ol,
+ul,
+li,
+a {
+    text-decoration: none;
+}
+
+.sr-only {
+    visibility: hidden;
+}

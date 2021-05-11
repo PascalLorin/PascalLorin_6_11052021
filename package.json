@@ -1,0 +1,21 @@
+{
+  "name": "FishEye",
+  "version": "1.0.0",
+  "description": "Site fishEye",
+  "main": "main.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css",
+    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PascalLorin/PascalLorin_6.git"
+  },
+  "author": "PascalLorin",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/PascalLorin/PascalLorin_6/issues"
+  },
+  "homepage": "https://github.com/PascalLorin/PascalLorin_6#readme"
+}

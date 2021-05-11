@@ -1,0 +1,221 @@
+/*  Header  */
+.top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &>a {
+        position: absolute;
+        left: 2.0rem;
+        font-size: 2.0rem;
+    }
+
+    &>h1 {
+        font-family: Shrikhand;
+        text-align: center;
+    }
+}
+
+/* section entête */
+.entete {
+    position: relative;
+    width: 100%;
+    height: 36.0rem;
+    align-items: center;
+
+    & img {
+        width: 100%;
+        height: 36.0rem;
+        object-fit: cover;
+    }
+
+    &-txt {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        padding: $grid-gutter*4 $grid-gutter $grid-gutter;
+        border-radius: 3.0rem 3.0rem 0 0;
+        background-color: $colour-lightgrey;
+        font-family: 'Shrikhand';
+        font-size: 3.0rem;
+
+        @media screen and (max-width:380px) {
+            font-size: 2.5rem;
+        }
+
+        & .love-btn {
+            position: absolute;
+            bottom: 2.0rem;
+            right: 2.0rem;
+            height: 3.0rem;
+            width: 3.0rem;
+            line-height: 3.0rem;
+            font-size: 3.0rem;
+            border: none;
+            border-radius: 1.5rem;
+            background-color: $colour-lightgrey;
+            cursor: pointer;
+
+            @media screen and (max-width:380px) {
+                position: absolute;
+                bottom: 1.0rem;
+                right: 2.0rem;
+                align-items: center;
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+/****   Section menu   ****/
+.menu {
+    padding-top: 2.0rem;
+    padding-left: $grid-gutter;
+    padding-right: $grid-gutter;
+    padding-bottom: 2.0rem;
+    background-color: $colour-lightgrey;
+
+    /*  Partie du menu  */
+    &-part {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-bottom: $grid-gutter*2;
+        animation: aff-fondu 1.5s 0.5s ease-in-out both;
+
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                animation-delay: $menu-delay * $i;
+            }
+        }
+
+        &__titre {
+            padding-bottom: $grid-gutter*2;
+            font-size: 1.8rem;
+            line-height: 3.0rem;
+            font-weight: 500;
+            letter-spacing: -0.1rem;
+
+            & hr {
+                height: 0.4rem;
+                width: 5.0rem;
+                background-color: $colour-tertiaire;
+                border: none;
+            }
+        }
+
+        /* card plat */
+        &__plat {
+            flex-flow: row nowrap;
+            align-content: flex-start;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            width: 100%;
+            /* max-width: 42.0rem; */
+            height: 7.0rem;
+            margin-bottom: $grid-gutter*2;
+            background-color: #fff;
+            box-shadow: 0 0 0.5rem 0.5rem darken($colour-lightgrey, 15);
+            animation: aff-fondu 1.5s 0.5s ease-in-out both;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation-delay: $plat-delay * $i;
+                }
+            }
+
+            &-txt {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                line-height: 2.5rem;
+                padding-top: $grid-gutter;
+                padding-left: $grid-gutter;
+
+                &-t {
+                    display: flex;
+                    width: 100%;
+                    padding-right: 1.5rem;
+
+                    & h3 {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                &-d {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    width: 100%;
+                    justify-content: space-between;
+
+                    & p {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    & span {
+                        font-size: 1.5rem;
+                        font-weight: 900;
+                        margin-left: 0.5rem;
+                        padding-right: 1.5rem;
+                    }
+                }
+            }
+
+            &-check {
+                position: absolute;
+                bottom: 0;
+                right: -7.0rem;
+                display: flex;
+                height: 100%;
+                width: 7.0rem;
+                border-top-right-radius: 1.5rem;
+                border-bottom-right-radius: 1.5rem;
+                font-size: 2.0rem;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                background-color: $colour-tertiaire;
+            }
+        }
+    }
+}
+
+
+.menu-part__plat:hover {
+    cursor: grab;
+
+    .menu-part__plat-txt {
+        transition: width $transition-duration ease-in-out;
+        width: calc(100% - 7.0rem);
+    }
+
+    .menu-part__plat-check {
+        transform: translateX(-7.0rem);
+        transition: transform ease-in-out $transition-duration;
+
+        & i {
+            transform: rotate(360deg);
+            transition-delay: 0.5s;
+            transition: transform ease-in-out $transition-duration;
+        }
+    }
+}
+
+.commander {
+    animation-delay: 2.0s;
+    animation: btn-popup cubic-bezier(.8, .02, .42, 1) 3.0s both;
+/*
+    &:hover {
+        opacity: 0.7;
+        box-shadow: 0.5rem 0.5rem 1.5rem 0.5rem darken($colour-lightgrey, 20%);
+    }   */
+}

@@ -1,0 +1,30 @@
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .fonct-items__grid,
+    .restos__grid,
+    .menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-direction: row;
+        grid-gap: $grid-gutter;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .fonct-items__grid,
+    .menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        flex-direction: row;
+        grid-gap: $grid-gutter;
+    }
+
+    .restos__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        flex-direction: row;
+        grid-gap: $grid-gutter;
+    }
+}

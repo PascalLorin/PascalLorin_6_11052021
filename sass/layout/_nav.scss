@@ -1,0 +1,31 @@
+/*****  SELECTION DES CATEGORIES  *****/
+nav {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 200px;
+    top: 0px;
+    height: 49px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+
+
+    &>.filterBtn {
+        height: 22px;
+        color: $colour-primary;
+        background-color: white;
+        border: 0.5px solid $colour-border;
+        border-radius: 11px;
+        padding: 0px 8px;
+        margin-right: 1em;
+        float: left;
+
+        &:hover,
+        &:active {
+            cursor: pointer;
+            color: white;
+            background-color: $colour-primary;
+        }
+    }
+}

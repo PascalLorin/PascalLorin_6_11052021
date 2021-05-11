@@ -1,0 +1,248 @@
+@keyframes aff-fondu {
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes btn-popup {
+  0% {
+    width: 30rem;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 20rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .fonct-items__grid,
+.restos__grid,
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    grid-gap: 1em;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .fonct-items__grid,
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row;
+    grid-gap: 1em;
+  }
+
+  .restos__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    flex-direction: row;
+    grid-gap: 1em;
+  }
+}
+body {
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul,
+li,
+a {
+  text-decoration: none;
+}
+
+.sr-only {
+  visibility: hidden;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h3 {
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h4 {
+  font-size: 9px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/****   enter   ****/
+#enter {
+  width: 182px;
+  height: 30px;
+  position: absolute;
+  top: 0%;
+  color: black;
+  background-color: #DB8876;
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+/****   Header   ****/
+header {
+  position: absolute;
+  top: 42px;
+  left: 100px;
+  flex-direction: row;
+}
+header-logo {
+  width: 200px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/*****  SELECTION DES CATEGORIES  *****/
+nav {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  height: 49px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+}
+nav > .filterBtn {
+  height: 22px;
+  color: #901C1C;
+  background-color: white;
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  padding: 0px 8px;
+  margin-right: 1em;
+  float: left;
+}
+nav > .filterBtn:hover, nav > .filterBtn:active {
+  cursor: pointer;
+  color: white;
+  background-color: #901C1C;
+}
+
+.main-titre {
+  position: absolute;
+  top: 44px;
+  left: 1017px;
+  width: 306px;
+  height: 47px;
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 46.87px;
+  color: #901C1C;
+}
+
+/******   AFFICHAGE DES PHOTOPRAGAPHES SELECTIONES  *******/
+.photographes {
+  position: absolute;
+  top: 120px;
+  left: 0px;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.pres-card {
+  /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
+  width: 526px;
+  height: 358px;
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-style: normal;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pres-card__head {
+  width: 263px;
+  height: 277px;
+  align-items: center;
+  justify-content: center;
+}
+.pres-card__head-img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 100px;
+}
+.pres-card__head-name {
+  width: auto;
+  height: 47px;
+  font-size: 36px;
+  line-height: 46.87px;
+  align-self: center;
+}
+.pres-card__pres-place {
+  font-size: 13px;
+  line-height: 16.93px;
+}
+.pres-card__pres-alt {
+  font-size: 10px;
+  line-height: 13.02px;
+}
+.pres-card__pres-price {
+  font-size: 9px;
+  line-height: 11.72px;
+}
+.pres-card-cats {
+  height: 30px;
+}
+.pres-card-catsSel {
+  font-weight: 500px;
+  font-size: 12px;
+  line-height: 15, 62px;
+  color: #901C1C;
+  background-color: white;
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  margin-right: 1em;
+}
+.pres-card:hover {
+  background-color: #f7f7f7;
+}
+
+/*   la modale ne s'affiche pas */
+#photographe {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */
