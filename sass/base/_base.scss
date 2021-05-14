@@ -2,7 +2,6 @@ body {
     width: 100%;
     max-width: 1440px;
     position: relative;
-    background-color: white;
 }
 
 * {
@@ -10,6 +9,8 @@ body {
     z-index: 0;
     margin: 0;
     padding: 0;
+    background-color: white;
+    color: $colour-primary;
 }
 
 ol,

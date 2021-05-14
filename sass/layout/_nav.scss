@@ -1,24 +1,23 @@
 /*****  SELECTION DES CATEGORIES  *****/
-nav {
+#tags-select {
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    left: 200px;
-    top: 0px;
-    height: 49px;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border: 2px solid;
 
 
-    &>.filterBtn {
+    &>.tagBtn {
         height: 22px;
+        font-weight: 600;
         color: $colour-primary;
         background-color: white;
         border: 0.5px solid $colour-border;
         border-radius: 11px;
         padding: 0px 8px;
-        margin-right: 1em;
+        margin-right: 8px;
+        margin-bottom: 5px;
         float: left;
 
         &:hover,

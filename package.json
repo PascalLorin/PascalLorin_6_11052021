@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PascalLorin/PascalLorin_6.git"
+    "url": "git+https://github.com/PascalLorin/PascalLorin_6_11052021.git"
   },
   "author": "PascalLorin",
   "license": "ISC",
   "browserslist": "last 4 versions",
   "bugs": {
-    "url": "https://github.com/PascalLorin/PascalLorin_6/issues"
+    "url": "https://github.com/PascalLorin/PascalLorin_6_11052021/issues"
   },
-  "homepage": "https://github.com/PascalLorin/PascalLorin_6#readme"
+  "homepage": "https://github.com/PascalLorin/PascalLorin_6_11052021#readme"
 }
