@@ -20,9 +20,18 @@
         margin-bottom: 5px;
         float: left;
 
-        &:hover,
-        &:active {
+        &:hover {
             cursor: pointer;
+            color: white;
+            background-color: $colour-primary;
+        }
+
+        &.tagNotSelect {
+        color: $colour-primary;
+        background-color: white;
+        }
+
+        &.tagSelect {
             color: white;
             background-color: $colour-primary;
         }

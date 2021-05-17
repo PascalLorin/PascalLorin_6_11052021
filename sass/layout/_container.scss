@@ -86,8 +86,6 @@
             font-size: 13px;
             font-weight: 600;
             height: 22px;
-            color: $colour-primary;
-            background-color: white;
             border: 0.5px solid $colour-border;
             border-radius: 11px;
             padding: 0px 8px;
@@ -95,6 +93,12 @@
             float: left;
             justify-content: center;
             align-items: center;
+
+            &:hover,
+            &:active {
+                color:  white;
+                background-color:$colour-primary;
+            }
         }
     }
 }
@@ -108,7 +112,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    margin: 5px 20px;
+//    margin: 5px 20px;
     background-color: white;
     color: $colour-primary;
     border: 1px solid black;

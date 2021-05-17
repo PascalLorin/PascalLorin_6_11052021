@@ -50,7 +50,7 @@
 }
 body {
   width: 100%;
-  max-width: 1440px;
+  max-width: 440px;
   position: relative;
 }
 
@@ -107,11 +107,11 @@ h1 {
   object-fit: cover;
 }
 
-#mod1Head {
+.mod1Head {
   margin-top: 20px;
   margin-left: 15px;
 }
-#mod1Head__logo {
+.mod1Head__logo {
   width: 150px;
   object-fit: cover;
 }
@@ -137,8 +137,16 @@ h1 {
   margin-bottom: 5px;
   float: left;
 }
-#main-tags-select > .tagBtnNav:hover, #main-tags-select > .tagBtnNav:active {
+#main-tags-select > .tagBtnNav:hover {
   cursor: pointer;
+  color: white;
+  background-color: #901C1C;
+}
+#main-tags-select > .tagBtnNav.tagNotSelect {
+  color: #901C1C;
+  background-color: white;
+}
+#main-tags-select > .tagBtnNav.tagSelect {
   color: white;
   background-color: #901C1C;
 }
@@ -223,8 +231,6 @@ h1 {
   font-size: 13px;
   font-weight: 600;
   height: 22px;
-  color: #901C1C;
-  background-color: white;
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   padding: 0px 8px;
@@ -232,6 +238,10 @@ h1 {
   float: left;
   justify-content: center;
   align-items: center;
+}
+.pcard__tagsx:hover, .pcard__tagsx:active {
+  color: white;
+  background-color: #901C1C;
 }
 
 /*   la modale photographe ne s'affiche pas par défaut */
@@ -243,7 +253,6 @@ h1 {
   left: 0;
   height: 100%;
   width: 100%;
-  margin: 5px 20px;
   background-color: white;
   color: #901C1C;
   border: 1px solid black;
