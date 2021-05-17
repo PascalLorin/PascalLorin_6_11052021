@@ -97,18 +97,27 @@ h1 {
   text-align: center;
 }
 
-/****   Header   ****/
-header {
+/****   Headers   ****/
+#main-header {
   margin-top: 20px;
   margin-left: 15px;
 }
-header-logo {
+#main-header__logo {
+  width: 150px;
+  object-fit: cover;
+}
+
+#mod1Head {
+  margin-top: 20px;
+  margin-left: 15px;
+}
+#mod1Head__logo {
   width: 150px;
   object-fit: cover;
 }
 
 /*****  SELECTION DES CATEGORIES  *****/
-#tags-select {
+#main-tags-select {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -116,7 +125,7 @@ header-logo {
   justify-content: center;
   align-items: center;
 }
-#tags-select > .tagBtn {
+#main-tags-select > .tagBtnNav {
   height: 22px;
   font-weight: 600;
   color: #901C1C;
@@ -128,7 +137,7 @@ header-logo {
   margin-bottom: 5px;
   float: left;
 }
-#tags-select > .tagBtn:hover, #tags-select > .tagBtn:active {
+#main-tags-select > .tagBtnNav:hover, #main-tags-select > .tagBtnNav:active {
   cursor: pointer;
   color: white;
   background-color: #901C1C;
@@ -225,9 +234,110 @@ header-logo {
   align-items: center;
 }
 
-/*   la modale ne s'affiche pas */
-#photographe {
+/*   la modale photographe ne s'affiche pas par défaut */
+#mod1 {
   display: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 5px 20px;
+  background-color: white;
+  color: #901C1C;
+  border: 1px solid black;
+}
+#mod1Head_sel {
+  margin-top: 30px;
+  width: 100%;
+  height: auto;
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+#mod1Head_sel_name {
+  width: auto;
+  height: 57px;
+  font-size: 36px;
+}
+#mod1Head_sel_place {
+  height: 17px;
+  font-size: 13px;
+}
+#mod1Head_sel_alt {
+  height: 17px;
+  font-size: 13px;
+  color: black;
+}
+#mod1Head_sel img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+  border-radius: 100px;
+}
+#mod1Head_sel_tags {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+}
+#mod1Head_sel_tagsx {
+  font-size: 13px;
+  font-weight: 600;
+  height: 22px;
+  color: #901C1C;
+  background-color: white;
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  padding: 0px 8px;
+  margin-right: 8px;
+  float: left;
+  justify-content: center;
+  align-items: center;
+}
+
+/*   la modale caroussel ne s'affiche pas par défaut */
+#mod2 {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: #901C1C;
+  border: 1px solid black;
+}
+#mod2 > p {
+  margin-top: 300px;
+  font-size: 40px;
+}
+
+/*   la modale caroussel ne s'affiche pas par défaut */
+#form-modal {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: #901C1C;
+  border: 1px solid black;
+}
+#form-modal > p {
+  margin-top: 300px;
+  font-size: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */

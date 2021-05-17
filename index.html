@@ -19,33 +19,58 @@
 	<div id="enter" class="sr-only" aria-label="passer au contenu">
 		<span>Passer au contenu</span>
 	</div>
-
 	<!-- Début du header -->
-	<header>
-		<div class="header-logo">
+	<header id="main-header">
+		<div class="main-header__logo">
 			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
 		</div>
 
 		<!--  Sélection de catégories  (tags)  -->
-		<nav id="tags-select" aria-label="Sélection des catégories de photos">
+		<nav id="main-tags-select" aria-label="Sélection des catégories de photos">
 		</nav>
 	</header>
-
-
+	<!-- Affichage du titre et des photographes correspondants au(x) tag(s) sélectionné(s) -->
+	<!-- Lors du chargement de la page, tous les photographes sont affichés                -->
 	<main class="site-container">
-
 		<aside aria-label="Présentation de nos photographes">
 			<h1 class="main-titre">Nos photographes</h1>
 		</aside>
-
 		<article id="cards-container" aria-label="Fiches de présentation de nos photographes">
 		</article>
+		<!-- Appel de la modale lorsqu'un photographe est sélectionné                          -->
+		<modal id="mod1">
+			<header class="mod1Head">
+				<div class="mod1Head_logo">
+					<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
+				</div>
+				<div class="mod1Head__sel">
+					<div class="mod1Head_sel_name" aria-label="Nom du photographe">
+					</div>
+					<div class="mod1Head_sel_place" aria-label="Localisation du photographe">
+					</div>
+					<div class="mod1Head_sel_alt" aria-label="Slogan du photographe">
+					</div>
+					<div class="mod1Head_sel_img">
+						<img class="mod1Head_sel_img__img" alt="Portrait du photographe" aria-label="Portrait du photographe">
+					</div>
+					<!--  Sélection de catégories du photographe (tags)  -->
+					<div class="mod1Head_sel_tags" aria-label="Catégories du photographe">
+					</div>
+				</div>
+			</header>
+			<article class="mod1-container" aria-label="Réalisations de ce photographe">
+			</article>
+		</modal>
+		<modal id="form-modal">
 
-		<modal id="photographe">
+		</modal>
+		<!-- Appel de la modale carroussel d'un photographe lorsque c'est sélectionné          -->
+		<modal id="mod2">
 			<p>
-				photographe
+				Caroussel
 			</p>
 		</modal>
+
 		<script type="text/javascript" src="./main.js"></script>
 </body>
 

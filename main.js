@@ -677,12 +677,15 @@ const media = [{
   }
 ];
 
-// initialisation des variables
+// constantes et variables globales
+const vowels = "aeiouy";
+const dataSet = [];
+let cardsContainer;
 
 // construction du tableau des tags
 const tagSet = [];
-let cardsContainer;
 
+// function constructeur des tags
 function CreeTag(lib, status) {
   this.name = lib;
   this.state = status;
@@ -730,27 +733,27 @@ function loadTags() {
   })
 };
 
-// affichage des tags dans le <nav>
+// affichage des tags dans le <nav> et dans les cards
+// sauf le premier, "all", qui est un switch géré par le script
 function affTags() {
-  let vowels = "aeiouy";
-  tagsContainer = document.getElementById("tags-select");
-  for (let i=1; i < tagSet.length; i++)  {
+  tagsContainer = document.getElementById("main-tags-select");
+  for (let i = 1; i < tagSet.length; i++) {
     let tag = document.createElement('button');
     let wtagLib = libTag(tagSet[i].name);
     tag.setAttribute('id', tagSet[i].name);
-    tag.setAttribute('class', "tagBtn");
+    tag.setAttribute('class', "tagBtnNav");
     let first = tagSet[i].name[0];
     let vowel = false;
-    for (let i=0; i<6;i++) {
+    for (let i = 0; i < 6; i++) {
       if (first == vowels[i]) {
-        let vowel = true;
+        vowel = true;
         break;
       }
     }
-    if (vowel) {
+    if (vowel == true) {
       tag.setAttribute('aria-label', "Sélectionner les photos d'" + tagSet[i].name);
     } else {
-      tag.setAttribute('aria-label', "Sélectionner les photos de" + tagSet[i].name);
+      tag.setAttribute('aria-label', "Sélectionner les photos de " + tagSet[i].name);
     }
     tag.textContent = wtagLib;
     tagsContainer.append(tag);
@@ -760,11 +763,13 @@ function affTags() {
 // initialisation de l'affichage
 // supprime les cards affichées (s'il y en a...)
 function effaceCards() {
-  let listeCards = document.querySelectorAll('a');
-  for (let i = 0; i < listeCards.length; i++) {
-    let card = listeCards[i];
-    let cardParent = card.parentNode;
-    cardParent.removeChild(card);
+  let listeCards = document.getElementsByClassName('pcard');
+  let length = listeCards.length;
+  if (length > 0) {
+    let parentCard = listeCards[0].parentNode;
+    for (let i = 0; i < length; i++) {
+      parentCard.removeChild(listeCards[0]);
+    }
   }
 }
 
@@ -775,7 +780,7 @@ function displayPhotographers() {
   effaceCards();
   photographers.forEach(p => {
     if (tagSet[0].state == true) {
-      displayPhotographer(p);
+      displayPhotographerMain(p);
     } else {
       let displayP = false;
       p.tags.forEach(t => {
@@ -786,7 +791,7 @@ function displayPhotographers() {
           }
         }
         if (displayP) {
-          displayPhotographer(p);
+          displayPhotographerMain(p);
         }
       })
     }
@@ -794,12 +799,14 @@ function displayPhotographers() {
 };
 
 // affichage d'un photographe
-function displayPhotographer(p) {
+function displayPhotographerMain(p) {
   cardsContainer = document.getElementById("cards-container");
   let cardPhotographe = document.createElement('a');
-  cardPhotographe.setAttribute('href', "#photographer"); //.html?id=p.id");
+  cardPhotographe.setAttribute('href', "#photographe");
+  cardPhotographe.setAttribute('id', p.id);
   cardPhotographe.setAttribute('class', "pcard");
   cardPhotographe.setAttribute('aria-label', "Cliquer pour choisir ce photographe");
+//  cardPhotographe.setAttribute('on-click', loadPhotographe(p.id));
   cardsContainer.append(cardPhotographe);
   let pcardImg = document.createElement("div");
   pcardImg.setAttribute('class', "pcard__img");
@@ -826,7 +833,7 @@ function displayPhotographer(p) {
   cardPhotographe.append(altPhotographe);
   let pricePhotographe = document.createElement('p');
   pricePhotographe.setAttribute('class', "pcard__price");
-  pricePhotographe.setAttribute('aria-label', "Slogan du photographe");
+  pricePhotographe.setAttribute('aria-label', "Tarif journalier du photographe");
   pricePhotographe.textContent = p.price + " € / jour";
   cardPhotographe.append(pricePhotographe);
   let tagsPhotographe = document.createElement('div');
@@ -837,43 +844,73 @@ function displayPhotographer(p) {
     let tagPhotographe = document.createElement('div');
     let wtagLib = libTag(p.tags[i]);
     tagPhotographe.setAttribute('class', "pcard__tagsx");
-    tagPhotographe.setAttribute('aria-label', "Catégories du photographe");
+    tagPhotographe.setAttribute('aria-label', "Une des catégories du photographe");
     tagPhotographe.textContent = wtagLib;
     tagsPhotographe.append(tagPhotographe);
   }
 
 };
 
+// DOM Elements
+const navBtn = document.querySelectorAll(".tagBtnNav");
+const allCards = document.querySelectorAll(".pcard");
+
+// add event listeners
+navBtn.forEach((btn) => btn.addEventListener("click", selectTag));
+allCards.forEach((card) => card.addEventListener("click", loadMod1));
+
+// clic sur un tag page principale
+function selectTag(event) {
+  event.preventDefault()
+  console.log(this.className) // journalise le className de my_element
+  console.log(event.currentTarget === this) // journalise `true`
+};
+
+// clic sur une pcard page principale
+function loadMod1(event) {
+  event.preventDefault()
+  console.log(this.className) // journalise le className de my_element
+  console.log(event.currentTarget === this) // journalise `true`
+};
+
+// charge la modale avec les données du photographe sélectionné (mod1)
+function loadMod1() {
+  let p = this.photographe;
+  mod1Head.setAttribute('id', p.id);
+  mod1Head_sel_img__img.setAttribute('src', "./public/img/PhotographersIDPhotos/" + p.portrait);
+  mod1Head_sel_name.textContent = p.name;
+  mod1Head_sel_alt.textContent = p.city + ", " + p.country;
+  mod1Head_sel_tags.textContent = p.tagline;
+  for (let i = 0; i < p.tags.length; i++) {
+    let mod1Head_sel_tags = document.createElement('div');
+    let wtagLib = libTag(p.tags[i]);
+    tagPhotographe.setAttribute('class', "pcard__tagsx");
+    tagPhotographe.setAttribute('aria-label', "Une des catégories du photographe");
+    tagPhotographe.textContent = wtagLib;
+    mod1Head_sel_tags.append(tagPhotographe);
+  }
+  alert("modale photographe",this.value);
+  const collection = loadCollection(p);
+  mod1.style.display = "block";
+};
+
+function loadCollection(p) {
+  let mediaSet = media.forEach(item => {
+    if (item.photographerId == p.id) {
+      
+      mediaSet.push(item);
+    }
+  })
+  console.log(mediaSet);
+  return mediaSet;
+  };
+
 //************ exécution du script ****************//  
 // loadJson()      // ne fonctionne pas..!
 loadTags();
 affTags();
 displayPhotographers();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+debugger;
 
 
 /*
@@ -908,7 +945,9 @@ function Media(id, photoId, title, image, tags, likes, date, price) {
 class factory {
 
   constructor(content = {}) {
-    //ici on se sert de includes pour savoir quelle est l'extension du fichier si c'est du mp4 on crée une vidéo, autrement on crée une image
+    // ici on se sert de includes pour savoir quelle est l'extension du fichier.
+    // si c'est du mp4 on crée une vidéo,
+    // autrement on crée une image
     if (content.video) return new factoryVideo(content.video);
     else return new factoryImage(content.image);
   }
@@ -950,60 +989,11 @@ const image = new factory({
 const video = new factory({
   video: "vid.mp4"
 });
+
 //on peut toujours s'en servir de la même manière peu importe le type d'élément html
 image.affich();
 video.affich();
 
-/*
-request.onload = function () {
-  var superHeroes = request.response;
-  populateHeader(superHeroes);
-  showHeroes(superHeroes);
-}
-
-function populateHeader(jsonObj) {
-  var myH1 = document.createElement('h1');
-  myH1.textContent = jsonObj['squadName'];
-  header.appendChild(myH1);
-
-  var myPara = document.createElement('p');
-  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + jsonObj['formed'];
-  header.appendChild(myPara);
-}
-
-function showHeroes(jsonObj) {
-  var heroes = jsonObj['members'];
-
-  for (var i = 0; i < heroes.length; i++) {
-    var myArticle = document.createElement('article');
-    var myH2 = document.createElement('h2');
-    var myPara1 = document.createElement('p');
-    var myPara2 = document.createElement('p');
-    var myPara3 = document.createElement('p');
-    var myList = document.createElement('ul');
-
-    myH2.textContent = heroes[i].name;
-    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
-    myPara2.textContent = 'Age: ' + heroes[i].age;
-    myPara3.textContent = 'Superpowers:';
-
-    var superPowers = heroes[i].powers;
-    for (var j = 0; j < superPowers.length; j++) {
-      var listItem = document.createElement('li');
-      listItem.textContent = superPowers[j];
-      myList.appendChild(listItem);
-    }
-
-    myArticle.appendChild(myH2);
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    myArticle.appendChild(myPara3);
-    myArticle.appendChild(myList);
-
-    section.appendChild(myArticle);
-  }
-}
-*/
 
 /*
 const data = JSON.parse(data);

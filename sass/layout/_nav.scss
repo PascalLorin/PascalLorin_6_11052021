@@ -1,5 +1,5 @@
 /*****  SELECTION DES CATEGORIES  *****/
-#tags-select {
+#main-tags-select {
     margin-top: 30px;
     display: flex;
     flex-direction: row;
@@ -8,7 +8,7 @@
     align-items: center;
 
 
-    &>.tagBtn {
+    &>.tagBtnNav {
         height: 22px;
         font-weight: 600;
         color: $colour-primary;

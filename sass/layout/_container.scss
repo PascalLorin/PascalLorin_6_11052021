@@ -82,6 +82,7 @@
         flex-direction: row;
 
         &x {
+            // tag(s) du photographe
             font-size: 13px;
             font-weight: 600;
             height: 22px;
@@ -98,7 +99,118 @@
     }
 }
 
-/*   la modale ne s'affiche pas */
-#photographe {
+/*   la modale photographe ne s'affiche pas par défaut */
+#mod1 {
     display: none;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 5px 20px;
+    background-color: white;
+    color: $colour-primary;
+    border: 1px solid black;
+
+    &Head_sel {
+        margin-top: 30px;
+        width: 100%;
+        height: auto;
+        font-family: 'DM Sans';
+        font-weight: 400;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: center;
+
+        &_name {
+            width: auto;
+            height: 57px;
+            font-size: 36px;
+        }
+
+        &_place {
+            height: 17px;
+            font-size: 13px;
+        }
+
+        &_alt {
+            height: 17px;
+            font-size: 13px;
+            color: black;
+        }
+
+        & img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            object-fit: cover;
+            width: 200px;
+            height: 200px;
+            border: 1px solid green;
+            border-radius: 100px;
+        }
+
+        &_tags {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+
+            &x {
+                // tag(s) du photographe
+                font-size: 13px;
+                font-weight: 600;
+                height: 22px;
+                color: $colour-primary;
+                background-color: white;
+                border: 0.5px solid $colour-border;
+                border-radius: 11px;
+                padding: 0px 8px;
+                margin-right: 8px;
+                float: left;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+/*   la modale caroussel ne s'affiche pas par défaut */
+#mod2 {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: $colour-primary;
+    border: 1px solid black;
+
+    &>p {
+        margin-top: 300px;
+        font-size: 40px;
+    }
+}
+
+/*   la modale caroussel ne s'affiche pas par défaut */
+#form-modal {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: $colour-primary;
+    border: 1px solid black;
+
+    &>p {
+        margin-top: 300px;
+        font-size: 40px;
+    }
 }

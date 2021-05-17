@@ -15,12 +15,22 @@
     text-align: center;
 }
 
-/****   Header   ****/
-header {
+/****   Headers   ****/
+#main-header {
     margin-top: 20px;
     margin-left: 15px;
 
-    &-logo {
+    &__logo {
+        width: 150px;
+        object-fit: cover;
+    }
+}
+
+#mod1Head {
+    margin-top: 20px;
+    margin-left: 15px;
+
+    &__logo {
         width: 150px;
         object-fit: cover;
     }
