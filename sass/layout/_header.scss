@@ -26,13 +26,14 @@
     }
 }
 
-.mod1Head {
-    margin-top: 20px;
-    margin-left: 15px;
+.mod1 {
+    &Head {
+        margin-top: 20px;
+        margin-left: 15px;
 
-    &__logo {
-        width: 150px;
-        object-fit: cover;
+        &__logo {
+            width: 150px;
+            object-fit: cover;
+        }
     }
 }
-

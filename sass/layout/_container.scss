@@ -105,7 +105,6 @@
 
 /*   la modale photographe ne s'affiche pas par défaut */
 #mod1 {
-    display: none;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -117,7 +116,7 @@
     color: $colour-primary;
     border: 1px solid black;
 
-    &Head_sel {
+    &__ {
         margin-top: 30px;
         width: 100%;
         height: auto;
@@ -129,18 +128,18 @@
         justify-content: left;
         align-items: center;
 
-        &_name {
+        &name {
             width: auto;
             height: 57px;
             font-size: 36px;
         }
 
-        &_place {
+        &place {
             height: 17px;
             font-size: 13px;
         }
 
-        &_alt {
+        &alt {
             height: 17px;
             font-size: 13px;
             color: black;
@@ -157,7 +156,7 @@
             border-radius: 100px;
         }
 
-        &_tags {
+        &tags {
             height: 40px;
             display: flex;
             flex-direction: row;
@@ -179,6 +178,11 @@
             }
         }
     }
+}
+
+.mod1__show {
+    display:grid;
+    grid-template-columns: 1fr;
 }
 
 /*   la modale caroussel ne s'affiche pas par défaut */

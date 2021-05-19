@@ -117,7 +117,7 @@ h1 {
 }
 
 /*****  SELECTION DES CATEGORIES  *****/
-#main-tags-select {
+#tags-select {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -125,7 +125,7 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-#main-tags-select > .tagBtnNav {
+#tags-select > .tagBtnNav {
   height: 22px;
   font-weight: 600;
   color: #901C1C;
@@ -137,16 +137,16 @@ h1 {
   margin-bottom: 5px;
   float: left;
 }
-#main-tags-select > .tagBtnNav:hover {
+#tags-select > .tagBtnNav:hover {
   cursor: pointer;
   color: white;
   background-color: #901C1C;
 }
-#main-tags-select > .tagBtnNav.tagNotSelect {
+#tags-select > .tagBtnNav.tagNotSelect {
   color: #901C1C;
   background-color: white;
 }
-#main-tags-select > .tagBtnNav.tagSelect {
+#tags-select > .tagBtnNav.tagSelect {
   color: white;
   background-color: #901C1C;
 }
@@ -246,7 +246,6 @@ h1 {
 
 /*   la modale photographe ne s'affiche pas par défaut */
 #mod1 {
-  display: none;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -257,7 +256,7 @@ h1 {
   color: #901C1C;
   border: 1px solid black;
 }
-#mod1Head_sel {
+#mod1__ {
   margin-top: 30px;
   width: 100%;
   height: auto;
@@ -269,21 +268,21 @@ h1 {
   justify-content: left;
   align-items: center;
 }
-#mod1Head_sel_name {
+#mod1__name {
   width: auto;
   height: 57px;
   font-size: 36px;
 }
-#mod1Head_sel_place {
+#mod1__place {
   height: 17px;
   font-size: 13px;
 }
-#mod1Head_sel_alt {
+#mod1__alt {
   height: 17px;
   font-size: 13px;
   color: black;
 }
-#mod1Head_sel img {
+#mod1__ img {
   position: absolute;
   top: 0;
   right: 0;
@@ -293,12 +292,12 @@ h1 {
   border: 1px solid green;
   border-radius: 100px;
 }
-#mod1Head_sel_tags {
+#mod1__tags {
   height: 40px;
   display: flex;
   flex-direction: row;
 }
-#mod1Head_sel_tagsx {
+#mod1__tagsx {
   font-size: 13px;
   font-weight: 600;
   height: 22px;
@@ -311,6 +310,11 @@ h1 {
   float: left;
   justify-content: center;
   align-items: center;
+}
+
+.mod1__show {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 /*   la modale caroussel ne s'affiche pas par défaut */
