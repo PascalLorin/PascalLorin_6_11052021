@@ -4,12 +4,12 @@ alert("page photographe")
 debugger
 
 // import de data et de fonctions de main.js
-// import {vowels, tagSet, photographers, mediaSet, CreeTag, libTag, affTags} from "../main.js";
+// import {vowels, tagSet, photographersSet, mediaSet, CreeTag, libTag, affTags} from "../main.js";
 import {
   firstTag,
   vowels,
   tagSet,
-  photographers,
+  photographersSet,
   mediaSet,
   CreeTag,
   libTag,
@@ -17,7 +17,7 @@ import {
   setTag0
 } from "../main.js";
 
-alert(photographers)
+alert(photographersSet)
 
 // construction du tableau des tags de photographe
 const tagSetP = [];
@@ -77,9 +77,9 @@ function getPhotographeId(p) {
   //  console.log(url)
   let param = window.location.search.substring(1);
   let temp = param.split("=");
-  photographers.forEach(p => {
-    if (temp[1] == photographers[p].id) {
-      return Photographer(photographers[p])
+  photographersSet.forEach(p => {
+    if (temp[1] == photographersSet[p].id) {
+      return Photographer(photographersSet[p])
     }
   })
 }

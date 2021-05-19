@@ -19,7 +19,7 @@
 
 .pcard {
     /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
-    margin-top: 30px;
+    padding-top: 30px;
     width: 100%;
     height: 358px;
     font-family: 'DM Sans';
@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: none;
 
     &:hover {
         border: 3px solid $colour-primary;
@@ -105,6 +106,7 @@
 
 /*   la modale photographe ne s'affiche pas par défaut */
 #mod1 {
+    display: none;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -177,12 +179,12 @@
                 align-items: center;
             }
         }
-    }
-}
 
-.mod1__show {
-    display:grid;
-    grid-template-columns: 1fr;
+        &show {
+            display:grid;
+            grid-template-columns: 1fr;
+        }
+    }
 }
 
 /*   la modale caroussel ne s'affiche pas par défaut */
