@@ -10,4 +10,4 @@ class Media {
     this.date = arg.date;
     this.price = arg.price;
   }
-};
+}

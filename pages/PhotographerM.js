@@ -36,7 +36,7 @@ class Photographer {
     nomPhotographe.textContent = this.name;
     cardPhotographe.append(nomPhotographe);
     let placePhotographe = document.createElement('p');
-    placePhotographe.setAttribute('class', "pcard__lace");
+    placePhotographe.setAttribute('class', "pcard__place");
     placePhotographe.setAttribute('aria-label', "Localisation du photographe");
     placePhotographe.textContent = this.city + ", " + this.country;
     cardPhotographe.append(placePhotographe);
@@ -46,7 +46,7 @@ class Photographer {
     altPhotographe.textContent = this.tagline;
     cardPhotographe.append(altPhotographe);
     let pricePhotographe = document.createElement('p');
-    pricePhotographe.setAttribute('class', "pcard__rice");
+    pricePhotographe.setAttribute('class', "pcard__price");
     pricePhotographe.setAttribute('aria-label', "Tarif journalier du photographe");
     pricePhotographe.textContent = this.price + " € / jour";
     cardPhotographe.append(pricePhotographe);
@@ -64,7 +64,27 @@ class Photographer {
     }
   }
 
-  // charge la modale1 avec les données du photographe sélectionné
+  loadTagsP() {
+    this.tags.forEach(t => {
+      for (let i of tagSetM) {
+        if (i.name == t) {
+          tagSetP.push(new Tag(t, i.state))
+          break
+        }
+      }
+    })
+  }
+
+  // crée le tableau des medias du photographe
+  loadCollectionP() {
+    mediaSet.forEach(m => {
+      if (this.id === m.photographerId) {
+        collection.push(new Media(m));
+      }
+    })
+  }
+
+  // affiche la modale1 avec les données du photographe sélectionné
   affModale1 = function () {
     let modale1 = document.getElementById('mod1');
     modale1.style.display = "block";
@@ -102,7 +122,7 @@ class Photographer {
     presPortrait.setAttribute('alt', "Photo de " + this.name);
     presPortrait.setAttribute('aria-label', "Photo de " + this.name);
     presP.append(presPortrait);
-    let tagsPhotographe = document.createElement('section');
+    let tagsPhotographe = document.createElement('nav');
     tagsPhotographe.setAttribute('class', "mod1__tags");
     tagsPhotographe.setAttribute('aria-label', "Catégories du photographe");
     article.append(tagsPhotographe);
@@ -127,11 +147,6 @@ class Photographer {
         break;
       }
     })
-    var mediaShow = document.createElement('section');
-    mediaShow.setAttribute('class', "mod1__show");
-    mediaShow.setAttribute('aria-label', "Réalisations de ce photographe");
-    modale1.append(mediaShow);
-    loadCollectionP(this);
     affCollectionP(modale1)
   }
 };

@@ -7,17 +7,16 @@ class factory {
     // ici on se sert de includes pour savoir quelle est l'extension du fichier.
     // si c'est du mp4 on crée une vidéo,
     // autrement on crée une image
-    if (content.video) return new factoryVideo(content);
-    else return new factoryImage(content);
+    if (content.image) return new factoryImage(content);
+    else return new factoryVideo(content);
   }
 }
 
-//toujours la même classe permettant de créer une vidéo
-class factoryVideo {
+//toujours la même classe permettant de créer une image
+class factoryImage {
   constructor(content) {
-    this.el = document.createElement("video");
-    this.el.appendChild(document.createElement("source"));
-    this.el.children[0].src = content;
+    this.el = document.createElement("img");
+    this.el.src = photographerDirectory + content.image;
   }
   // un getter permet ici de récupérer l'élément html créé dans le constructeur
   getEl() {
@@ -28,11 +27,14 @@ class factoryVideo {
   }
 }
 
-class factoryImage {
+//toujours la même classe permettant de créer une vidéo
+class factoryVideo {
   constructor(content) {
-    this.el = document.createElement("img");
-    this.el.src = content;
+    this.el = document.createElement("video");
+    this.el.appendChild(document.createElement("source"));
+    this.el.children[0].src = photographerDirectory + content.video;
   }
+  // un getter permet ici de récupérer l'élément html créé dans le constructeur
   getEl() {
     return this.el;
   }

@@ -3,6 +3,8 @@ const fichierJson = "./public/data/FishEyeData.json";
 const repPhotoId = "./public/img/PhotographersIDPhotos/";
 const repMedia = "../public/img/";
 const vowels = "aeiouy";
+var photographerDirectory;
+
 // set des photographes contenus dans le fichier Json
 var photographersSet = [];
 // set des média contenus dans le fichier Json

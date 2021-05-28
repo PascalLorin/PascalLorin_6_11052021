@@ -1,45 +1,44 @@
 // page d'un photographe
-//tagSetM = localStorage.getItem('tSet')
-tagsetM = JSON.parse(localStorage.getItem('tSet'))
-//alert(tagSetM)
-//debugger
 // l'Id du photographe est passée en paramètre lors de l'appel de la page
 // initialisation des données du photographe sélectionné, tags et média  
-// le tag all permet d'afficher toutes les photos (indice 0 du tableau)
-// il devient false si au moins un tag est sélectionné
 var collection = [];
 var tagSetP = [];
-var photographeName;
-tagSetP.push(new Tag("all", true));
-// crée le tableau des media du photographe
-function loadCollectionP(p) {
-  mediaSet.forEach(m => {
-    if (m.photographerId === p.id) {
-      collection.push(new Media(m));
-    }
-  })
-  return
-};
+var allMedias = true; // pour afficher tous les medias d'un photographe si aucun tag sélectionné dans main page
 
-// affiche le tableau des media du photographe suivant les tags sélectionnés
+// initialisation de l'affichage des medias
+// supprime les cards affichées (s'il y en a...)
+function effaceItems() {
+  let listeCards = document.getElementsByTagName('section');
+  let length = listeCards.length;
+  if (length > 0) {
+    let parentCard = listeCards[0].parentNode;
+    for (let i = 0; i < length; i++) {
+      parentCard.removeChild(listeCards[0]);
+    }
+  }
+}
+
+// affiche la collection des medias du photographe suivant les tags sélectionnés
 function affCollectionP(modale1) {
-  alert("affichage collection")
+  effaceItems()
   var mediaShow = document.createElement('section');
   mediaShow.setAttribute('class', "mod1__show");
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe");
   modale1.append(mediaShow);
   collection.forEach(item => {
-    if (tagSetP[0]) {
+    if (allMedias) {
       affCollectionI(mediaShow, item);
     } else {
-      tagSetP.forEach(i => {
-        if (item.tags == tagSetP[i].name) {
+      debugger
+      tagSetP.forEach(t => {
+        if ((item.tags == t.name) && (t.state)) {
           affCollectionI(mediaShow, item);
         }
       })
     }
   })
-  return
+  // Après l'affichage au chargement, on utilise les l'état des tags pour l'affichage de la collection
+  allMedias = false
 };
 
 // affiche un media du photographe
@@ -52,9 +51,12 @@ function affCollectionI(mediaShow, item) {
   let view = document.createElement('div');
   view.setAttribute('class', "mod1__showxv");
   card.append(view);
-  debugger;
-  let viewData = new factory(repMedia+photographeName+"/" + item.image);
-  card.append(viewData);
+  //debugger;
+  /*
+    let viewData = new factory(item);
+    viewData.affich()
+    //  let view.textContent = photographerDirectory + item.image;
+  */
   let infos = document.createElement('div');
   infos.setAttribute('class', "mod1__showxd");
   card.append(infos);
@@ -62,7 +64,7 @@ function affCollectionI(mediaShow, item) {
   title.setAttribute('class', "mod1__showxdt");
   title.setAttribute('aria-label', item.title);
   title.setAttribute('alt', item.title);
-  title.content = item.title;
+  title.textContent = item.title;
   infos.append(title);
   let likes = document.createElement('div');
   likes.setAttribute('class', "mod1__showxdl");
@@ -70,69 +72,62 @@ function affCollectionI(mediaShow, item) {
   let nbLikes = document.createElement('div');
   nbLikes.setAttribute('class', "mod1__showxdln");
   nbLikes.setAttribute('aria-label', "Nombre de \"j'aime\"");
-  nbLikes.content = item.likes;
+  nbLikes.textContent = item.likes;
   likes.append(nbLikes);
-  let iconLikes = document.createElement('i');
-  iconLikes.setAttribute('class', "mod1__showxdli");
-  iconLikes.setAttribute('class', "fas fa-heart");
+  let iconLikes = document.createElement('c');
+  iconLikes.setAttribute('class', "mod1__showxdlc");
   //  <i class="far fa-heart"></i>
   likes.append(iconLikes);
-  debugger
+  let iconLikesi = document.createElement('i');
+  iconLikesi.setAttribute('class', "fas fa-heart");
+  iconLikes.append(iconLikesi);
 };
 
 // clic sur un tag du photographe : sélection ou annulation de la sélection
 function selectTagP(event) {
   let sTag = event.currentTarget.id;
-  for (let t = 1; t < tagSetP.length; t++) {
-    if (tagSetP[t].name == sTag) {
-      switchTag(tagSetP[t]);
-      if (tagSetP[t].state) {
+  for (t in tagSetP) {
+    if (t.name == sTag) {
+      t.switchTag()
+      if (t.state) {
         event.currentTarget.setAttribute('class', "tagBtnP mod1__tagsx tagSelect")
-        tagSetP[0].state = false;
-        break
       } else {
         event.currentTarget.setAttribute('class', "tagBtnP mod1__tagsx tagNotSelect")
-        setTag0(tagSetP)
-        break
       }
+      break
     }
   }
   affCollectionP();
 };
 
 function getPhotographeSel(id) {
-  for (let i = 0; i < photographersSet.length; i++) {
-    if (photographersSet[i].id == id) {
-      return new Photographer(photographersSet[i])
+  for (let p = 0; p < photographersSet.length; p++) {
+    if (photographersSet[p].id == id) {
+      return new Photographer(photographersSet[p])
     }
   }
-  alert("Photographe inconnu");
-  window.close();
+  alert("Photographe inconnu")
+  window.close()
 }
 
-// fonction de récupération des données JSON au chargement de la page
-// et exécution de la page principale
-function loadJsonP() {
-  let response = fetch("../" + fichierJson)
-    .then(response => response.json())
-    .then(function (data) {
-      photographersSet = data.photographers
-      mediaSet = data.media
-      loadTags()
-      localStorage.setItem('tSet', JSON.stringify(tagSetM))
-      /*
-            localStorage.setItem('tSet', JSON.stringify(tagSetM))
-      */
-      var id = getParams()
-      const pSel = getPhotographeSel(id)
-      photographeName = pSel.name
-      pSel.affModale1();
-      // DOM Elements
-      const navBtnP = document.querySelectorAll(".tagBtnP");
-      // event listener : click sur un bouton tag
-      navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP));
-    })
+function initPhotographerData() {
+  photographerDirectory = repMedia + pSel.name + "/"
+  pSel.loadTagsP()
+  pSel.loadCollectionP()
 };
 
-//************ exécution du script ****************
-loadJsonP();
+function readStorage() {
+  photographersSet = JSON.parse(localStorage.getItem('pSet'))
+  mediaSet = JSON.parse(localStorage.getItem('mSet'))
+  tagSetM = JSON.parse(localStorage.getItem('tSet'))
+}
+
+readStorage()
+const pSel = new Photographer(getPhotographeSel(getParams()))
+//alert("pause")
+initPhotographerData()
+pSel.affModale1();
+// DOM Elements
+const navBtnP = document.querySelectorAll(".tagBtnP");
+// event listener : click sur un bouton tag
+navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP));

@@ -25,9 +25,9 @@ function displayPhotographersMain() {
   photographersSet.forEach(p => {
     let displayP = false
     let photographer = new Photographer(p);
-    for (let t = 0; t < p.tags.length; t++) {
-      for (let i = 0; i < tagSetM.length; i++) {
-        if ((tagSetM[i].state) && (tagSetM[i].name == p.tags[t])) {
+    for (let t of p.tags) {
+      for (let i of tagSetM) {
+        if ((i.state) && (i.name == t)) {
           displayP = true
           break
         }
@@ -39,15 +39,23 @@ function displayPhotographersMain() {
     }
   })
 };
+function writeStorageJson() {
+  localStorage.setItem('pSet', JSON.stringify(photographersSet))
+  localStorage.setItem('mSet', JSON.stringify(mediaSet))
+}
+
+function writeStorageTags() {
+  localStorage.setItem('tSet', JSON.stringify(tagSetM))
+}
 
 // clic sur un tag : sélection ou annulation de la sélection
 // réaffiche les photographes en fonction du nouvel état des tags
 function selectTagMain(event) {
-  let eTag = event.currentTarget.id;
-  for (let i = 0; i < tagSetM.length; i++) {
-    if (eTag == tagSetM[i].name) {
-      tagSetM[i].switchTag()
-      if (tagSetM[i].state) {
+  let sTag = event.currentTarget.id;
+  for (let t of tagSetM) {
+    if (sTag == t.name) {
+      t.switchTag()
+      if (t.state) {
         event.currentTarget.setAttribute('class', "tagBtnNav tagSelect")
       } else {
         event.currentTarget.setAttribute('class', "tagBtnNav tagNotSelect")
@@ -55,8 +63,7 @@ function selectTagMain(event) {
       break
     }
   }
-  localStorage.setItem('tSet', JSON.stringify(tagSetM))
-  debugger
+  writeStorageTags()
   displayPhotographersMain()
 };
 
@@ -68,13 +75,14 @@ function loadJson() {
     .then(function (data) {
       photographersSet = data.photographers
       mediaSet = data.media
-      loadTags()
-      localStorage.setItem('tSet', JSON.stringify(tagSetM))
-      affTags();
-      displayPhotographersAll();
+      writeStorageJson()
+      loadTagsM()
+      writeStorageTags()
+      affTagsM()
+      displayPhotographersAll()
       // DOM Elements & events listeners : click sur un bouton tag
-      const navBtn = document.querySelectorAll(".tagBtnNav");
-      navBtn.forEach((btn) => btn.addEventListener("click", selectTagMain));
+      const navBtn = document.querySelectorAll(".tagBtnNav")
+      navBtn.forEach((btn) => btn.addEventListener("click", selectTagMain))
     })
 };
 

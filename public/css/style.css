@@ -56,6 +56,7 @@ body {
 
 * {
   box-sizing: border-box;
+  width: auto;
   z-index: 0;
   margin: 0;
   padding: 0;
@@ -198,32 +199,31 @@ h1 {
   height: 57px;
   font-size: 36px;
   line-height: 46.87px;
+  color: #D3573D;
   align-self: center;
 }
 .pcard__place {
   height: 37px;
   font-size: 13px;
   font-weight: 500;
-  font-style: normal;
   line-height: 16.93px;
 }
 .pcard__alt {
   height: 27px;
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 500;
   color: black;
-  font-style: normal;
   line-height: 13.02px;
 }
 .pcard__price {
-  height: 27px;
-  font-size: 9px;
-  font-weight: 400;
+  height: 17px;
+  font-size: 10px;
+  font-weight: 300;
   color: #757575;
-  font-style: normal;
   line-height: 11.72px;
 }
 .pcard__tags {
+  margin-top: 10px;
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -254,7 +254,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: white;
   color: #901C1C;
 }
@@ -284,6 +284,7 @@ h1 {
   width: auto;
   height: 57px;
   font-size: 36px;
+  color: #D3573D;
 }
 .mod1__d_tplace {
   font-weight: 500;
@@ -330,32 +331,50 @@ h1 {
   color: white;
   background-color: #901C1C;
 }
+
 .mod1__show {
   display: grid;
   grid-template-columns: 1fr;
 }
 .mod1__showx {
   width: 100%;
-  height: auto;
+  margin-bottom: 10px;
 }
 .mod1__showxv {
-  width: 90%;
-  height: 60%;
+  object-fit: cover;
+  border-radius: 5px;
+  width: 100%;
+  height: 190px;
+  border: 2px solid black;
 }
 .mod1__showxd {
   display: flex;
   flex-direction: row;
   height: 30px;
+  font-size: 14x;
   justify-content: space-between;
+  align-items: center;
 }
 .mod1__showxdt {
-  font-size: 14x;
+  font-weight: 400;
+}
+.mod1__showxdl {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .mod1__showxdln {
-  font-size: 14x;
-  padding-right: 2px;
+  font-weight: 500;
+  padding-right: 4px;
 }
-.mod1__showxdli:hover {
+.mod1__showxdlc {
+  font-size: 13px;
+}
+.mod1__showxdlc i {
+  color: #901C1C;
+  background-color: white;
+}
+.mod1__showxdlc i:hover {
   color: white;
   background-color: #901C1C;
 }

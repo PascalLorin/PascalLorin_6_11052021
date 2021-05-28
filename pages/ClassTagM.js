@@ -40,7 +40,7 @@ function tagAriaLabel(name) {
 };
 
 // chargement des tags à partir des photographes
-function loadTags() {
+function loadTagsM() {
   photographersSet.forEach(p => {
     p.tags.forEach(t => {
       let appendTag = true;
@@ -57,8 +57,7 @@ function loadTags() {
 };
 
 // affichage des tags dans le <nav>, dans les cards et sur la page photographe
-// sauf le premier, "all", qui est un switch géré par le script
-function affTags() {
+function affTagsM() {
   let tagsContainer = document.getElementById("tags-select");
   tagSetM.forEach(t => {
     let btnTag = document.createElement('button');
