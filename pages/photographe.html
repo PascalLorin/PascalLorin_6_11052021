@@ -14,48 +14,46 @@
 	<link rel="icon" type="image/png" href="../icon.png" />
 	<title>Fisheye</title>
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
-<!--	<script type="module" src="../main.js"></script>  -->
 </head>
 
 <body>
 	<main>
-		<!-- Affichage du photographe sélectionné                          -->
+		<!-- Affichage du photographe sélectionné -->
 		<modal id="mod1">
 			<header class="mod1Head">
 				<div class="mod1Head__logo">
 					<img src="../public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
 				</div>
 			</header>
-			<article class="mod1__" aria-label="Présentation du photographe">
-				<div class="mod1__name" aria-label="Nom du photographe">
-				</div>
-				<div class="mod1__place" aria-label="Localisation du photographe">
-				</div>
-				<div class="mod1__alt" aria-label="Slogan du photographe">
-				</div>
-				<div class="mod1__img">
-					<img alt="Portrait du photographe" aria-label="Portrait du photographe">
-				</div>
-				<!--  Sélection de catégories du photographe (tags)  -->
-				<div class="tags-select" aria-label="Catégories du photographe">
-				</div>
-			</article>
-			<section class="mod1__show" aria-label="Réalisations de ce photographe">
-			</section>
 		</modal>
-
+		<!-- Formulaire de contact du photographe sélectionné -->
 		<modal id="form-modal">
 			<p>
 				Formulaire
 			</p>
 		</modal>
-		<!-- Appel de la modale carroussel d'un photographe lorsque c'est sélectionné          -->
+		<!-- Carroussel du photographe sélectionné -->
 		<modal id="mod2">
+			<header class="mod1Head">
+				<div class="mod1Head__logo">
+					<img src="../public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
+				</div>
+			</header>
 			<p>
 				Caroussel
 			</p>
 		</modal>
 	</main>
+
+	<script type="text/javascript" src="./GlobalVar.js"></script>		
+	<script type="text/javascript" src="./ClassTagM.js"></script>
+	<script type="text/javascript" src="./FactoryMedia.js"></script>
+	<script type="text/javascript" src="./PhotographerM.js"></script>
+	<script type="text/javascript" src="./ClassMedia.js"></script>
+	<script type="text/javascript" src="./GetParams.js"></script>
+<!--
+		<script type="text/javascript" src="./TriMedia.js"></script>
+-->		
 	<script type="text/javascript" src="./photographe.js"></script>
 </body>
 

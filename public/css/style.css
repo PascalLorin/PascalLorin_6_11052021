@@ -172,7 +172,7 @@ h1 {
 
 .pcard {
   /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
-  padding-top: 30px;
+  padding-top: 20px;
   width: 100%;
   height: 358px;
   font-family: "DM Sans";
@@ -252,54 +252,67 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  padding: 10px;
   background-color: white;
   color: #901C1C;
-  border: 1px solid black;
 }
-#mod1__ {
-  margin-top: 30px;
+
+.mod1__ {
   width: 100%;
+  margin-top: 30px;
   height: auto;
   font-family: "DM Sans";
   font-weight: 400;
   font-style: normal;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: center;
 }
-#mod1__name {
+.mod1__d {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mod1__d_t {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: left;
+}
+.mod1__d_tname {
   width: auto;
   height: 57px;
   font-size: 36px;
 }
-#mod1__place {
+.mod1__d_tplace {
+  font-weight: 500;
   height: 17px;
   font-size: 13px;
 }
-#mod1__alt {
+.mod1__d_talt {
+  margin-top: 8px;
   height: 17px;
   font-size: 13px;
   color: black;
 }
-#mod1__ img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  object-fit: cover;
-  width: 200px;
-  height: 200px;
-  border: 1px solid green;
-  border-radius: 100px;
+.mod1__d_p {
+  align-items: flex-end;
+  width: fit-content;
 }
-#mod1__tags {
+.mod1__d_p img {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border: 1px solid green;
+  border-radius: 60px;
+}
+.mod1__tags {
   height: 40px;
   display: flex;
   flex-direction: row;
 }
-#mod1__tagsx {
+.mod1__tagsx {
   font-size: 13px;
   font-weight: 600;
   height: 22px;
@@ -313,9 +326,38 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-#mod1__show {
+.mod1__tagsx:hover, .mod1__tagsx:active {
+  color: white;
+  background-color: #901C1C;
+}
+.mod1__show {
   display: grid;
   grid-template-columns: 1fr;
+}
+.mod1__showx {
+  width: 100%;
+  height: auto;
+}
+.mod1__showxv {
+  width: 90%;
+  height: 60%;
+}
+.mod1__showxd {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  justify-content: space-between;
+}
+.mod1__showxdt {
+  font-size: 14x;
+}
+.mod1__showxdln {
+  font-size: 14x;
+  padding-right: 2px;
+}
+.mod1__showxdli:hover {
+  color: white;
+  background-color: #901C1C;
 }
 
 /*   la modale caroussel ne s'affiche pas par défaut */
