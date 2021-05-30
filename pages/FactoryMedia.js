@@ -15,7 +15,7 @@ class factory {
 //toujours la même classe permettant de créer une image
 class factoryImage {
   constructor(content) {
-    this.el = document.createElement("img");
+    this.el = document.createElement('img');
     this.el.src = photographerDirectory + content.image;
   }
   // un getter permet ici de récupérer l'élément html créé dans le constructeur
@@ -23,7 +23,7 @@ class factoryImage {
     return this.el;
   }
   affich() {
-    document.body.appendChild(this.el);
+    document.appendChild(this.el);
   }
 }
 
@@ -39,7 +39,7 @@ class factoryVideo {
     return this.el;
   }
   affich() {
-    document.body.appendChild(this.el);
+    document.appendChild(this.el);
   }
 }
 

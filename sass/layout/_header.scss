@@ -26,10 +26,9 @@
     }
 }
 
-.mod1 {
+.mod1,
+.mod3 {
     &Head {
-        margin-top: 20px;
-        margin-left: 15px;
 
         &__logo {
             width: 150px;

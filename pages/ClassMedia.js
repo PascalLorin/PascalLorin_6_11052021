@@ -5,6 +5,7 @@ class Media {
     this.photographerId = arg.photographerId;
     this.title = arg.title;
     this.image = arg.image;
+    this.video = arg.video;
     this.tags = arg.tags;
     this.likes = arg.likes;
     this.date = arg.date;

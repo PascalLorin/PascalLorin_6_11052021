@@ -4,7 +4,7 @@
 var collection = [];
 var tagSetP = [];
 var allMedias = true; // pour afficher tous les medias d'un photographe si aucun tag sélectionné dans main page
-
+var modale1;
 // initialisation de l'affichage des medias
 // supprime les cards affichées (s'il y en a...)
 function effaceItems() {
@@ -29,7 +29,7 @@ function affCollectionP(modale1) {
     if (allMedias) {
       affCollectionI(mediaShow, item);
     } else {
-      debugger
+      //      debugger
       tagSetP.forEach(t => {
         if ((item.tags == t.name) && (t.state)) {
           affCollectionI(mediaShow, item);
@@ -48,15 +48,15 @@ function affCollectionI(mediaShow, item) {
   card.setAttribute('aria-label', item.title);
   card.setAttribute('alt', item.title);
   mediaShow.append(card);
-  let view = document.createElement('div');
+  let viewData = new factory(item);
+  if (item.id == 5234343 || item.id == 8328953) {
+    debugger
+  }
+  let view = viewData.getEl()
   view.setAttribute('class', "mod1__showxv");
+  debugger
+  view.setAttribute('height', mediaShow.clientWidth * 0.567);
   card.append(view);
-  //debugger;
-  /*
-    let viewData = new factory(item);
-    viewData.affich()
-    //  let view.textContent = photographerDirectory + item.image;
-  */
   let infos = document.createElement('div');
   infos.setAttribute('class', "mod1__showxd");
   card.append(infos);
@@ -85,8 +85,9 @@ function affCollectionI(mediaShow, item) {
 
 // clic sur un tag du photographe : sélection ou annulation de la sélection
 function selectTagP(event) {
+  debugger
   let sTag = event.currentTarget.id;
-  for (t in tagSetP) {
+  for (let t of tagSetP) {
     if (t.name == sTag) {
       t.switchTag()
       if (t.state) {
@@ -111,7 +112,8 @@ function getPhotographeSel(id) {
 }
 
 function initPhotographerData() {
-  photographerDirectory = repMedia + pSel.name + "/"
+  let firstName = pSel.name.split(" ")
+  photographerDirectory = repMedia + firstName[0] + "/"
   pSel.loadTagsP()
   pSel.loadCollectionP()
 };
