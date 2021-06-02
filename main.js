@@ -13,9 +13,9 @@ function effaceCards() {
 
 // affichage de la page principale avec tous les photographes au lancement 
 function displayPhotographersAll() {
+  effaceCards()
   photographersSet.forEach(p => {
-    let photographer = new Photographer(p);
-    photographer.displayPhotographerM()
+    p.displayPhotographerM()
   })
 };
 
@@ -24,7 +24,6 @@ function displayPhotographersMain() {
   effaceCards();
   photographersSet.forEach(p => {
     let displayP = false
-    let photographer = new Photographer(p);
     for (let t of p.tags) {
       for (let i of tagSetM) {
         if ((i.state) && (i.name == t)) {
@@ -33,25 +32,18 @@ function displayPhotographersMain() {
         }
       }
       if (displayP) {
-        photographer.displayPhotographerM()
+        p.displayPhotographerM()
         break
       }
     }
   })
 };
-function writeStorageJson() {
-  localStorage.setItem('pSet', JSON.stringify(photographersSet))
-  localStorage.setItem('mSet', JSON.stringify(mediaSet))
-}
-
-function writeStorageTags() {
-  localStorage.setItem('tSet', JSON.stringify(tagSetM))
-}
 
 // clic sur un tag : sélection ou annulation de la sélection
 // réaffiche les photographes en fonction du nouvel état des tags
 function selectTagMain(event) {
-  let sTag = event.currentTarget.id;
+  let sTag = event.currentTarget.id
+  let affAll = true
   for (let t of tagSetM) {
     if (sTag == t.name) {
       t.switchTag()
@@ -60,11 +52,16 @@ function selectTagMain(event) {
       } else {
         event.currentTarget.setAttribute('class', "tagBtnNav tagNotSelect")
       }
-      break
+    }
+    if (t.state) {
+      affAll = false
     }
   }
-  writeStorageTags()
-  displayPhotographersMain()
+  if (affAll) {
+    displayPhotographersAll()
+  } else {
+    displayPhotographersMain()
+  }
 };
 
 // fonction de récupération des données JSON au chargement de la page
@@ -73,11 +70,14 @@ function loadJson() {
   let response = fetch(fichierJson)
     .then(response => response.json())
     .then(function (data) {
-      photographersSet = data.photographers
-      mediaSet = data.media
-      writeStorageJson()
+      let photographers = data.photographers
+      let medias = data.media
+      localStorage.setItem('pSet', JSON.stringify(photographers))
+      localStorage.setItem('mSet', JSON.stringify(medias))
+      for (let i of photographers) {
+        photographersSet.push(new Photographer(i))
+      }
       loadTagsM()
-      writeStorageTags()
       affTagsM()
       displayPhotographersAll()
       // DOM Elements & events listeners : click sur un bouton tag

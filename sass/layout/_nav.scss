@@ -1,4 +1,5 @@
 /*****  SELECTION DES CATEGORIES  *****/
+// page principale et page photographe
 #tags-select {
     margin-top: 30px;
     display: flex;
@@ -6,7 +7,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-
 
     &>.tagBtnNav {
         height: 22px;

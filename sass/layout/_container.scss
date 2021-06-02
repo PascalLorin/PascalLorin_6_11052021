@@ -35,6 +35,10 @@
         border: 3px solid $colour-primary;
     }
 
+    &:visited {
+        border: 3px solid $colour-secondary;
+    }
+
     & img {
         object-fit: cover;
         width: 200px;
@@ -70,7 +74,7 @@
     &__price {
         height: 17px;
         font-size: 10px;
-        font-weight:300;
+        font-weight: 300;
         color: $colour-price;
         line-height: 11.72px;
     }
@@ -82,8 +86,8 @@
         display: flex;
         flex-direction: row;
 
+        // tag(s) du photographe
         &x {
-            // tag(s) du photographe
             font-size: 13px;
             font-weight: 600;
             height: 22px;
@@ -97,6 +101,7 @@
 
             &:hover,
             &:active {
+                cursor: pointer;
                 color: white;
                 background-color: $colour-primary;
             }
@@ -104,16 +109,18 @@
     }
 }
 
-/*   la modale photographe ne s'affiche pas par défaut */
-#mod1 {
+/*   les modales photographe ne s'affichent pas par défaut */
+#mod1,
+#mod2,
+#mod3 {
     display: none;
     z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 20px;
     background-color: white;
     color: $colour-primary;
 }
@@ -121,13 +128,14 @@
 // affichage de l'entête du photographe sélectionné
 .mod1__ {
     width: 100%;
-    margin-top: 10px;
     height: auto;
     font-family: 'DM Sans';
     font-weight: 400;
     font-style: normal;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
 
     &d {
         display: flex;
@@ -141,7 +149,6 @@
             align-items: left;
 
             &name {
-//                width: auto;
                 height: auto;
                 min-height: 57px;
                 font-size: 36px;
@@ -152,13 +159,16 @@
             &place {
                 font-weight: 500;
                 height: 17px;
+                flex-wrap: wrap;
                 font-size: 13px;
             }
 
             &alt {
                 margin-top: 8px;
+                height: auto;
                 height: 17px;
                 font-size: 13px;
+                flex-wrap: wrap;
                 color: black;
             }
         }
@@ -176,11 +186,11 @@
                 border-radius: 60px;
             }
         }
+
     }
 
     // tag(s) du photographe
     &tags {
-        //        margin-top: 10px;
         height: 40px;
         display: flex;
         flex-direction: row;
@@ -204,11 +214,50 @@
                 color: white;
                 background-color: $colour-primary;
             }
+
+            &.tagNotSelect {
+                color: $colour-primary;
+                background-color: white;
+            }
+
+            &.tagSelect {
+                color: white;
+                background-color: $colour-primary;
+            }
+
+        }
+    }
+
+    &btn {
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        background-color: transparent;
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+
+        &_form {
+            font-size: 18px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: $colour-primary;
+            opacity: 0.5;
+
+            & :hover {
+                opacity: 1;
+            }
         }
     }
 }
 
-// affichage des medias du photographe
+// affichage des medias sur la page du photographe
 .mod1__show {
     display: grid;
     grid-template-columns: 1fr;
@@ -230,7 +279,7 @@
             display: flex;
             flex-direction: row;
             height: 30px;
-            font-size: 14x;
+            //            font-size: 14x;
             justify-content: space-between;
             align-items: center;
 
@@ -248,58 +297,119 @@
                     padding-right: 4px;
                 }
 
-                &c {
+                & i {
                     font-size: 13px;
+                    padding-left: 4px;
+                    color: $colour-primary;
+                    background-color: white;
+                }
 
-                    & i {
-                        color: $colour-primary;
-                        background-color: white;
-                    }
-
-                    & i:hover {
-                        color: white;
-                        background-color: $colour-primary;
-                    }
+                & i:hover {
+                    color: $colour-secondary;
+                    transform: scale(1.15);
                 }
             }
         }
     }
 }
 
-/*   la modale caroussel ne s'affiche pas par défaut */
-#mod2 {
-    display: none;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    color: $colour-primary;
-    border: 1px solid black;
+// affichage des medias sur le caroussel du photographe
+#mod3 {
+    padding: 0px;
+    display: grid;
+    grid-template-columns: [cl] 40px [cc] 1fr [cr] 40px;
+    grid-template-rows: [rgh] auto [rgc] max-content [rgr] auto;
+}
 
-    &>p {
-        margin-top: 300px;
-        font-size: 40px;
+// affichage des boutons
+.carousselBtn {
+    color: black;
+    background-color: white;
+}
+
+.btnLeft {
+    font-size: 18px;
+    text-align: right;
+    grid-column: cl;
+    grid-row: rgc;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    justify-content: center;
+
+
+    &b:hover {
+        transform: scale(1.2);
+        background-color:$colour-secondary;
     }
 }
 
-/*   la modale caroussel ne s'affiche pas par défaut */
-#form-modal {
-    display: none;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    color: $colour-primary;
-    border: 1px solid black;
+.btnRight {
+    font-size: 18px;
+    text-align: left;
+    grid-column: cr;
+    grid-row: rgc;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    justify-content: center;
 
-    &>p {
-        margin-top: 300px;
-        font-size: 40px;
+
+    &:hover {
+        transform: scale(1.2);
+        background-color:$colour-secondary;
+    }
+}
+
+.btnClose {
+    font-size: 18px;
+    text-align: left;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    justify-content: top;
+
+    &:hover {
+        transform: scale(1.2);
+        background-color:$colour-secondary;
+    }
+}
+
+.mod3__show {
+    grid-column: cc;
+    grid-row: rgc;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    //    flex-wrap: nowrap;
+    /*
+    display: grid;
+    grid-template-columns: 1fr;
+*/
+    // affichage d'un media du photographe
+    &x {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        // l'image ou la vidéo
+        &v {
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        // le titre du média
+        &d {
+            text-align: left;
+            height: 30px;
+            font-size: 14x;
+            font-weight: 400;
+        }
     }
 }

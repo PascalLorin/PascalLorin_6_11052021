@@ -31,6 +31,10 @@ class factoryImage {
 class factoryVideo {
   constructor(content) {
     this.el = document.createElement("video");
+    this.el.controls = true;    
+    this.el.autoplay = false;    
+    this.el.muted = false;    
+    this.el.setAttribute('width',viewWidth);
     this.el.appendChild(document.createElement("source"));
     this.el.children[0].src = photographerDirectory + content.video;
   }
@@ -52,5 +56,5 @@ const video = new factory({
 });
 
 //on peut toujours s'en servir de la même manière peu importe le type d'élément html
-image.affich();
-video.affich();
+//image.affich();
+//video.affich();
