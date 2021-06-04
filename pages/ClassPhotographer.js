@@ -180,49 +180,99 @@ function affModale2() {
   form.setAttribute('class', 'mod1__')
   form.setAttribute('aria-label', "Présentation de " + this.name)
   modale2.append(form)
+}
 
+// affiche le média précédant ou le dernier suivant média en cours
+function mediaPrev () {
+  let x;
+}
+
+// affiche le média suivant ou le premier suivant média en cours
+function mediaNext () {
+  let x;
+}
+
+// traitement du bouton cliqué
+function actionBtn(event) {
+  let selBtn = (event.currentTarget.id)
+  switch (selBtn) {
+    case "carBtnV":
+      mediaPrev()
+      break
+    case "carBtnN":
+      mediaNext()
+      break
+    case "carBtnC":
+      window.close()
+  }
+}
+
+// afffichage des boutons autour du média
+function affBtn(x,y) {
+  let h = (viewWidth * proportion2 / 2) - 10
+  let fromTop = y + h
+  let fromLeft = x - 20
+  // bouton "précédant"
+  let btnPrev = document.createElement('button')
+  btnPrev.setAttribute('class', "carBtn carBtnR ")
+  btnPrev.setAttribute('id', "carBtnP")
+  btnPrev.setAttribute('aria-label', "Cliquez pour voir le média précedant")
+  btnPrev.style.position = "absolute"
+  btnPrev.style.top = (y + h) + "px"
+  btnPrev.style.left = (x - 20) + "px"
+  modale3.append(btnPrev)
+  let btnPrevI = document.createElement('icon')
+  btnPrevI.setAttribute('class', "fa fa-chevron-left carBtn_i")
+  btnPrevI.setAttribute('alt', "Cliquez pour voir le média précedant")
+  btnPrev.append(btnPrevI)
+  // bouton "suivant"
+  let btnNext = document.createElement('button')
+  btnNext.setAttribute('class', "carBtn carBtnN")
+  btnNext.setAttribute('id', "carBtnN")
+  btnNext.setAttribute('aria-label', "Cliquez pour voir le média suivant")
+  btnNext.style.position = "absolute"
+  btnNext.style.top = (y+h) + "px"
+  btnNext.style.left = (x + viewWidth) + "px"
+  modale3.append(btnNext)
+  let btnNextI = document.createElement('icon')
+  btnNextI.setAttribute('class', "fa fa-chevron-right carBtn_i")
+  btnNextI.setAttribute('alt', "Cliquez pour voir le média suivant")
+  btnNext.append(btnNextI)
+  // bouton "fermer"
+  let btnClose = document.createElement('button')
+  btnClose.setAttribute('class', "carBtn carBtnC")
+  btnClose.setAttribute('id', "carBtnC")
+  btnClose.setAttribute('aria-label', "Cliquez pour fermer le caroussel")
+  btnClose.style.position = "absolute"
+  btnClose.style.top = y + "px"
+  btnClose.style.left = (x + viewWidth) + "px"
+  modale3.append(btnClose)
+  let btnCloseI = document.createElement('icon')
+  btnCloseI.setAttribute('class', "fa fa-times carBtn_i")
+  btnCloseI.setAttribute('alt', "Cliquez pour fermer le caroussel")
+  btnClose.append(btnCloseI)
 }
 
 // affiche la modale3 : caroussel du photographe sélectionné
 function affModale3() {
   modale3 = document.getElementById('mod3')
-  modale3.style.display = "grid"
+  modale3.style.display = "flex"
   mediaShow = document.createElement('article')
   mediaShow.setAttribute('class', "mod3__show")
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe")
   modale3.append(mediaShow)
-  viewWidth = mediaShow.clientWidth
+  itemDisplay = document.createElement('div')
+  itemDisplay.setAttribute('class', "mod3__showd")
+  mediaShow.append(itemDisplay)
+  viewWidth = itemDisplay.clientWidth
   // Affichage des médias dans le caroussel
   collection.forEach(media => {
-    //        let media = new Media(m)
     media.affCarousselM()
   })
-  debugger
-  let btnLeft = document.createElement('div')
-  btnLeft.setAttribute('class', "carousselBtn")
-  modale3.append(btnLeft)
-  let btnLeftB = document.createElement('button')
-  btnLeftB.setAttribute('class', "fa fa-chevon-left btnLeft")
-  btnLeftB.setAttribute('aria-label', "Cliquez pour voir le média précedant")
-  btnLeft.append(btnLeftB)
-  
-  let btnRight = document.createElement('div')
-  btnLeft.setAttribute('class', "carousselBtn")
-  modale3.append(btnRight)
-  let btnRightB = document.createElement('button')
-  btnRightB.setAttribute('class', "fa fa-chevon-right btnRight")
-  btnRightB.setAttribute('aria-label', "Cliquez pour voir le média suivant")
-  btnRight.append(btnRightB)
-  let btnClose = document.createElement('div')
-  btnClose.setAttribute('class', "carousselBtn")
-  modale3.append(btnClose)
-  let btnCloseB = document.createElement('button')
-  btnCloseB.setAttribute('class', "btnClose")
-  btnCloseB.setAttribute('aria-label', "Cliquez pour fermer le caroussel")
-  btnClose.append(btnCloseB)
- // DOM Elements
-  const arrowBtn = document.querySelectorAll(".arrowBtn")
-  const closeBtn = document.querySelectorAll(".closeBtn")
+  // afffichage des boutons autour du média
+  affBtn(itemDisplay.offsetLeft,itemDisplay.offsetTop)
+  // DOM Elements
+  const carBtn = document.querySelectorAll(".carBtn")
   // event listener : click sur un bouton tag
-  arrowBtn.forEach((btn) => btn.addEventListener("click", moveItem))
+  carBtn.forEach((btn) => btn.addEventListener("click", actionBtn))
 }

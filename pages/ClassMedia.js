@@ -20,7 +20,7 @@ class Media {
     viewWidth = mediaShow.clientWidth
     let carousselLink = document.createElement('a')
     carousselLink.setAttribute('target', "_blank")
-    carousselLink.setAttribute('href', "./caroussel.html?id="+this.id)
+    carousselLink.setAttribute('href', "./caroussel.html?id=" + this.id)
     carousselLink.setAttribute('alt', "Cliquer pour afficher le caroussel de ce photographe, nouvel onglet")
     carousselLink.setAttribute('aria-label', "Cliquer pour afficher le caroussel de ce photographe, nouvel onglet")
     card.append(carousselLink)
@@ -56,29 +56,29 @@ class Media {
 
   // affiche un média du caroussel du photographe
   affCarousselM() {
-    let card = document.createElement('section')
-    card.setAttribute('class', "mod3__showx")
+    var card = document.createElement('section')
+    card.setAttribute('class', "mod3__showdx")
     if (this.id == paramMedia) {
       card.style.display = "flex"
     } else {
       card.style.display = "none"
     }
-    mediaShow.append(card)
+    itemDisplay.append(card)
     let viewData = new factory(this)
-    let view = viewData.getEl()
-    view.setAttribute('class', "mod3__showxv")
+    var view = viewData.getEl()
+    view.setAttribute('class', "mod3__showdxv")
     view.setAttribute('height', viewWidth * proportion2)
     view.setAttribute('aria-label', this.title)
     view.setAttribute('alt', this.title)
     card.append(view)
     let title = document.createElement('div')
-    title.setAttribute('class', "mod3__showxd")
+    title.setAttribute('class', "mod3__showdxt")
     title.setAttribute('aria-label', this.title)
     title.setAttribute('alt', this.title)
     title.textContent = this.title
     card.append(title)
   }
-};
+}
 
 // affiche la collection des medias du photographe suivant les tags sélectionnés
 function affCollectionP() {
@@ -103,7 +103,7 @@ function affCollectionP() {
   allMedias = false
   const iconLikes = document.querySelectorAll("i")
   iconLikes.forEach((item) => item.addEventListener("click", incrLikes))
-};
+}
 
 // détermine si l'on affiche tous les médias du photographe
 function setAllMedias() {

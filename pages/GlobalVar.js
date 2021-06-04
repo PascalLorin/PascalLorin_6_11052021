@@ -15,7 +15,7 @@ var modale1;   // élement HTML contenant la modale1, page d'un photographe
 var modale2;   // élement HTML contenant la modale2, formulaire de contact d'un photographe
 var modale3;   // élement HTML contenant la modale3, caroussel d'un photographe
 var mediaShow; // élement HTML contenant la collection du photographe sélectionné [modale1 et modale3]
-var photographerDirectory;
+var photographerDirectory; // variable contenant le répertoire des médias du photographe
 var allMedias; // pour afficher tous les medias d'un photographe si aucun tag n'est sélectionné
 var viewWidth; // largeur d'affichage d'un média pour proportion H/W suivant la modale
 var proportion1 = 0.567; // proportion page photographe

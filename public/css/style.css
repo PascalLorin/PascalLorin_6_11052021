@@ -417,90 +417,66 @@ h1 {
 }
 
 #mod3 {
-  padding: 0px;
-  display: grid;
-  grid-template-columns: [cl] 40px [cc] 1fr [cr] 40px;
-  grid-template-rows: [rgh] auto [rgc] max-content [rgr] auto;
-}
-
-.carousselBtn {
-  color: black;
-  background-color: white;
-}
-
-.btnLeft {
-  font-size: 18px;
-  text-align: right;
-  grid-column: cl;
-  grid-row: rgc;
-  width: 40px;
-  height: 40px;
-  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  align-items: center;
   justify-content: center;
-}
-.btnLeftb:hover {
-  transform: scale(1.2);
-  background-color: #D3573D;
-}
-
-.btnRight {
-  font-size: 18px;
-  text-align: left;
-  grid-column: cr;
-  grid-row: rgc;
-  width: 40px;
-  height: 40px;
-  padding: 2px;
-  justify-content: center;
-}
-.btnRight:hover {
-  transform: scale(1.2);
-  background-color: #D3573D;
-}
-
-.btnClose {
-  font-size: 18px;
-  text-align: left;
-  width: 40px;
-  height: 40px;
-  padding: 2px;
-  justify-content: top;
-}
-.btnClose:hover {
-  transform: scale(1.2);
-  background-color: #D3573D;
+  padding: 0 40px;
 }
 
 .mod3__show {
-  grid-column: cc;
-  grid-row: rgc;
-  display: flex;
+  width: 100%;
+  height: fit-content;
+}
+.mod3__showdx {
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  /*
-      display: grid;
-      grid-template-columns: 1fr;
-  */
 }
-.mod3__showx {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.mod3__showxv {
+.mod3__showdxv {
   object-fit: cover;
   border-radius: 5px;
   width: 100%;
 }
-.mod3__showxd {
-  text-align: left;
-  height: 30px;
+.mod3__showdxt {
+  align-self: left;
+  height: 18px;
   font-size: 14x;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.carBtn {
+  display: flex;
+  flex-direction: row;
+  width: 20px;
+  height: auto;
+  border: none;
+}
+.carBtnR {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-right: 2px;
+  align-content: flex-end;
+  justify-content: center;
+}
+.carBtnN, .carBtnC {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-left: 2px;
+  align-content: flex-start;
+  justify-content: center;
+}
+.carBtn_i {
+  display: flex;
+  font-size: 18px;
+  color: black;
+  background-color: white;
+}
+.carBtn_i:hover {
+  transform: scale(1.2);
+  color: #D3573D;
 }
 
 /*# sourceMappingURL=style.css.map */
