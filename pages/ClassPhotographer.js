@@ -183,18 +183,31 @@ function affModale2() {
 }
 
 // affiche le média précédant ou le dernier suivant média en cours
-function mediaPrev () {
-  let x;
+function mediaPrev() {
+  if (currentIndex == 0) {
+    currentIndex = collection.length - 1
+  } else {
+    currentIndex--
+  }
 }
 
 // affiche le média suivant ou le premier suivant média en cours
-function mediaNext () {
-  let x;
+function mediaNext() {
+  if (currentIndex == (collection.length - 1)) {
+    currentIndex = 0
+  } else {
+    currentIndex++
+  }
 }
 
 // traitement du bouton cliqué
 function actionBtn(event) {
   let selBtn = (event.currentTarget.id)
+  if (selBtn == "carBtnC") {
+    window.close()
+  }
+  caroussel = document.getElementsByClassName('mod3__showdx')
+  caroussel[currentIndex].style.display = "none"
   switch (selBtn) {
     case "carBtnV":
       mediaPrev()
@@ -202,20 +215,19 @@ function actionBtn(event) {
     case "carBtnN":
       mediaNext()
       break
-    case "carBtnC":
-      window.close()
   }
+  caroussel[currentIndex].style.display = "flex"
 }
 
 // afffichage des boutons autour du média
-function affBtn(x,y) {
+function affBtn(x, y) {
   let h = (viewWidth * proportion2 / 2) - 10
   let fromTop = y + h
   let fromLeft = x - 20
   // bouton "précédant"
   let btnPrev = document.createElement('button')
-  btnPrev.setAttribute('class', "carBtn carBtnR ")
-  btnPrev.setAttribute('id', "carBtnP")
+  btnPrev.setAttribute('class', "carBtn carBtnV ")
+  btnPrev.setAttribute('id', "carBtnV")
   btnPrev.setAttribute('aria-label', "Cliquez pour voir le média précedant")
   btnPrev.style.position = "absolute"
   btnPrev.style.top = (y + h) + "px"
@@ -231,7 +243,7 @@ function affBtn(x,y) {
   btnNext.setAttribute('id', "carBtnN")
   btnNext.setAttribute('aria-label', "Cliquez pour voir le média suivant")
   btnNext.style.position = "absolute"
-  btnNext.style.top = (y+h) + "px"
+  btnNext.style.top = (y + h) + "px"
   btnNext.style.left = (x + viewWidth) + "px"
   modale3.append(btnNext)
   let btnNextI = document.createElement('icon')
@@ -263,14 +275,16 @@ function affModale3() {
   modale3.append(mediaShow)
   itemDisplay = document.createElement('div')
   itemDisplay.setAttribute('class', "mod3__showd")
+  itemDisplay.setAttribute('id', "caroussel")
   mediaShow.append(itemDisplay)
   viewWidth = itemDisplay.clientWidth
   // Affichage des médias dans le caroussel
   collection.forEach(media => {
     media.affCarousselM()
+    index++
   })
   // afffichage des boutons autour du média
-  affBtn(itemDisplay.offsetLeft,itemDisplay.offsetTop)
+  affBtn(itemDisplay.offsetLeft, itemDisplay.offsetTop)
   // DOM Elements
   const carBtn = document.querySelectorAll(".carBtn")
   // event listener : click sur un bouton tag

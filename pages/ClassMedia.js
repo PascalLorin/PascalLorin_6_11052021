@@ -60,6 +60,7 @@ class Media {
     card.setAttribute('class', "mod3__showdx")
     if (this.id == paramMedia) {
       card.style.display = "flex"
+      currentIndex = index
     } else {
       card.style.display = "none"
     }

@@ -1,7 +1,9 @@
 // caroussel du photographe sélectionné
 // l'Id du média qui l'appelle est passée en paramètre pour être affichée en premier
 // la collection est passée via localStorage
-var collection = [];
+var collection = []
+var currentIndex = 0
+var index = 0
 
 function readStorageCollection() {
   pSel = new Photographer(JSON.parse(localStorage.getItem('pSel')))
