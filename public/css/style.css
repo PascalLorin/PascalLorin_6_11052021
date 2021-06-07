@@ -22,30 +22,167 @@
     width: 20rem;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .fonct-items__grid,
-.restos__grid,
-.menu {
+@media (min-width: 768px) {
+  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+  #cards-container {
+    background-color: chartreuse;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-direction: row;
-    grid-gap: 1em;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .fonct-items__grid,
-.menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    flex-direction: row;
+    grid-template-columns: repeat 3, 1fr;
     grid-gap: 1em;
   }
 
-  .restos__grid {
+  .mod1__ {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    flex-direction: row;
+    grid-template-columns: repeat 3 1fr;
     grid-gap: 1em;
+  }
+
+  .mod2c {
+    width: 599px;
+    height: auto;
+  }
+  .mod2c__close {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+  .mod2c__close i {
+    color: white;
+    font-size: 32px;
+  }
+  .mod2c__close i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .mod2c__title {
+    font-size: 50px;
+  }
+  .mod2c__submit {
+    /*            
+                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+    */
+    justify-content: flex-start;
+  }
+  .mod2c__submit_b {
+    padding: 14px 50px;
+  }
+
+  label {
+    font-size: 30px;
+    margin-top: 8px;
+  }
+
+  .text-control {
+    height: 60px;
+  }
+
+  .text-message {
+    height: 170px;
+  }
+
+  .formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.5em;
+    line-height: 0.6em;
+  }
+
+  input[data-error]::after {
+    content: attr(data-error);
+    font-size: 5px;
+    color: red;
+  }
+
+  #mod3 {
+    padding: 0px 120px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+  #cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+  }
+
+  .mod1__ {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+  }
+
+  .mod2c {
+    width: 599px;
+    height: 900px;
+  }
+  .mod2c__close {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    display: block;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+  }
+  .mod2c__close i {
+    color: white;
+    font-size: 42px;
+  }
+  .mod2c__close i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .mod2c__title {
+    font-size: 64px;
+  }
+  .mod2c__submit {
+    /*            
+                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+    */
+    justify-content: flex-start;
+  }
+  .mod2c__submit_b {
+    padding: 23px 50px;
+  }
+
+  label {
+    font-size: 36px;
+    margin-top: 8px;
+  }
+
+  .text-control {
+    height: 68px;
+  }
+
+  .text-message {
+    height: 170px;
+  }
+
+  .formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.5em;
+    line-height: 0.6em;
+  }
+
+  input[data-error]::after {
+    content: attr(data-error);
+    font-size: 5px;
+    color: red;
+  }
+
+  #mod3 {
+    padding: 0px 240px;
   }
 }
 body {
@@ -59,13 +196,13 @@ body {
   z-index: 0;
   margin: 0;
   padding: 0;
-  background-color: white;
   color: #901C1C;
 }
 
 ol,
 ul,
 li,
+button,
 a {
   text-decoration: none;
 }
@@ -159,7 +296,7 @@ h1 {
   color: #901C1C;
 }
 
-/******   AFFICHAGE DES PHOTOPRAGAPHES SELECTIONES  *******/
+/******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
 #cards-container {
   width: 100%;
   display: grid;
@@ -246,11 +383,10 @@ h1 {
   background-color: #901C1C;
 }
 
-/*   les modales photographe ne s'affichent pas par défaut */
+/*   les modales photographe s'affichent par dessus si pas de nouvel onglet */
 #mod1,
 #mod2,
 #mod3 {
-  display: none;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -416,10 +552,135 @@ h1 {
   transform: scale(1.15);
 }
 
-#mod3 {
+/* Modal form */
+#mod2 {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-style: normal;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.mod2c {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem 1.7rem;
+  border-radius: 5px;
+  background: #D3573D;
+  color: black;
+}
+.mod2c__close {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  display: block;
+  width: 19px;
+  height: 19px;
+  align-items: center;
+  justify-content: center;
+}
+.mod2c__close i {
+  color: white;
+  font-size: 19px;
+}
+.mod2c__close i:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.mod2c__title {
+  font-size: 36px;
+}
+.mod2c__submit {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.mod2c__submit_b {
+  display: block;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 6px 50px;
+  color: #fff;
+  background: #901C1C;
+  border: none;
+}
+.mod2c__submit_b:hover {
+  cursor: pointer;
+  color: black;
+  text-transform: capitalize;
+}
+
+label {
+  font-size: 24px;
+  font-weight: 400;
+  color: #312E2E;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+input {
+  background-color: white;
+  color: black;
+  margin-top: 4px;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 52px;
+}
+
+.text-message {
+  height: 184px;
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.formData[data-error-visible=true]::after {
+  opacity: 1;
+}
+
+.formData[data-error-visible=true] .text-control {
+  border: 2px solid #e54858;
+}
+
+input[data-error]::after {
+  content: attr(data-error);
+  font-size: 4px;
+  color: red;
+}
+
+#mod3 {
   z-index: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 40px;
@@ -449,6 +710,7 @@ h1 {
   display: flex;
   flex-direction: row;
   width: 20px;
+  background-color: white;
   height: auto;
   border: none;
 }
@@ -456,8 +718,7 @@ h1 {
   position: relative;
   display: flex;
   flex-direction: row;
-  padding-right: 2px;
-  align-content: flex-end;
+  align-content: flex-start;
   justify-content: center;
 }
 .carBtnN, .carBtnC {
@@ -465,7 +726,7 @@ h1 {
   display: flex;
   flex-direction: row;
   padding-left: 2px;
-  align-content: flex-start;
+  align-content: flex-end;
   justify-content: center;
 }
 .carBtn_i {

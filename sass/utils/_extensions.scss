@@ -1,30 +1,185 @@
+@media (min-width: 768px){  //and (max-width: 1199px) {
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-
-    .fonct-items__grid,
-    .restos__grid,
-    .menu {
+    /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+    #cards-container {
+        background-color: chartreuse;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        flex-direction: row;
+        grid-template-columns: repeat (3,1fr);
         grid-gap: $grid-gutter;
+    }
+
+    // Photographes
+    .mod1__ {
+        display: grid;
+        grid-template-columns: repeat 3(1fr);
+        grid-gap: $grid-gutter;
+    }
+
+    // Formulaire
+    .mod2c {
+        width: 599px;
+        height: auto;
+
+        &__close {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            display: block;
+            width: 32px;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+
+            & i {
+                color: white;
+                font-size: 32px;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        &__title {
+            font-size: 50px;
+        }
+
+        &__submit {
+            /*            
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+*/
+            justify-content: flex-start;
+
+            &_b {
+                padding: 14px 50px;
+            }
+        }
+    }
+
+    label {
+        font-size: 30px;
+        margin-top: 8px;
+    }
+
+    .text-control {
+        height: 60px;
+    }
+
+    .text-message {
+        height: 170px;
+    }
+
+    .formData[data-error]::after {
+        content: attr(data-error);
+        font-size: 0.5em;
+        line-height: 0.6em;
+    }
+
+    input[data-error]::after {
+        content: attr(data-error);
+        font-size: 5px;
+        color: red;
+    }
+
+    // Caroussel
+    #mod3 {
+        padding: 0px 120px;
     }
 }
 
+
 @media screen and (min-width: 1200px) {
 
-    .fonct-items__grid,
-    .menu {
+    /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+    #cards-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        flex-direction: row;
         grid-gap: $grid-gutter;
     }
 
-    .restos__grid {
+    // Photographes
+    .mod1__ {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        flex-direction: row;
+        grid-template-columns: 1fr 1fr 1fr;
         grid-gap: $grid-gutter;
+    }
+
+    // Formulaire
+    .mod2c {
+        width: 599px;
+        height: 900px;
+
+        &__close {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            display: block;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+
+            & i {
+                color: white;
+                font-size: 42px;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        &__title {
+            font-size: 64px;
+        }
+
+        &__submit {
+            /*            
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+*/
+            justify-content: flex-start;
+
+            &_b {
+                padding: 23px 50px;
+            }
+        }
+    }
+
+    label {
+        font-size: 36px;
+        margin-top: 8px;
+    }
+
+    .text-control {
+        height: 68px;
+    }
+
+    .text-message {
+        height: 170px;
+    }
+
+    .formData[data-error]::after {
+        content: attr(data-error);
+        font-size: 0.5em;
+        line-height: 0.6em;
+    }
+
+    input[data-error]::after {
+        content: attr(data-error);
+        font-size: 5px;
+        color: red;
+    }
+
+    // Caroussel
+    #mod3 {
+        padding: 0px 240px;
     }
 }

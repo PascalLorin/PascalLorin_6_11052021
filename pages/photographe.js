@@ -15,15 +15,6 @@ function incrLikes(event) {
   }
 }
 
-/*
-// affiche la modale2 : formulaire de contact du photographe sélectionné
-function affModale2() {
-  modale2 = document.getElementById('mod2')
-  modale2.style.display = "block"
-  pSel.affForm()
-}
-*/
-
 // clic sur un tag du photographe : sélection ou annulation de la sélection
 function selectTagP(event) {
   let sTag = event.currentTarget.id
@@ -45,13 +36,19 @@ function selectTagP(event) {
 function getPhotographeSel(id) {
   for (let p = 0; p < photographersSet.length; p++) {
     if (photographersSet[p].id == id) {
-      return photographersSet[p]
+      return new Photographer(photographersSet[p])
     }
   }
   alert("Photographe inconnu")
   window.close()
 }
 
+// affiche la modale2 : formulaire de contact du photographe sélectionné
+function affModale2() {
+  window.open("./modalForm.html?id=" + pSel.id,"_blank")
+}
+
+// début du script
 readStorage()
 pSel = getPhotographeSel(getParams())
 pSel.initPhotographerData()
