@@ -19,5 +19,6 @@ var caroussel; // array des éléments HTML enfants de mediaShow
 var photographerDirectory; // variable contenant le répertoire des médias du photographe
 var allMedias; // pour afficher tous les medias d'un photographe si aucun tag n'est sélectionné
 var viewWidth; // largeur d'affichage d'un média pour proportion H/W suivant la modale
+var paramMedia;// largeur d'affichage d'un média pour proportion H/W suivant la modale
 var proportion1 = 0.567; // proportion page photographe
 var proportion2 = 0.857; // proportion caroussel

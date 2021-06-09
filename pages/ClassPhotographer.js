@@ -47,8 +47,6 @@ class Photographer {
 
   // affiche la modale1 : page du photographe sélectionné
   affModale1 = function () {
-    modale1 = document.getElementById('mod1')
-    modale1.style.display = "block"
     let article = document.createElement('article')
     article.setAttribute('id', this.id)
     article.setAttribute('class', 'mod1__')
@@ -119,15 +117,14 @@ class Photographer {
 
   // displayPhotographerM : affichage d'un photographe sur la page principale
   displayPhotographerM = function () {
-    let cardsContainer = document.getElementById("cards-container")
+    let cardsContainer = document.getElementsByClassName("cards-container")
     let cardPhotographe = document.createElement('a')
-    cardPhotographe.setAttribute('target', "_blank")
     cardPhotographe.setAttribute('href', "./pages/photographe.html?id=" + this.id)
     cardPhotographe.setAttribute('id', this.id)
     cardPhotographe.setAttribute('class', "pcard")
-    cardPhotographe.setAttribute('alt', "Cliquer pour choisir ce photographe") //, nouvel onglet")
-    cardPhotographe.setAttribute('aria-label', "Cliquer pour choisir ce photographe") //, nouvel onglet")
-    cardsContainer.append(cardPhotographe)
+    cardPhotographe.setAttribute('alt', "Cliquer pour choisir ce photographe")
+    cardPhotographe.setAttribute('aria-label', "Cliquer pour choisir ce photographe")
+    cardsContainer[0].append(cardPhotographe)
     let pcardImg = document.createElement("div")
     pcardImg.setAttribute('class', "pcard__img")
     cardPhotographe.append(pcardImg)

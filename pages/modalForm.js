@@ -1,15 +1,16 @@
 // DOM Elements
 const formData = document.querySelectorAll(".formData")
 const closeBtn = document.querySelector(".mod2c__close")
-const signUpBtn = document.querySelector(".mod2c__submit")
+const signUpBtn = document.querySelector(".signUpBtn")
 
-let nameOk = /^[A-Z][a-zàçéèëêîï]\g+(['\-\s][A-Z][a-zàçéèëêîï])?$/
-let emailOk = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
-let msgOk = /^\w/
+// let nameOk = /^[A-Z][a-zàçéèëêîï]+(['\-\s][A-Z][a-zàçéèëêîï])?$/
+let nameOk = /[A-Z][a-zàçéèëêîï]+(['\-\s][A-Z][a-zàçéèëêîï])?$/
+let emailOk = /(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
+let msgOk = /\w/
 let inputsOk = true
 
 // add event listeners
-closeBtn.addEventListener("click", closeWindow)
+closeBtn.addEventListener("click", closeModale2)
 signUpBtn.addEventListener("submit", validate)
 
 var param = getParams()
@@ -26,20 +27,22 @@ var pName = document.getElementById('mod2c__title_n')
 pName.textContent = pSel.name
 
 // Fermeture de la fenêtre sur clic sur "X"
-function closeWindow() {
-  window.close()
+function closeModale2() {
+  modale2.style.display = "none"
+  modale1.style.display = "block"
 }
 
 // function validate called at form submit event
-function validate(event) {
-  event.preventDefault()
+function validate() {
   inputsOk = true
   checkInputs()
   if (inputsOk == true) {
     alert("Merci pour ce message")
-    closeWindow()
+    closeModale2()
+    return true
+  } else {
+    return false
   }
-  return false
 }
 
 // checks the inputs and switch var inputsOk to false if not OK
@@ -49,7 +52,7 @@ function checkInputs() {
   let email = document.getElementById("mod2c__form_e")
   let message = document.getElementById("mod2c__form_m")
 
-  if ((first.legnth < 3) || (!nameOk.test(first.value))) {
+  if ((first.value.length < 3) || (!nameOk.test(first.value))) {
     formData[0].dataset.error = "Majuscule initiale puis lettres, espace, apostrophe et tiret sont valides"
     formData[0].dataset.errorVisible = "true"
     inputsOk = false
@@ -58,7 +61,7 @@ function checkInputs() {
     formData[0].dataset.errorVisible = "false"
   }
 
-  if ((last.legnth < 3) || (!nameOk.test(last.value))) {
+  if ((last.value.length < 3) || (!nameOk.test(last.value))) {
     formData[1].dataset.error = "Majuscule initiale puis lettres, espace, apostrophe et tiret sont valides"
     formData[1].dataset.errorVisible = "true"
     inputsOk = false
@@ -67,7 +70,7 @@ function checkInputs() {
     formData[1].dataset.errorVisible = "false"
   }
 
-  if ((email.legnth < 3) || (!emailOk.test(email.value))) {
+  if ((email.value.length < 3) || (!emailOk.test(email.value))) {
     formData[2].dataset.error = "Veuillez renseigner une adresse mail correcte"
     formData[2].dataset.errorVisible = "true"
     inputsOk = false
@@ -76,7 +79,7 @@ function checkInputs() {
     formData[2].dataset.errorVisible = "false"
   }
 
-  if (message.length == 0) {
+  if ((message.value.length < 1) || (!msgOk.test(message.value))) {
     formData[3].dataset.error = "Veuillez me laisser un message S.V.P. !"
     formData[3].dataset.errorVisible = "true"
     inputsOk = false
@@ -84,4 +87,10 @@ function checkInputs() {
     formData[3].dataset.error = ""
     formData[3].dataset.errorVisible = "false"
   }
+}
+
+// affiche la modale2 : formulaire de contact du photographe sélectionné
+function affModale2() {
+  modale1.style.display = "none"
+  modale2.style.display = "flex"
 }

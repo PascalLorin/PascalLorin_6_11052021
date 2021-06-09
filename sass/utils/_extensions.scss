@@ -1,18 +1,66 @@
-@media (min-width: 768px){  //and (max-width: 1199px) {
+@media (max-width: 340px) {
+
+    /****   Headers   ****/
+    .main-header img {
+        width: 120px;
+    }
+
+    .mod1,
+    .mod3 {
+        &Head img {
+            width: 120px;
+        }
+    }
+
+    /******   Affichage du titre en haut à droite   ******/
+/*    .main-titre {
+        position: absolute;
+        top: 0;
+        right: 6px;
+        font-family: 'DM Sans';
+        font-weight: 400;
+        font-size: 15px;
+        color: $colour-primary;
+    }
+    */
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+    /******   Affichage du titre en haut à droite   ******/
+    .main-titre {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-family: 'DM Sans';
+        font-weight: 400;
+        font-size: 24px;
+        color: $colour-primary;
+    }
 
     /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-    #cards-container {
-        background-color: chartreuse;
+    #tags-select {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        background-color: transparent;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cards-container {
         display: grid;
-        grid-template-columns: repeat (3,1fr);
-        grid-gap: $grid-gutter;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        gap: 1rem;
     }
 
     // Photographes
-    .mod1__ {
+    .mod1__show {
         display: grid;
-        grid-template-columns: repeat 3(1fr);
-        grid-gap: $grid-gutter;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        gap: 1rem;
     }
 
     // Formulaire
@@ -92,20 +140,43 @@
 }
 
 
-@media screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
+    .main-header__tags {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        background-color: transparent;
+        width: 100%;
+
+    }
+
+    /******   Affichage du titre en haut à droite   ******/
+    .main-titre {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-family: 'DM Sans';
+        font-weight: 400;
+        font-size: 36px;
+        color: $colour-primary;
+    }
 
     /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-    #cards-container {
+    .cards-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: $grid-gutter;
+        grid-gap: 1rem;
+        gap: 1rem;
+        //        position: relative;
+        //        left: -162px;
     }
 
     // Photographes
-    .mod1__ {
+    .mod1__show {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: $grid-gutter;
+        grid-gap: 1rem;
+        gap: 1rem;
     }
 
     // Formulaire

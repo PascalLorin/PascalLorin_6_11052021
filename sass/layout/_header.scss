@@ -3,7 +3,8 @@
     width: 182px;
     height: 30px;
     position: absolute;
-    top: 0%;
+    top: 0;
+    left: 30%;
     color: black;
     background-color: #DB8876;
     font-family: 'DM Sans';
@@ -16,13 +17,21 @@
 }
 
 /****   Headers   ****/
-#main-header {
-    margin-top: 20px;
-    margin-left: 15px;
+.main-header {
 
+    width:fit-content;
+    
     &__logo {
+        margin-top: 20px;
+        margin-left: 15px;
         width: 150px;
         object-fit: cover;
+    }
+
+    &__tags {
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
     }
 }
 

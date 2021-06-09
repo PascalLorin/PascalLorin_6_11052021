@@ -17,20 +17,20 @@ class Media {
     let card = document.createElement('p')
     card.setAttribute('class', "mod1__showx")
     mediaShow.append(card)
-    viewWidth = mediaShow.clientWidth
     let carousselLink = document.createElement('a')
-    carousselLink.setAttribute('target', "_blank")
-    carousselLink.setAttribute('href', "./caroussel.html?id=" + this.id)
-    carousselLink.setAttribute('alt', "Cliquer pour afficher le caroussel de ce photographe, nouvel onglet")
-    carousselLink.setAttribute('aria-label', "Cliquer pour afficher le caroussel de ce photographe, nouvel onglet")
+    let link = window.location + "?id=" + this.id
+    carousselLink.setAttribute('href', link)
+    carousselLink.setAttribute('alt', "Cliquer pour afficher le caroussel de ce photographe")
+    carousselLink.setAttribute('aria-label', "Cliquer pour afficher le caroussel de ce photographe")
     card.append(carousselLink)
     let viewData = new factory(this)
     let view = viewData.getEl()
     view.setAttribute('class', "mod1__showxv")
-    view.setAttribute('height', viewWidth * proportion1)
     view.setAttribute('aria-label', this.title)
     view.setAttribute('alt', this.title)
     carousselLink.append(view)
+    viewWidth = view.clientWidth
+    view.setAttribute('height', viewWidth * proportion1)
     let infos = document.createElement('div')
     infos.setAttribute('class', "mod1__showxd")
     card.append(infos)
@@ -57,7 +57,7 @@ class Media {
   // affiche un média du caroussel du photographe
   affCarousselM() {
     var card = document.createElement('section')
-    card.setAttribute('class', "mod3__showdx")
+    card.setAttribute('class', "mod3c__showdx")
     if (this.id == paramMedia) {
       card.style.display = "flex"
       currentIndex = index
@@ -67,13 +67,13 @@ class Media {
     itemDisplay.append(card)
     let viewData = new factory(this)
     var view = viewData.getEl()
-    view.setAttribute('class', "mod3__showdxv")
+    view.setAttribute('class', "mod3c__showdxv")
     view.setAttribute('height', viewWidth * proportion2)
     view.setAttribute('aria-label', this.title)
     view.setAttribute('alt', this.title)
     card.append(view)
     let title = document.createElement('div')
-    title.setAttribute('class', "mod3__showdxt")
+    title.setAttribute('class', "mod3c__showdxt")
     title.setAttribute('aria-label', this.title)
     title.setAttribute('alt', this.title)
     title.textContent = this.title

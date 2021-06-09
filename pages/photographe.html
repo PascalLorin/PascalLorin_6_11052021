@@ -15,6 +15,7 @@
 	<title>Fisheye</title>
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
 </head>
+
 <body>
 	<main>
 		<!-- Affichage du photographe sélectionné -->
@@ -25,6 +26,52 @@
 				</div>
 			</header>
 		</modal>
+		<!-- Affichage du formulaire de contact -->
+		<modal hidden id="mod2">
+			<div class="mod2c">
+				<!--   Bouton fermer  -->
+				<span class="mod2c__close" aria-label="Cliquez ici pour quitter le formulaire">
+					<i class="fa fa-times"></i>
+				</span>
+				<!--   Nom du photographe   -->
+				<div class="mod2c__title" aria-label="Formulaire pour contacter ce photographe">
+					<p>Contactez-moi</p>
+					<p id="mod2c__title_n"></p>
+				</div>
+				<!--   Formulaire   -->
+				<form id="mod2c__form" name="mod2c__form" action="none" method="dialog" onsubmit="return validate();">
+					<div class="formData">
+						<label for="mod2c__form_f">Prénom</label><br>
+						<input class="text-control" type="text" id="mod2c__form_f" name="mod2c__form_f"
+							aria-label="Saisissez votre prénom" /><br>
+					</div>
+					<div class="formData">
+						<label for="mod2c__form_l">Nom</label><br>
+						<input class="text-control" type="text" id="mod2c__form_l" name="mod2c__form_l"
+							aria-label="Saisissez votre nom" /><br>
+					</div>
+					<div class="formData">
+						<label for="mod2c__form_e">E-mail</label><br>
+						<input class="text-control" type="email" id="mod2c__form_e" name="mod2c__form_e"
+							aria-label="Saisissez votre adresse email" /><br>
+					</div>
+					<div class="formData">
+						<label for="mod2c__form_m">Votre message</label><br>
+						<textarea class="text-control text-message" id="mod2c__form_m" name="mod2c__form_m" rows="8"
+							cols="37" wrap="soft" aria-label="Saisissez votre message"></textarea><br>
+					</div>
+					<div class="mod2c__submit">
+						<input class="mod2c__submit_b signUpBtn" type="submit" class="button" value="Envoyez"
+							aria-label="Cliquez ici pour envoyer le formulaire" />
+					</div>
+				</form>
+			</div>
+		</modal>
+		<!-- Carroussel du photographe sélectionné -->
+		<modal id="mod3">
+			<div id="mod3c">
+			</div>
+		</modal>
 	</main>
 	<script type="text/javascript" src="./GlobalVar.js"></script>
 	<script type="text/javascript" src="./GetParams.js"></script>
@@ -34,6 +81,8 @@
 	<script type="text/javascript" src="./ClassMedia.js"></script>
 	<script type="text/javascript" src="./GetParams.js"></script>
 	<script type="text/javascript" src="./FactoryMedia.js"></script>
+	<script type="text/javascript" src="./modalForm.js"></script>
+	<script type="text/javascript" src="./caroussel.js"></script>
 	<!--
 		<script type="text/javascript" src="./TriMedia.js"></script>
 -->

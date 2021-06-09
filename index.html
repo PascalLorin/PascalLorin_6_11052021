@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="utf-8">
 	<script src="https://kit.fontawesome.com/b336c3d0c9.js" crossorigin="anonymous"></script>
@@ -13,18 +14,21 @@
 	<title>Fisheye</title>
 	<link rel="stylesheet" type="text/css" href="./public/css/style.css" />
 </head>
+
 <body>
 	<div id="enter" class="sr-only" aria-label="passer au contenu">
 		<span>Passer au contenu</span>
 	</div>
 	<!-- Début du header -->
-	<header id="main-header">
+	<header class="main-header">
 		<div class="main-header__logo">
 			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
 		</div>
 		<!--  Sélection de catégories  (tags)  -->
-		<nav id="tags-select" aria-label="Sélection des catégories de photos">
-		</nav>
+		<div class="main-header__tags">
+			<nav id="tags-select" aria-label="Sélection des catégories de photos">
+			</nav>
+		</div>
 	</header>
 	<!-- Affichage du titre et des photographes correspondants au(x) tag(s) sélectionné(s) -->
 	<!-- Lors du chargement de la page, tous les photographes sont affichés                -->
@@ -32,15 +36,13 @@
 		<aside aria-label="Présentation de nos photographes">
 			<h1 class="main-titre">Nos photographes</h1>
 		</aside>
-		<article id="cards-container" aria-label="Fiches de présentation de nos photographes">
+		<article class="cards-container" aria-label="Fiches de présentation de nos photographes">
 		</article>
 	</main>
 	<script type="text/javascript" src="./pages/GlobalVar.js"></script>
 	<script type="text/javascript" src="./pages/ClassTagM.js"></script>
 	<script type="text/javascript" src="./pages/ClassPhotographer.js"></script>
-<!--
-	<script type="text/javascript" src="./pages/ClassMedia.js"></script>
--->
 	<script type="text/javascript" src="./main.js"></script>
 </body>
+
 </html>

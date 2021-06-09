@@ -22,19 +22,63 @@
     width: 20rem;
   }
 }
-@media (min-width: 768px) {
-  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-  #cards-container {
-    background-color: chartreuse;
-    display: grid;
-    grid-template-columns: repeat 3, 1fr;
-    grid-gap: 1em;
+@media (max-width: 340px) {
+  /****   Headers   ****/
+  .main-header img {
+    width: 120px;
   }
 
-  .mod1__ {
+  .mod1Head img,
+.mod3Head img {
+    width: 120px;
+  }
+
+  /******   Affichage du titre en haut à droite   ******/
+  /*    .main-titre {
+          position: absolute;
+          top: 0;
+          right: 6px;
+          font-family: 'DM Sans';
+          font-weight: 400;
+          font-size: 15px;
+          color: $colour-primary;
+      }
+      */
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  /******   Affichage du titre en haut à droite   ******/
+  .main-titre {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-family: "DM Sans";
+    font-weight: 400;
+    font-size: 24px;
+    color: #901C1C;
+  }
+
+  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+  #tags-select {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .cards-container {
     display: grid;
-    grid-template-columns: repeat 3 1fr;
-    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+
+  .mod1__show {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    gap: 1rem;
   }
 
   .mod2c {
@@ -104,18 +148,39 @@
     padding: 0px 120px;
   }
 }
-@media screen and (min-width: 1200px) {
-  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-  #cards-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1em;
+@media (min-width: 1200px) {
+  .main-header__tags {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
   }
 
-  .mod1__ {
+  /******   Affichage du titre en haut à droite   ******/
+  .main-titre {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-family: "DM Sans";
+    font-weight: 400;
+    font-size: 36px;
+    color: #901C1C;
+  }
+
+  /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+  .cards-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1em;
+    grid-gap: 1rem;
+    gap: 1rem;
+  }
+
+  .mod1__show {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    gap: 1rem;
   }
 
   .mod2c {
@@ -222,7 +287,8 @@ h1 {
   width: 182px;
   height: 30px;
   position: absolute;
-  top: 0%;
+  top: 0;
+  left: 30%;
   color: black;
   background-color: #DB8876;
   font-family: "DM Sans";
@@ -235,13 +301,19 @@ h1 {
 }
 
 /****   Headers   ****/
-#main-header {
+.main-header {
+  width: fit-content;
+}
+.main-header__logo {
   margin-top: 20px;
   margin-left: 15px;
-}
-#main-header__logo {
   width: 150px;
   object-fit: cover;
+}
+.main-header__tags {
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
 }
 
 .mod1Head__logo,
@@ -267,7 +339,7 @@ h1 {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   padding: 0px 8px;
-  margin-right: 8px;
+  margin: 0px 4px;
   margin-bottom: 5px;
   float: left;
 }
@@ -297,16 +369,13 @@ h1 {
 }
 
 /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-#cards-container {
+.cards-container {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .pcard {
-  /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
   padding-top: 20px;
   width: 100%;
   height: 358px;
@@ -372,7 +441,7 @@ h1 {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   padding: 0px 8px;
-  margin-right: 8px;
+  margin: 0 4px;
   float: left;
   justify-content: center;
   align-items: center;
@@ -383,10 +452,11 @@ h1 {
   background-color: #901C1C;
 }
 
-/*   les modales photographe s'affichent par dessus si pas de nouvel onglet */
+/*   les modales photographe s'affichent par dessus */
 #mod1,
 #mod2,
 #mod3 {
+  display: none;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -510,8 +580,7 @@ h1 {
 }
 
 .mod1__show {
-  display: grid;
-  grid-template-columns: 1fr;
+  flex-direction: column;
 }
 .mod1__showx {
   width: 100%;
@@ -554,18 +623,11 @@ h1 {
 
 /* Modal form */
 #mod2 {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   font-family: "DM Sans";
   font-weight: 400;
   font-style: normal;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .mod2c {
@@ -623,13 +685,11 @@ h1 {
 label {
   font-size: 24px;
   font-weight: 400;
-  color: #312E2E;
   display: inline-block;
   margin-top: 8px;
 }
 
 input {
-  background-color: white;
   color: black;
   margin-top: 4px;
   padding: 3px;
@@ -638,6 +698,7 @@ input {
 }
 
 .text-control {
+  background-color: white;
   margin: 0;
   padding: 8px;
   width: 100%;
@@ -647,18 +708,21 @@ input {
 }
 
 .text-message {
+  color: black;
   height: 184px;
 }
 
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.7em;
+  font-weight: 900;
   color: #e54858;
+  background-color: white;
+  border: 2px solid black;
   display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin: 7px 2px;
   text-align: left;
-  line-height: 0.3;
+  line-height: 1.5em;
   opacity: 0;
   transition: 0.3s;
 }
@@ -668,17 +732,15 @@ input {
 }
 
 .formData[data-error-visible=true] .text-control {
-  border: 2px solid #e54858;
+  border: 2px solid black;
 }
 
 input[data-error]::after {
   content: attr(data-error);
-  font-size: 4px;
   color: red;
 }
 
-#mod3 {
-  z-index: 1;
+#mod3c {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -686,23 +748,23 @@ input[data-error]::after {
   padding: 0 40px;
 }
 
-.mod3__show {
+.mod3c__show {
   width: 100%;
   height: fit-content;
 }
-.mod3__showdx {
+.mod3c__showdx {
   flex-direction: column;
   width: 100%;
 }
-.mod3__showdxv {
+.mod3c__showdxv {
   object-fit: cover;
   border-radius: 5px;
   width: 100%;
 }
-.mod3__showdxt {
+.mod3c__showdxt {
   align-self: left;
   height: 18px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
 }
 

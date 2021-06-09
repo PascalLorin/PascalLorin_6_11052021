@@ -10,16 +10,13 @@
 }
 
 /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-#cards-container {
+.cards-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .pcard {
-    /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
     padding-top: 20px;
     width: 100%;
     height: 358px;
@@ -94,7 +91,7 @@
             border: 0.5px solid $colour-border;
             border-radius: 11px;
             padding: 0px 8px;
-            margin-right: 8px;
+            margin: 0 4px;
             float: left;
             justify-content: center;
             align-items: center;
@@ -109,10 +106,11 @@
     }
 }
 
-/*   les modales photographe s'affichent par dessus si pas de nouvel onglet */
+/*   les modales photographe s'affichent par dessus */
 #mod1,
 #mod2,
 #mod3 {
+    display: none;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -258,8 +256,7 @@
 
 // affichage des medias sur la page du photographe
 .mod1__show {
-    display: grid;
-    grid-template-columns: 1fr;
+    flex-direction: column;
 
     // affichage d'un media du photographe
     &x {
@@ -314,18 +311,11 @@
 
 /* Modal form */
 #mod2 {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     font-family: 'DM Sans';
     font-weight: 400;
     font-style: normal;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .mod2c {
@@ -391,13 +381,12 @@
 label {
     font-size: 24px;
     font-weight: 400;
-    color: $colour-label;
+//    color: $colour-label;
     display: inline-block;
     margin-top: 8px;
 }
 
 input {
-    background-color: white;
     color: black;
     margin-top: 4px;
     padding: 3px;
@@ -406,6 +395,7 @@ input {
 }
 
 .text-control {
+    background-color: white;
     margin: 0;
     padding: 8px;
     width: 100%;
@@ -415,18 +405,21 @@ input {
 }
 
 .text-message {
+    color: black;
     height: 184px;
 }
 
 .formData[data-error]::after {
     content: attr(data-error);
-    font-size: 0.4em;
+    font-size: 0.7em;
+    font-weight: 900;
     color: #e54858;
+    background-color: white;
+    border: 2px solid black;
     display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
+    margin: 7px 2px;
     text-align: left;
-    line-height: 0.3;
+    line-height: 1.5em;
     opacity: 0;
     transition: 0.3s;
 }
@@ -436,18 +429,16 @@ input {
 }
 
 .formData[data-error-visible="true"] .text-control {
-    border: 2px solid #e54858;
+    border: 2px solid black;
 }
 
 input[data-error]::after {
     content: attr(data-error);
-    font-size: 4px;
     color: red;
 }
 
 // affichage des medias sur le caroussel du photographe
-#mod3 {
-    z-index: 1;
+#mod3c {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -455,7 +446,7 @@ input[data-error]::after {
     padding: 0 40px;
 }
 
-.mod3__show {
+.mod3c__show {
     width: 100%;
     height: fit-content;
 
@@ -477,7 +468,7 @@ input[data-error]::after {
             &t {
                 align-self: left;
                 height: 18px;
-                font-size: 14px;
+                font-size: 18px;
                 font-weight: 500;
             }
         }

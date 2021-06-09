@@ -36,7 +36,7 @@ function selectTagP(event) {
 function getPhotographeSel(id) {
   for (let p = 0; p < photographersSet.length; p++) {
     if (photographersSet[p].id == id) {
-      return new Photographer(photographersSet[p])
+      return new Photographer (photographersSet[p])
     }
   }
   alert("Photographe inconnu")
@@ -45,8 +45,17 @@ function getPhotographeSel(id) {
 
 // affiche la modale2 : formulaire de contact du photographe sélectionné
 function affModale2() {
-  window.open("./modalForm.html?id=" + pSel.id,"_blank")
+  modale1.style.display = "none"
+  modale2.style.display = "flex"
 }
+
+// seule la modale1 s'affiche au lancement
+modale1 = document.getElementById('mod1')
+modale1.style.display = "block"
+modale2 = document.getElementById('mod2')
+modale2.style.display = "none"
+modale3 = document.getElementById('mod3c')
+modale3.style.display = "none"
 
 // début du script
 readStorage()

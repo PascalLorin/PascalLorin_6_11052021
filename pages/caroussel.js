@@ -13,6 +13,15 @@ function readStorageCollection() {
   }
 }
 
+// initialisation de l'affichage des medias
+// supprime les cards affichées (s'il y en a...)
+function closeCaroussel() {
+  let listCards = document.getElementsByTagName('article')
+  listCards[0].parentNode.removeChild(listCards[0])
+  modale3.style.display = "none"
+  modale1.style.display = "block"
+}
+
 // affiche le média précédant ou le dernier suivant média en cours
 function mediaPrev() {
   if (currentIndex == 0) {
@@ -35,9 +44,10 @@ function mediaNext() {
 function actionBtn(event) {
   let selBtn = (event.currentTarget.id)
   if (selBtn == "carBtnC") {
-    window.close()
+    closeCaroussel()
+    return
   }
-  caroussel = document.getElementsByClassName('mod3__showdx')
+  caroussel = document.getElementsByClassName('mod3c__showdx')
   caroussel[currentIndex].style.display = "none"
   switch (selBtn) {
     case "carBtnV":
@@ -96,16 +106,25 @@ function affBtn(x, y) {
   btnClose.append(btnCloseI)
 }
 
+function initModale3() {
+readStorageCollection()
+const paramMedia = getParams()
+pSel.setRepMedia()
+}
+
 // affiche la modale3 : caroussel du photographe sélectionné
 function affModale3() {
-  modale3 = document.getElementById('mod3')
+  debugger
+  paramMedia = currentTarget.id
+  modale1.style.display = "none"
   modale3.style.display = "flex"
+  initModale3()
   mediaShow = document.createElement('article')
-  mediaShow.setAttribute('class', "mod3__show")
+  mediaShow.setAttribute('class', "mod3c__show")
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe")
   modale3.append(mediaShow)
   itemDisplay = document.createElement('div')
-  itemDisplay.setAttribute('class', "mod3__showd")
+  itemDisplay.setAttribute('class', "mod3c__showd")
   itemDisplay.setAttribute('id', "caroussel")
   mediaShow.append(itemDisplay)
   viewWidth = itemDisplay.clientWidth
@@ -121,7 +140,3 @@ function affModale3() {
   // event listener : click sur un bouton tag
   carBtn.forEach((btn) => btn.addEventListener("click", actionBtn))
 }
-readStorageCollection()
-const paramMedia = getParams()
-pSel.setRepMedia()
-affModale3()
