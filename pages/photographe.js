@@ -49,13 +49,11 @@ function affModale2() {
   modale2.style.display = "flex"
 }
 
-// seule la modale1 s'affiche au lancement
+// la modale form ne s'affiche pas au lancement
 modale1 = document.getElementById('mod1')
 modale1.style.display = "block"
 modale2 = document.getElementById('mod2')
 modale2.style.display = "none"
-modale3 = document.getElementById('mod3c')
-modale3.style.display = "none"
 
 // début du script
 readStorage()

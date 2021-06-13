@@ -1,6 +1,6 @@
 // DOM Elements
 const formData = document.querySelectorAll(".formData")
-const closeBtn = document.querySelector(".mod2c__close")
+const closeBtn = document.querySelector(".mod2ch__close")
 const signUpBtn = document.querySelector(".signUpBtn")
 
 // let nameOk = /^[A-Z][a-zàçéèëêîï]+(['\-\s][A-Z][a-zàçéèëêîï])?$/
@@ -23,7 +23,7 @@ for (let p of photographers) {
   }
 }
 
-var pName = document.getElementById('mod2c__title_n')
+var pName = document.getElementById('mod2ch__title_n')
 pName.textContent = pSel.name
 
 // Fermeture de la fenêtre sur clic sur "X"

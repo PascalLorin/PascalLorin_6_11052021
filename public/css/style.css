@@ -32,18 +32,6 @@
 .mod3Head img {
     width: 120px;
   }
-
-  /******   Affichage du titre en haut à droite   ******/
-  /*    .main-titre {
-          position: absolute;
-          top: 0;
-          right: 6px;
-          font-family: 'DM Sans';
-          font-weight: 400;
-          font-size: 15px;
-          color: $colour-primary;
-      }
-      */
 }
 @media (min-width: 768px) and (max-width: 1199px) {
   /******   Affichage du titre en haut à droite   ******/
@@ -86,9 +74,6 @@
     height: auto;
   }
   .mod2c__close {
-    position: fixed;
-    top: 50px;
-    right: 50px;
     display: block;
     width: 32px;
     height: 32px;
@@ -107,12 +92,6 @@
     font-size: 50px;
   }
   .mod2c__submit {
-    /*            
-                margin-top: 20px;
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-    */
     justify-content: flex-start;
   }
   .mod2c__submit_b {
@@ -144,9 +123,12 @@
     color: red;
   }
 
-  #mod3 {
-    padding: 0px 120px;
-  }
+  /*
+      // Caroussel
+      .mod3 {
+          max-width: 70vw;
+      }
+  */
 }
 @media (min-width: 1200px) {
   .main-header__tags {
@@ -176,6 +158,18 @@
     gap: 1rem;
   }
 
+  #mod1 {
+    padding: 20px 50px;
+  }
+
+  .mod1__ {
+    background-color: #FAFAFA;
+    padding: 35px 20px;
+  }
+  .mod1__d_t_p {
+    padding-top: 20px;
+  }
+
   .mod1__show {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -183,11 +177,12 @@
     gap: 1rem;
   }
 
-  .mod2c {
+  .mod2 {
     width: 599px;
     height: 900px;
+    align-self: center;
   }
-  .mod2c__close {
+  .mod2__close {
     position: fixed;
     top: 50px;
     right: 50px;
@@ -197,18 +192,18 @@
     align-items: center;
     justify-content: center;
   }
-  .mod2c__close i {
+  .mod2__close i {
     color: white;
     font-size: 42px;
   }
-  .mod2c__close i:hover {
+  .mod2__close i:hover {
     cursor: pointer;
     transform: scale(1.2);
   }
-  .mod2c__title {
+  .mod2__title {
     font-size: 64px;
   }
-  .mod2c__submit {
+  .mod2__submit {
     /*            
                 margin-top: 20px;
                 width: 100%;
@@ -217,7 +212,7 @@
     */
     justify-content: flex-start;
   }
-  .mod2c__submit_b {
+  .mod2__submit_b {
     padding: 23px 50px;
   }
 
@@ -246,9 +241,12 @@
     color: red;
   }
 
-  #mod3 {
-    padding: 0px 240px;
-  }
+  /*
+      // Caroussel
+      .mod3 {
+          max-width: 55vw;
+      }
+  */
 }
 body {
   width: 100%;
@@ -452,17 +450,17 @@ h1 {
   background-color: #901C1C;
 }
 
-/*   les modales photographe s'affichent par dessus */
+/*   la modale form s'affichera par dessus */
 #mod1,
-#mod2,
-#mod3 {
-  display: none;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+#mod2 {
+  /*
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  */
   padding: 20px 20px;
   background-color: white;
   color: #901C1C;
@@ -573,9 +571,9 @@ h1 {
   border-radius: 5px;
   color: white;
   background-color: #901C1C;
-  opacity: 0.5;
+  opacity: 0.75;
 }
-.mod1__btn_form :hover {
+.mod1__btn_form:hover {
   opacity: 1;
 }
 
@@ -623,14 +621,13 @@ h1 {
 
 /* Modal form */
 #mod2 {
-  font-family: "DM Sans";
-  font-weight: 400;
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
+  z-index: 1;
 }
 
 .mod2c {
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-style: normal;
   width: 100%;
   max-width: 500px;
   padding: 2rem 1.7rem;
@@ -638,26 +635,26 @@ h1 {
   background: #D3573D;
   color: black;
 }
-.mod2c__close {
-  position: fixed;
-  top: 50px;
-  right: 50px;
+.mod2ch {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mod2ch__title, .mod2ch__title_n {
+  font-size: 36px;
+}
+.mod2ch__close {
   display: block;
-  width: 19px;
-  height: 19px;
+  width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
-}
-.mod2c__close i {
   color: white;
-  font-size: 19px;
+  font-size: 30px;
 }
-.mod2c__close i:hover {
+.mod2ch__close:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-.mod2c__title {
-  font-size: 36px;
 }
 .mod2c__submit {
   margin-top: 20px;
@@ -740,31 +737,37 @@ input[data-error]::after {
   color: red;
 }
 
-#mod3c {
+.mod3 {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 2rem;
+  background-color: #fff;
+  color: #901C1C;
+  border: 2px solid black;
 }
-
-.mod3c__show {
-  width: 100%;
-  height: fit-content;
+.mod3__show {
+  display: flex;
+  border: 2px solid blue;
 }
-.mod3c__showdx {
+.mod3__showx {
+  display: flex;
   flex-direction: column;
   width: 100%;
+  border: 2px solid red;
 }
-.mod3c__showdxv {
+.mod3__showxv {
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   width: 100%;
 }
-.mod3c__showdxt {
+.mod3__showxt {
   align-self: left;
-  height: 18px;
-  font-size: 18px;
+  height: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 

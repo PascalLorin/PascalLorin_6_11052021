@@ -110,7 +110,7 @@ class Photographer {
     let btnForm = document.createElement('button')
     btnForm.textContent = "Contactez-moi"
     btnForm.setAttribute('class', "mod1__btn_form")
-    btnForm.setAttribute('aria-label', "Ouvrir le formulaire pour contacter " + this.name)
+    btnForm.setAttribute('aria-label', "Cliquez pour ouvrir le formulaire de contact de " + this.name)
     btnDiv.append(btnForm)
     affCollectionP()
   }

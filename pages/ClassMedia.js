@@ -18,16 +18,13 @@ class Media {
     card.setAttribute('class', "mod1__showx")
     mediaShow.append(card)
     let carousselLink = document.createElement('a')
-    let link = window.location + "?id=" + this.id
-    carousselLink.setAttribute('href', link)
+    carousselLink.setAttribute('href', "./caroussel.html?id=" + this.id)
     carousselLink.setAttribute('alt', "Cliquer pour afficher le caroussel de ce photographe")
     carousselLink.setAttribute('aria-label', "Cliquer pour afficher le caroussel de ce photographe")
     card.append(carousselLink)
     let viewData = new factory(this)
     let view = viewData.getEl()
     view.setAttribute('class', "mod1__showxv")
-    view.setAttribute('aria-label', this.title)
-    view.setAttribute('alt', this.title)
     carousselLink.append(view)
     viewWidth = view.clientWidth
     view.setAttribute('height', viewWidth * proportion1)
@@ -37,7 +34,6 @@ class Media {
     let title = document.createElement('div')
     title.setAttribute('class', "mod1__showxdt")
     title.setAttribute('aria-label', this.title)
-    title.setAttribute('alt', this.title)
     title.textContent = this.title
     infos.append(title)
     let likes = document.createElement('div')
@@ -56,26 +52,25 @@ class Media {
 
   // affiche un média du caroussel du photographe
   affCarousselM() {
-    var card = document.createElement('section')
-    card.setAttribute('class', "mod3c__showdx")
+    debugger
+    let card = document.createElement('p')
+    card.setAttribute('class', "mod3__showx")
+    mediaShow.append(card)
     if (this.id == paramMedia) {
       card.style.display = "flex"
       currentIndex = index
     } else {
       card.style.display = "none"
     }
-    itemDisplay.append(card)
     let viewData = new factory(this)
     var view = viewData.getEl()
-    view.setAttribute('class', "mod3c__showdxv")
-    view.setAttribute('height', viewWidth * proportion2)
-    view.setAttribute('aria-label', this.title)
-    view.setAttribute('alt', this.title)
+    view.setAttribute('class', "mod3__showxv")
     card.append(view)
+    viewWidth = view.clientWidth
+    view.setAttribute('height', viewWidth * proportion2)
     let title = document.createElement('div')
-    title.setAttribute('class', "mod3c__showdxt")
+    title.setAttribute('class', "mod3__showxt")
     title.setAttribute('aria-label', this.title)
-    title.setAttribute('alt', this.title)
     title.textContent = this.title
     card.append(title)
   }
@@ -88,7 +83,7 @@ function affCollectionP() {
   mediaShow.setAttribute('class', "mod1__show")
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe")
   modale1.append(mediaShow)
-  viewWidth = mediaShow.clientWidth
+  //  viewWidth = mediaShow.clientWidth
   collection.forEach(media => {
     if (allMedias) {
       media.affCollectionPM()

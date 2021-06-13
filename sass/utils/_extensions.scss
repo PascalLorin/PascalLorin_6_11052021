@@ -11,18 +11,6 @@
             width: 120px;
         }
     }
-
-    /******   Affichage du titre en haut à droite   ******/
-/*    .main-titre {
-        position: absolute;
-        top: 0;
-        right: 6px;
-        font-family: 'DM Sans';
-        font-weight: 400;
-        font-size: 15px;
-        color: $colour-primary;
-    }
-    */
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -69,9 +57,6 @@
         height: auto;
 
         &__close {
-            position: fixed;
-            top: 50px;
-            right: 50px;
             display: block;
             width: 32px;
             height: 32px;
@@ -94,12 +79,6 @@
         }
 
         &__submit {
-            /*            
-            margin-top: 20px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-*/
             justify-content: flex-start;
 
             &_b {
@@ -132,11 +111,12 @@
         font-size: 5px;
         color: red;
     }
-
+/*
     // Caroussel
-    #mod3 {
-        padding: 0px 120px;
+    .mod3 {
+        max-width: 70vw;
     }
+*/
 }
 
 
@@ -171,7 +151,20 @@
         //        left: -162px;
     }
 
-    // Photographes
+    // Page d'un photographe
+    #mod1 {
+        padding: 20px 50px;
+    }
+
+    .mod1__ {
+        background-color: $colour-backgrd;
+        padding: 35px 20px;
+
+        &d_t_p {
+            padding-top: 20px;
+        }
+    }
+
     .mod1__show {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -180,9 +173,10 @@
     }
 
     // Formulaire
-    .mod2c {
+    .mod2 {
         width: 599px;
         height: 900px;
+        align-self: center;
 
         &__close {
             position: fixed;
@@ -248,9 +242,10 @@
         font-size: 5px;
         color: red;
     }
-
+/*
     // Caroussel
-    #mod3 {
-        padding: 0px 240px;
+    .mod3 {
+        max-width: 55vw;
     }
+*/    
 }

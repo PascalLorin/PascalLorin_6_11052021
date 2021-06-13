@@ -16,6 +16,8 @@ class factory {
 class factoryImage {
   constructor(content) {
     this.el = document.createElement('img');
+    this.el.setAttribute('aria-label', "Photo intitulée " + content.title)
+    this.el.setAttribute('alt', "Photo intitulée " + content.title)
     this.el.src = photographerDirectory + content.image;
   }
   // un getter permet ici de récupérer l'élément html créé dans le constructeur
@@ -33,8 +35,10 @@ class factoryVideo {
     this.el = document.createElement("video");
     this.el.controls = true;    
     this.el.autoplay = false;    
-    this.el.muted = false;    
+    this.el.muted = true;    
     this.el.setAttribute('width',viewWidth);
+    this.el.setAttribute('aria-label', "Vidéo intitulée " + content.title)
+    this.el.setAttribute('alt', "Vidéo intitulée " + content.title)
     this.el.appendChild(document.createElement("source"));
     this.el.children[0].src = photographerDirectory + content.video;
   }
