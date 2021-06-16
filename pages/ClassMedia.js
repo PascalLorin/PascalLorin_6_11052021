@@ -27,7 +27,12 @@ class Media {
     view.setAttribute('class', "mod1__showxv")
     carousselLink.append(view)
     viewWidth = view.clientWidth
-    view.setAttribute('height', viewWidth * proportion1)
+    if (screen.width > 1199) {
+      view.setAttribute('height', viewWidth * proportion2)
+
+    } else {
+      view.setAttribute('height', viewWidth * proportion1)
+    }
     let infos = document.createElement('div')
     infos.setAttribute('class', "mod1__showxd")
     card.append(infos)
@@ -52,7 +57,6 @@ class Media {
 
   // affiche un média du caroussel du photographe
   affCarousselM() {
-    debugger
     let card = document.createElement('p')
     card.setAttribute('class', "mod3__showx")
     mediaShow.append(card)
@@ -65,14 +69,23 @@ class Media {
     let viewData = new factory(this)
     var view = viewData.getEl()
     view.setAttribute('class', "mod3__showxv")
+    view.setAttribute('width', viewWidth)
+    if (viewWidth == 950) {
+      view.setAttribute('height', viewWidth * proportion3)
+    } else {
+      view.setAttribute('height', viewWidth * proportion2)
+    }
     card.append(view)
-    viewWidth = view.clientWidth
-    view.setAttribute('height', viewWidth * proportion2)
     let title = document.createElement('div')
     title.setAttribute('class', "mod3__showxt")
-    title.setAttribute('aria-label', this.title)
+    title.setAttribute('width', viewWidth)
     title.textContent = this.title
     card.append(title)
+    if (card.style.display === "flex") {
+      x = view.offsetLeft
+      y = view.offsetTop
+      z = view.offsetWidth
+    }
   }
 }
 
@@ -83,7 +96,6 @@ function affCollectionP() {
   mediaShow.setAttribute('class', "mod1__show")
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe")
   modale1.append(mediaShow)
-  //  viewWidth = mediaShow.clientWidth
   collection.forEach(media => {
     if (allMedias) {
       media.affCollectionPM()

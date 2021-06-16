@@ -24,8 +24,8 @@
     &__logo {
         margin-top: 20px;
         margin-left: 15px;
-        width: 150px;
-        object-fit: cover;
+        max-width: 150px;
+        object-fit: fill;
     }
 
     &__tags {
@@ -41,7 +41,7 @@
 
         &__logo {
             width: 150px;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
 }

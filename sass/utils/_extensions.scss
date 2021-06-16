@@ -111,86 +111,175 @@
         font-size: 5px;
         color: red;
     }
-/*
+
     // Caroussel
-    .mod3 {
-        max-width: 70vw;
+    .mod3__showxt,
+    .carBtn i {
+        font-size: 1.6rem;
     }
-*/
 }
 
-
 @media (min-width: 1200px) {
-    .main-header__tags {
-        position: absolute;
-        top: -20px;
-        left: 0;
-        background-color: transparent;
-        width: 100%;
+/*** page d'accueil ***/
+    .main-header {
+        &__tags {
 
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background-color: transparent;
+            width: 100%;
+        }
+
+        &__logo {
+            margin-left: 175px;
+            margin-top: 38px;
+            width: 300px;
+            object-fit: fill;
+            transform: scale(1.8);
+        }
     }
 
     /******   Affichage du titre en haut à droite   ******/
     .main-titre {
         position: absolute;
-        top: 8px;
-        right: 10px;
-        font-family: 'DM Sans';
-        font-weight: 400;
+        top: 0;
+        right: 90px;
         font-size: 36px;
         color: $colour-primary;
     }
 
-    /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+    /******   Affichage des photographes sélectionnés  *******/
     .cards-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 1rem;
-        gap: 1rem;
-        //        position: relative;
-        //        left: -162px;
     }
 
-    // Page d'un photographe
+/***  Page d'un photographe  ***/
     #mod1 {
-        padding: 20px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 1240px;
+    }
+
+    .mod1 {
+        margin: auto;
+    }
+
+    .mod1Head__logo {
+        margin-left: 25px;
+        width: 200px;
+        object-fit: fill;
+        transform: scale(1.25);
+    }
+
+    #tags__select {
+        margin-top: 0;
+        position: relative;
+        top: -65px;
     }
 
     .mod1__ {
         background-color: $colour-backgrd;
-        padding: 35px 20px;
+        padding: 56px 50px;
+        margin-top: 20px;
 
-        &d_t_p {
-            padding-top: 20px;
+        &d {
+            &_t {
+                &name {
+                    font-size: 64px;
+                }
+
+                &place {
+                    font-size: 24px;
+                }
+
+                &alt {
+                    padding-top: 10px;
+                    font-size: 18px;
+                }
+            }
+        }
+
+        &tags {
+            justify-content: center;
+            margin-left: 50px;
+            height: 40px;
+            font-size: 18px;
+        }
+
+        &d_p img {
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+        }
+
+        &btn {
+            z-index: 2;
+            display: flex;
+            flex-direction: row;
+            background-color: transparent;
+            position: absolute;
+            top: 220px;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            justify-content: center;
+
+            &_form {
+                font-size: 20px;
+                font-weight: 700;
+                padding: 21px 11px;
+                margin-right: 15%;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                background-color: $colour-primary;
+                opacity: 1;
+
+                &:hover {
+                    background-color: lighten-button($colour-primary);
+                    color: black;
+                }
+            }
         }
     }
 
+    .menuTri {
+        position: relative;
+        top: -35px;
+        font-size: 18px;
+        font-weight: 700;
+        color: black;
+    }
+
     .mod1__show {
+        margin-top: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 1rem;
-        gap: 1rem;
+        grid-column-gap: 3rem;
+        column-gap: 3rem;
     }
 
     // Formulaire
-    .mod2 {
-        width: 599px;
-        height: 900px;
-        align-self: center;
+    .mod2c {
+        padding: 1rem 1.7rem;
 
         &__close {
             position: fixed;
-            top: 50px;
-            right: 50px;
+            top: 60px;
+            right: 60px;
             display: block;
-            width: 42px;
-            height: 42px;
+            width: 60px;
+            height: 60px;
             align-items: center;
             justify-content: center;
 
             & i {
                 color: white;
-                font-size: 42px;
+                font-size: 60px;
 
                 &:hover {
                     cursor: pointer;
@@ -199,17 +288,13 @@
             }
         }
 
-        &__title {
+        &__title,
+        &__title_n {
+            color: black;
             font-size: 64px;
         }
 
         &__submit {
-            /*            
-            margin-top: 20px;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-*/
             justify-content: flex-start;
 
             &_b {
@@ -219,12 +304,12 @@
     }
 
     label {
-        font-size: 36px;
+        font-size: 34px;
         margin-top: 8px;
     }
 
     .text-control {
-        height: 68px;
+        height: 60px;
     }
 
     .text-message {
@@ -242,10 +327,14 @@
         font-size: 5px;
         color: red;
     }
-/*
+
     // Caroussel
-    .mod3 {
-        max-width: 55vw;
+    #mod3 {
+        padding: 100px;
     }
-*/    
+
+    .mod3__showxt,
+    .carBtn i {
+        font-size: 1.8rem;
+    }
 }

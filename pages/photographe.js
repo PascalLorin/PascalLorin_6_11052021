@@ -50,10 +50,10 @@ function affModale2() {
 }
 
 // la modale form ne s'affiche pas au lancement
-modale1 = document.getElementById('mod1')
-modale1.style.display = "block"
 modale2 = document.getElementById('mod2')
 modale2.style.display = "none"
+modale1 = document.getElementById('mod1')
+modale1.style.display = "block"
 
 // début du script
 readStorage()

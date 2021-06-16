@@ -82,9 +82,10 @@ class Photographer {
     presPortrait.setAttribute('aria-label', "Photo de " + this.name)
     presP.append(presPortrait)
     let tagsPhotographe = document.createElement('nav')
-    tagsPhotographe.setAttribute('id', "mod1__tags")
+    tagsPhotographe.setAttribute('id', "tags__select")
+    tagsPhotographe.setAttribute('class', "mod1__tags")
     tagsPhotographe.setAttribute('aria-label', "Catégories du photographe")
-    article.append(tagsPhotographe)
+    modale1.append(tagsPhotographe)
     this.tags.forEach(t => {
       let tagPhotographe = document.createElement('button')
       let wtagLib = libTag(t)
@@ -104,6 +105,13 @@ class Photographer {
         break
       }
     })
+    let menuTri = document.createElement('span')
+    menuTri.setAttribute('class', "menuTri")
+    if (screen.width < 1200) {
+      menuTri.style.visibility = "hidden"
+    }
+    menuTri.textContent = "Trier par"
+    modale1.append(menuTri)
     let btnDiv = document.createElement('div')
     btnDiv.setAttribute('class', "mod1__btn")
     modale1.append(btnDiv)
