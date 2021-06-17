@@ -6,10 +6,10 @@
     }
 }
 
-@function lighten-button($colour) {
-    @return lighten($colour, 15%);
+@function lighten-button($colour,$pct: 15) {
+    @return lighten($colour, $pct);
 }
 
-@function darken-shadow($colour) {
-    @return darken($colour, 25%)
+@function darken-shadow($colour,$pct: 15) {
+    @return darken($colour, $pct)
 }

@@ -1,21 +1,19 @@
+// tous petits mobiles
 @media (max-width: 340px) {
 
     /****   Headers   ****/
-    .main-header img {
+    .main-header,
+    .mod1Head,
+    .mod3Head img {
         width: 120px;
-    }
-
-    .mod1,
-    .mod3 {
-        &Head img {
-            width: 120px;
-        }
     }
 }
 
+// tablettes
 @media (min-width: 768px) and (max-width: 1199px) {
 
-    /******   Affichage du titre en haut à droite   ******/
+    // page principale
+    // titre en haut à droite
     .main-titre {
         position: absolute;
         top: 8px;
@@ -26,16 +24,6 @@
         color: $colour-primary;
     }
 
-    /******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
-    #tags-select {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        background-color: transparent;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
     .cards-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -43,15 +31,29 @@
         gap: 1rem;
     }
 
-    // Photographes
-    .mod1__show {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-        gap: 1rem;
+    // Page photographes
+    .mod1 {
+        &__d_p img {
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+        }
+
+        &__tags {
+            position: relative;
+            top: -35px;
+        }
+
+
+        &__show {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1rem;
+            gap: 1rem;
+        }
     }
 
-    // Formulaire
+    // Formulaire de contact
     .mod2c {
         width: 599px;
         height: auto;
@@ -119,28 +121,25 @@
     }
 }
 
+// laptop et plus
 @media (min-width: 1200px) {
-/*** page d'accueil ***/
-    .main-header {
-        &__tags {
 
-            position: absolute;
-            top: 30px;
-            left: 0;
-            background-color: transparent;
-            width: 100%;
-        }
-
-        &__logo {
+    // page principale
+    .main-header__ {
+        &logo {
             margin-left: 175px;
             margin-top: 38px;
             width: 300px;
             object-fit: fill;
             transform: scale(1.8);
         }
+
+        &tags {
+            position: absolute;
+            top: 14px;
+        }
     }
 
-    /******   Affichage du titre en haut à droite   ******/
     .main-titre {
         position: absolute;
         top: 0;
@@ -149,23 +148,19 @@
         color: $colour-primary;
     }
 
-    /******   Affichage des photographes sélectionnés  *******/
+    // affichage des photographes sélectionnés par tags
     .cards-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-/***  Page d'un photographe  ***/
+    // page d'un photographe
     #mod1 {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         max-width: 1240px;
-    }
-
-    .mod1 {
-        margin: auto;
     }
 
     .mod1Head__logo {
@@ -175,18 +170,13 @@
         transform: scale(1.25);
     }
 
-    #tags__select {
-        margin-top: 0;
-        position: relative;
-        top: -65px;
-    }
-
-    .mod1__ {
+    .mod1 {
+        margin: auto;
         background-color: $colour-backgrd;
         padding: 56px 50px;
         margin-top: 20px;
 
-        &d {
+        &__d {
             &_t {
                 &name {
                     font-size: 64px;
@@ -201,28 +191,27 @@
                     font-size: 18px;
                 }
             }
+
+            &_p img {
+                width: 150px;
+                height: 150px;
+                border-radius: 75px;
+            }
         }
 
-        &tags {
-            justify-content: center;
-            margin-left: 50px;
-            height: 40px;
-            font-size: 18px;
+        &__tags {
+            padding-top: 20px;
+            margin-left: -4px;
+            justify-content: left;
         }
 
-        &d_p img {
-            width: 150px;
-            height: 150px;
-            border-radius: 75px;
-        }
-
-        &btn {
+        &__btn {
             z-index: 2;
             display: flex;
             flex-direction: row;
             background-color: transparent;
             position: absolute;
-            top: 220px;
+            top: 230px;
             left: 0;
             width: 100%;
             height: 70px;
@@ -232,7 +221,7 @@
                 font-size: 20px;
                 font-weight: 700;
                 padding: 21px 11px;
-                margin-right: 15%;
+                margin-right: 13%;
                 border: none;
                 border-radius: 5px;
                 color: white;
@@ -248,19 +237,23 @@
     }
 
     .menuTri {
-        position: relative;
-        top: -35px;
+        padding: 10px 0;
         font-size: 18px;
         font-weight: 700;
+        text-decoration: none;
         color: black;
+
+        &:hover {
+            color: $colour-primary;
+        }
     }
 
     .mod1__show {
         margin-top: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 3rem;
-        column-gap: 3rem;
+        grid-column-gap: 4rem;
+        column-gap: 4rem;
     }
 
     // Formulaire

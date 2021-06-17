@@ -1,15 +1,4 @@
-/******   Affichage du titre en haut à droite   ******/
-.main-titre {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    font-family: 'DM Sans';
-    font-weight: 400;
-    font-size: 18px;
-    color: $colour-primary;
-}
-
-/******   AFFICHAGE DES PHOTOGRAPHES SELECTIONNES  *******/
+// page principle : affichage des photographes (suivant les tags)
 .cards-container {
     width: 100%;
     align-items: center;
@@ -30,7 +19,7 @@
     border: none;
 
     &:hover {
-        box-shadow: inset 0px 0px 5px $colour-secondary;
+        box-shadow: inset 0px 0px 10px darken-shadow($colour-border, 25);
     }
 
     & img {
@@ -70,39 +59,13 @@
         font-weight: 300;
         color: $colour-price;
         line-height: 11.72px;
+        margin-bottom: 10px;
     }
 
-
-    &__tags {
-        margin-top: 10px;
-        height: 50px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-        // tag(s) du photographe
-        &x {
-            font-size: 13px;
-            font-weight: 600;
-            height: 22px;
-            border: 0.5px solid $colour-border;
-            border-radius: 11px;
-            padding: 0px 8px;
-            margin: 0 4px;
-            float: left;
-
-            &:hover,
-            &:active {
-                cursor: pointer;
-                color: white;
-                background-color: $colour-primary;
-            }
-        }
-    }
+    // l'affichage des tags du photographe se fait dans _nav.scss
 }
 
-/*   la modale form s'affichera par dessus */
+// la modale form s'affichera par dessus 
 #mod1,
 #mod2 {
     padding: 20px 20px;
@@ -110,7 +73,7 @@
 }
 
 // affichage de l'entête du photographe sélectionné
-.mod1__ {
+.mod1 {
     width: 100%;
     height: auto;
     font-family: 'DM Sans';
@@ -118,10 +81,10 @@
     font-style: normal;
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
+    margin-top: 10px;
     color: $colour-primary;
 
-    &d {
+    &__d {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -133,8 +96,8 @@
             align-items: left;
 
             &name {
+                margin-top: 15px;
                 height: auto;
-                min-height: 57px;
                 font-size: 36px;
                 flex-wrap: wrap;
                 color: $colour-secondary;
@@ -171,46 +134,13 @@
         }
     }
 
-    // tag(s) du photographe
-    &tags {
-        height: 40px;
-        display: flex;
-        flex-direction: row;
-        width: fit-content;
-
-        &x {
-            font-size: 13px;
-            font-weight: 600;
-            height: 22px;
-            color: $colour-primary;
-            background-color: white;
-            border: 0.5px solid $colour-border;
-            border-radius: 11px;
-            padding: 0px 8px;
-            margin-right: 8px;
-            float: left;
-            justify-content: center;
-            align-items: center;
-
-            &:hover,
-            &:active {
-                color: white;
-                background-color: $colour-primary;
-            }
-
-            &.tagNotSelect {
-                color: $colour-primary;
-                background-color: white;
-            }
-
-            &.tagSelect {
-                color: white;
-                background-color: $colour-primary;
-            }
-        }
+    &__tags {
+        margin-left: -4px;
+        justify-content: left;
     }
 
-    &btn {
+    // bouton "contactez-moi"
+    &__btn {
         z-index: 2;
         display: flex;
         flex-direction: row;
@@ -260,7 +190,6 @@
             display: flex;
             flex-direction: row;
             height: 30px;
-            //            font-size: 14x;
             justify-content: space-between;
             align-items: center;
 
@@ -294,7 +223,7 @@
     }
 }
 
-/* Modal form */
+// Modal form
 #mod2 {
     z-index: 1;
     display: flex;
@@ -304,7 +233,7 @@
 }
 
 .mod2c {
-    font-family: 'DM Sans';
+    //    font-family: 'DM Sans';
     font-weight: 400;
     font-style: normal;
     width: 100%;
@@ -439,7 +368,6 @@ input[data-error]::after {
     color: $colour-primary;
 }
 
-
 .mod3__show {
     flex-direction: row;
     width: 100%;
@@ -502,6 +430,7 @@ input[data-error]::after {
             cursor: pointer;
         }
 
+        // affichage "bulle d'aide" à revoir
         /*
         &:hover::after {
             background-color: $colour-secondary;

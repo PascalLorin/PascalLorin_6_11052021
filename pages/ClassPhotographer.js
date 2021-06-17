@@ -11,7 +11,7 @@ class Photographer {
     this.portrait = arg.portrait
   }
 
-  // initialisation des données du photographe sélectionné
+  // array des tagstags
   loadTagsP = function () {
     allMedias = true
     this.tags.forEach(t => {
@@ -19,7 +19,7 @@ class Photographer {
     })
   }
 
-  // crée le tableau des medias du photographe
+  // array des medias du photographe
   loadCollectionP = function () {
     mediaSet.forEach(media => {
       if (this.id === media.photographerId) {
@@ -28,16 +28,20 @@ class Photographer {
     })
   }
 
+  // sauvegarde data pour caroussel
   writeStorageCollection = function () {
     localStorage.setItem('collection', JSON.stringify(collection))
     localStorage.setItem('pSel', JSON.stringify(this))
   }
 
+  // construit le nom du répertoire du photographe
   setRepMedia = function () {
     let firstName = this.name.split(" ")
     photographerDirectory = repMedia + firstName[0] + "/"
   }
 
+  
+  // initialisation des données du photographe sélectionné
   initPhotographerData = function () {
     this.setRepMedia()
     this.loadCollectionP()
@@ -45,11 +49,11 @@ class Photographer {
     this.loadTagsP()
   }
 
-  // affiche la modale1 : page du photographe sélectionné
+  // affiche la page du photographe sélectionné
   affModale1 = function () {
     let article = document.createElement('article')
     article.setAttribute('id', this.id)
-    article.setAttribute('class', 'mod1__')
+    article.setAttribute('class', 'mod1')
     article.setAttribute('aria-label', "Présentation de " + this.name)
     modale1.append(article)
     let presD = document.createElement('div')
@@ -81,11 +85,13 @@ class Photographer {
     presPortrait.setAttribute('alt', "Photo de " + this.name)
     presPortrait.setAttribute('aria-label', "Photo de " + this.name)
     presP.append(presPortrait)
+    let tagsContainer = document.createElement('div')
+    tagsContainer.setAttribute('class', "mod1__tags")
+    article.append(tagsContainer)
     let tagsPhotographe = document.createElement('nav')
     tagsPhotographe.setAttribute('id', "tags__select")
-    tagsPhotographe.setAttribute('class', "mod1__tags")
     tagsPhotographe.setAttribute('aria-label', "Catégories du photographe")
-    modale1.append(tagsPhotographe)
+    tagsContainer.append(tagsPhotographe)
     this.tags.forEach(t => {
       let tagPhotographe = document.createElement('button')
       let wtagLib = libTag(t)
@@ -95,9 +101,9 @@ class Photographer {
       for (let i = 1; i < tagSetP.length; i++) {
         if (tagSetP[i] != t) {
           if (tagSetP[i].state) {
-            tagPhotographe.setAttribute('class', "tagBtnP mod1__tagsx tagSelect")
+            tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagSelect")
           } else {
-            tagPhotographe.setAttribute('class', "tagBtnP mod1__tagsx tagNotSelect")
+            tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagNotSelect")
           }
         }
         tagPhotographe.textContent = wtagLib
@@ -105,7 +111,7 @@ class Photographer {
         break
       }
     })
-    let menuTri = document.createElement('span')
+    let menuTri = document.createElement('nav')
     menuTri.setAttribute('class', "menuTri")
     if (screen.width < 1200) {
       menuTri.style.visibility = "hidden"
@@ -168,7 +174,7 @@ class Photographer {
     for (let i = 0; i < this.tags.length; i++) {
       let tagPhotographe = document.createElement('div')
       let wtagLib = libTag(this.tags[i])
-      tagPhotographe.setAttribute('class', "pcard__tagsx")
+      tagPhotographe.setAttribute('class', "pcard__tagsx") // tagBtnNav")
       tagPhotographe.setAttribute('aria-label', "Une des catégories du photographe")
       tagPhotographe.textContent = wtagLib
       tagsPhotographe.append(tagPhotographe)

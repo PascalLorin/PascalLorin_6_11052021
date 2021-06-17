@@ -1,28 +1,26 @@
-@keyframes aff-fondu {
-    0% {
-        transform: translateY(2.0rem);
-        opacity: 0;
-    }
-
-    75% {
-        transform: translateY(0);
-    }
-
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+// affiche le container des tags (main page, fiche photographe, page photographe)
+@mixin tags__container {
+    width:fit-content; 
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
-@keyframes btn-popup {
-    0% {
-        width: 30.0rem;
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-        width: 20.0rem;
-    }
+// affiche un tag dans son container (main page, fiche photographe, page photographe)
+@mixin tag__display{
+    height: 22px;
+    font-weight: 600;
+    font-size: 12px;
+    color: $colour-primary;
+    background-color: white;
+    border: 0.5px solid $colour-border;
+    border-radius: 11px;
+    padding: 0px 8px;
+    margin: 0px 4px;
+    margin-bottom: 5px;
+    float: left;
 }

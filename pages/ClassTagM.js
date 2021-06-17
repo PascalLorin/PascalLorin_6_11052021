@@ -64,7 +64,7 @@ function affTagsM() {
     let wtagLib = libTag(t.name)
     let ariaLib = tagAriaLabel(t.name)
     btnTag.setAttribute('id', t.name)
-    btnTag.setAttribute('class', "tagBtnNav tagNotSelect")
+    btnTag.setAttribute('class', "tagNotSelect tagBtnNav")
     btnTag.setAttribute('aria-label', ariaLib)
     btnTag.textContent = wtagLib
     tagsContainer.append(btnTag)

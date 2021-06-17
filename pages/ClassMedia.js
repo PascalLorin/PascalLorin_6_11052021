@@ -107,8 +107,7 @@ function affCollectionP() {
       })
     }
   })
-  // Après l'affichage au chargement, on utilise les l'état des tags pour l'affichage de la collection
-  allMedias = false
+  // après l'affichage, écoute des icones "Like" pour incrémenter leur nombre
   const iconLikes = document.querySelectorAll("i")
   iconLikes.forEach((item) => item.addEventListener("click", incrLikes))
 }
@@ -125,7 +124,7 @@ function setAllMedias() {
 }
 
 // initialisation de l'affichage des medias
-// supprime les cards affichées (s'il y en a...)
+// supprime les cards affichées (s'il y en a)
 function effaceMedias() {
   let listCards = document.getElementsByTagName('section')
   if (listCards.length > 0) {
