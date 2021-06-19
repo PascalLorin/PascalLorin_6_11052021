@@ -1,39 +1,35 @@
-/*****  SELECTION DES CATEGORIES  *****/
-#tags-select {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+// affichage & sélection des tags page principale et page photographe
+.tagSelect {
+    color: white;
+    background-color: $colour-primary;
+}
 
+.tagNotSelect {
+    color: $colour-primary;
+    background-color: white;
+}
+
+#tags__select {
+    @include tags__container;
 
     &>.tagBtnNav {
-        height: 22px;
-        font-weight: 600;
-        color: $colour-primary;
-        background-color: white;
-        border: 0.5px solid $colour-border;
-        border-radius: 11px;
-        padding: 0px 8px;
-        margin-right: 8px;
-        margin-bottom: 5px;
-        float: left;
+        @include tag__display;
 
         &:hover {
             cursor: pointer;
             color: white;
             background-color: $colour-primary;
         }
+    }
+}
 
-        &.tagNotSelect {
-        color: $colour-primary;
-        background-color: white;
-        }
+.pcard,
+.mod1 {
+    &__tags {
+        @include tags__container;
 
-        &.tagSelect {
-            color: white;
-            background-color: $colour-primary;
+        &x {
+            @include tag__display;
         }
     }
 }

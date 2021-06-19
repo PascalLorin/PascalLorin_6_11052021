@@ -5,8 +5,7 @@
 	<meta charset="utf-8">
 	<script src="https://kit.fontawesome.com/b336c3d0c9.js" crossorigin="anonymous"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=DM+Sans&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Pascal Lorin">
 	<meta name="description"
@@ -21,14 +20,15 @@
 		<span>Passer au contenu</span>
 	</div>
 	<!-- Début du header -->
-	<header id="main-header">
+	<header class="main-header">
 		<div class="main-header__logo">
 			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
 		</div>
-
 		<!--  Sélection de catégories  (tags)  -->
-		<nav id="tags-select" aria-label="Sélection des catégories de photos">
-		</nav>
+		<div class="main-header__tags">
+			<nav id="tags__select" class="tags__select" aria-label="Sélection des catégories de photos">
+			</nav>
+		</div>
 	</header>
 	<!-- Affichage du titre et des photographes correspondants au(x) tag(s) sélectionné(s) -->
 	<!-- Lors du chargement de la page, tous les photographes sont affichés                -->
@@ -36,46 +36,12 @@
 		<aside aria-label="Présentation de nos photographes">
 			<h1 class="main-titre">Nos photographes</h1>
 		</aside>
-		<article id="cards-container" aria-label="Fiches de présentation de nos photographes">
+		<article class="cards-container" aria-label="Fiches de présentation de nos photographes">
 		</article>
-		<!-- Affichage du photographe sélectionné                          -->
-		<modal id="mod1">
-			<header class="mod1Head">
-				<div class="mod1Head__logo">
-					<img src="../public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
-				</div>
-			</header>
-			<article class="mod1__" aria-label="Présentation du photographe">
-				<div class="mod1__name" aria-label="Nom du photographe">
-				</div>
-				<div class="mod1__place" aria-label="Localisation du photographe">
-				</div>
-				<div class="mod1__alt" aria-label="Slogan du photographe">
-				</div>
-				<div class="mod1__img">
-					<img alt="Portrait du photographe" aria-label="Portrait du photographe">
-				</div>
-				<!--  Sélection de catégories du photographe (tags)  -->
-				<div class="tags-select" aria-label="Catégories du photographe">
-				</div>
-			</article>
-			<section class="mod1__show" aria-label="Réalisations de ce photographe">
-			</section>
-		</modal>
-
-		<!-- Appel de la modale formaulaire de contact du photographe sélectionné          -->
-		<modal id="form-modal">
-			<p>
-				Formulaire
-			</p>
-		</modal>
-		<!-- Appel de la modale carroussel du photographe sélectionné          -->
-		<modal id="mod2">
-			<p>
-				Caroussel
-			</p>
-		</modal>
 	</main>
+	<script type="text/javascript" src="./pages/GlobalVar.js"></script>
+	<script type="text/javascript" src="./pages/ClassTagM.js"></script>
+	<script type="text/javascript" src="./pages/ClassPhotographer.js"></script>
 	<script type="text/javascript" src="./main.js"></script>
 </body>
 

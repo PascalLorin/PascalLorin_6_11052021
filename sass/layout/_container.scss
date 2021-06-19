@@ -1,43 +1,31 @@
-/******   Affichage du titre en haut à droite   ******/
-.main-titre {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    font-family: 'DM Sans';
-    font-weight: 400;
-    font-size: 18px;
-    color: $colour-primary;
-}
-
-/******   AFFICHAGE DES PHOTOPRAGAPHES SELECTIONES  *******/
-#cards-container {
+// page principle : affichage des photographes (suivant les tags)
+.cards-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
     align-items: center;
+    margin-top: 30px;
 }
 
 .pcard {
-    /*    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);   */
-    margin-top: 30px;
+    padding-top: 20px;
     width: 100%;
     height: 358px;
     font-family: 'DM Sans';
     font-weight: 400;
     font-style: normal;
+    color: $colour-primary;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: none;
 
     &:hover {
-        border: 3px solid $colour-primary;
+        box-shadow: inset 0px 0px 10px darken-shadow($colour-border, 25);
     }
 
     & img {
         object-fit: cover;
         width: 200px;
         height: 200px;
-        border: 1px solid green;
         border-radius: 100px;
     }
 
@@ -46,6 +34,7 @@
         height: 57px;
         font-size: 36px;
         line-height: 46.87px;
+        color: $colour-secondary;
         align-self: center;
     }
 
@@ -53,172 +42,411 @@
         height: 37px;
         font-size: 13px;
         font-weight: 500;
-        font-style: normal;
         line-height: 16.93px;
     }
 
     &__alt {
         height: 27px;
         font-size: 10px;
-        font-weight: 400;
+        font-weight: 500;
         color: black;
-        font-style: normal;
         line-height: 13.02px;
     }
 
     &__price {
-        height: 27px;
-        font-size: 9px;
-        font-weight: 400;
+        height: 17px;
+        font-size: 10px;
+        font-weight: 300;
         color: $colour-price;
-        font-style: normal;
         line-height: 11.72px;
+        margin-bottom: 10px;
     }
 
+    // l'affichage des tags du photographe se fait dans _nav.scss
+}
 
-    &__tags {
-        height: 50px;
+// la modale form s'affichera par dessus 
+#mod1,
+#mod2 {
+    padding: 20px 20px;
+    background-color: white;
+}
+
+// affichage de l'entête du photographe sélectionné
+.mod1 {
+    width: 100%;
+    height: auto;
+    font-family: 'DM Sans';
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    color: $colour-primary;
+
+    &__d {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
 
-        &x {
-            // tag(s) du photographe
-            font-size: 13px;
-            font-weight: 600;
-            height: 22px;
-            border: 0.5px solid $colour-border;
-            border-radius: 11px;
-            padding: 0px 8px;
-            margin-right: 8px;
-            float: left;
-            justify-content: center;
-            align-items: center;
+        &_t {
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            align-items: left;
 
-            &:hover,
-            &:active {
-                color:  white;
-                background-color:$colour-primary;
+            &name {
+                margin-top: 15px;
+                height: auto;
+                font-size: 36px;
+                flex-wrap: wrap;
+                color: $colour-secondary;
+            }
+
+            &place {
+                font-weight: 500;
+                height: 17px;
+                flex-wrap: wrap;
+                font-size: 13px;
+            }
+
+            &alt {
+                margin: 8px 0;
+                height: auto;
+                height: 17px;
+                font-size: 13px;
+                flex-wrap: wrap;
+                color: black;
+            }
+        }
+
+        &_p {
+            align-items: flex-end;
+            width: fit-content;
+
+            & img {
+
+                object-fit: cover;
+                width: 120px;
+                height: 120px;
+                border-radius: 60px;
+            }
+        }
+    }
+
+    &__tags {
+        margin-left: -4px;
+        justify-content: left;
+    }
+
+    // bouton "contactez-moi"
+    &__btn {
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        background-color: transparent;
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+
+        &_form {
+            font-size: 18px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: $colour-primary;
+            opacity: 0.75;
+
+            &:hover {
+                opacity: 1;
             }
         }
     }
 }
 
-/*   la modale photographe ne s'affiche pas par défaut */
-#mod1 {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-//    margin: 5px 20px;
-    background-color: white;
-    color: $colour-primary;
-    border: 1px solid black;
+// affichage des medias sur la page du photographe
+.mod1__show {
+    flex-direction: column;
 
-    &__ {
-        margin-top: 30px;
+    // affichage d'un media du photographe
+    &x {
         width: 100%;
-        height: auto;
-        font-family: 'DM Sans';
-        font-weight: 400;
-        font-style: normal;
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        align-items: center;
+        margin-bottom: 10px;
 
-        &name {
-            width: auto;
-            height: 57px;
+        // l'image ou la vidéo
+        &v {
+            object-fit: cover;
+            border-radius: .5rem;
+            width: 100%;
+        }
+
+        // le bandeau du média : titre et likes [nombre et icone]
+        &d {
+            display: flex;
+            flex-direction: row;
+            height: 30px;
+            justify-content: space-between;
+            align-items: center;
+
+            &t {
+                font-weight: 400;
+            }
+
+            &l {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &n {
+                    font-weight: 500;
+                    padding-right: 4px;
+                }
+
+                & i {
+                    font-size: 13px;
+                    padding-left: 4px;
+                    color: $colour-primary;
+                    background-color: white;
+                }
+
+                & i:hover {
+                    color: $colour-secondary;
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+// Modal form
+#mod2 {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mod2c {
+    //    font-family: 'DM Sans';
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    max-width: 500px;
+    padding: 2.0rem 1.7rem;
+    border-radius: 5px;
+    background: $colour-secondary;
+    color: black;
+
+    &h {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &__title,
+        &__title_n {
+            color: black;
             font-size: 36px;
         }
 
-        &place {
-            height: 17px;
-            font-size: 13px;
+        &__close {
+            display: block;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+            }
         }
+    }
 
-        &alt {
-            height: 17px;
-            font-size: 13px;
-            color: black;
-        }
+    &__submit {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-        & img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            object-fit: cover;
-            width: 200px;
-            height: 200px;
-            border: 1px solid green;
-            border-radius: 100px;
-        }
+        &_b {
+            display: block;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 6px 50px;
+            color: #fff;
+            background: $colour-primary;
+            border: none;
 
-        &tags {
-            height: 40px;
-            display: flex;
-            flex-direction: row;
-
-            &x {
-                // tag(s) du photographe
-                font-size: 13px;
-                font-weight: 600;
-                height: 22px;
-                color: $colour-primary;
-                background-color: white;
-                border: 0.5px solid $colour-border;
-                border-radius: 11px;
-                padding: 0px 8px;
-                margin-right: 8px;
-                float: left;
-                justify-content: center;
-                align-items: center;
+            &:hover {
+                cursor: pointer;
+                color: black;
+                text-transform: capitalize;
             }
         }
     }
 }
 
-.mod1__show {
-    display:grid;
-    grid-template-columns: 1fr;
+label {
+    font-size: 24px;
+    font-weight: 400;
+    color: $colour-label;
+    display: inline-block;
+    margin-top: 8px;
 }
 
-/*   la modale caroussel ne s'affiche pas par défaut */
-#mod2 {
-    display: none;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    color: $colour-primary;
-    border: 1px solid black;
+input {
+    color: black;
+    margin-top: 4px;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+}
 
-    &>p {
-        margin-top: 300px;
-        font-size: 40px;
+.text-control {
+    background-color: white;
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 52px;
+}
+
+.text-message {
+    color: black;
+    height: 184px;
+}
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #e54858;
+    background-color: white;
+    border: 2px solid black;
+    display: block;
+    margin: 7px 2px;
+    padding-left: 0.2rem;
+    text-align: left;
+    line-height: 1rem;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+    border: 2px solid black;
+}
+
+input[data-error]::after {
+    content: attr(data-error);
+    color: red;
+}
+
+// affichage des medias sur le caroussel du photographe
+#mod3 {
+    width: 100vw;
+    height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: $colour-primary;
+}
+
+.mod3__show {
+    flex-direction: row;
+    width: 100%;
+
+    // affichage d'un media du photographe
+    &x {
+        width: 100%;
+        flex-direction: column;
+
+        // l'image ou la vidéo
+        &v {
+            object-fit: cover;
+            border-radius: .5rem;
+            width: 100%;
+        }
+
+        // le titre du média
+        &t {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
     }
 }
 
-/*   la modale caroussel ne s'affiche pas par défaut */
-#form-modal {
-    display: none;
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    color: $colour-primary;
-    border: 1px solid black;
+// affichage des boutons
+.carBtn {
+    display: flex;
+    flex-direction: row;
+    width: 20px;
+    background-color: transparent;
+    height: auto;
+    border: none;
 
-    &>p {
-        margin-top: 300px;
-        font-size: 40px;
+    &R {
+        display: flex;
+        flex-direction: column;
+        padding-right: 3px;
+        align-content: flex-end;
+        justify-content: center;
+    }
+
+    &N,
+    &C {
+        display: flex;
+        flex-direction: column;
+        padding-left: 3px;
+        align-content: flex-start;
+        justify-content: center;
+    }
+
+    &_i {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        color: black;
+        background-color: transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        // affichage "bulle d'aide" à revoir
+        /*
+        &:hover::after {
+            background-color: $colour-secondary;
+            padding: .3rem;
+            font-size: .8rem;
+            line-height: auto;
+            z-index: 1;
+            white-space: nowrap;
+            visibility: visible;
+            content: attr(aria-label);
+            position: absolute;
+            
+            top: 2rem;
+            left: 0;
+        }
+        */
     }
 }
