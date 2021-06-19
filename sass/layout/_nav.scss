@@ -1,0 +1,35 @@
+// affichage & sélection des tags page principale et page photographe
+.tagSelect {
+    color: white;
+    background-color: $colour-primary;
+}
+
+.tagNotSelect {
+    color: $colour-primary;
+    background-color: white;
+}
+
+#tags__select {
+    @include tags__container;
+
+    &>.tagBtnNav {
+        @include tag__display;
+
+        &:hover {
+            cursor: pointer;
+            color: white;
+            background-color: $colour-primary;
+        }
+    }
+}
+
+.pcard,
+.mod1 {
+    &__tags {
+        @include tags__container;
+
+        &x {
+            @include tag__display;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<script src="https://kit.fontawesome.com/b336c3d0c9.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Pascal Lorin">
+	<meta name="description"
+		content="Fisheye, photographe, photographe independant, realisateur, realisateur independant, portfolio">
+	<link rel="icon" type="image/png" href="icon.png" />
+	<title>Fisheye</title>
+	<link rel="stylesheet" type="text/css" href="./public/css/style.css" />
+</head>
+
+<body>
+	<div id="enter" class="sr-only" aria-label="passer au contenu">
+		<span>Passer au contenu</span>
+	</div>
+	<!-- Début du header -->
+	<header class="main-header">
+		<div class="main-header__logo">
+			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
+		</div>
+		<!--  Sélection de catégories  (tags)  -->
+		<div class="main-header__tags">
+			<nav id="tags__select" class="tags__select" aria-label="Sélection des catégories de photos">
+			</nav>
+		</div>
+	</header>
+	<!-- Affichage du titre et des photographes correspondants au(x) tag(s) sélectionné(s) -->
+	<!-- Lors du chargement de la page, tous les photographes sont affichés                -->
+	<main class="site-container">
+		<aside aria-label="Présentation de nos photographes">
+			<h1 class="main-titre">Nos photographes</h1>
+		</aside>
+		<article class="cards-container" aria-label="Fiches de présentation de nos photographes">
+		</article>
+	</main>
+	<script type="text/javascript" src="./pages/GlobalVar.js"></script>
+	<script type="text/javascript" src="./pages/ClassTagM.js"></script>
+	<script type="text/javascript" src="./pages/ClassPhotographer.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+</body>
+
+</html>

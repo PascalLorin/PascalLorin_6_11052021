@@ -1,0 +1,26 @@
+body {
+    width: 100%;
+    position: relative;
+}
+
+* {
+    box-sizing: border-box;
+    width:auto;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+//    background-color: white;
+//    color: $colour-primary;
+}
+
+ol,
+ul,
+li,
+button,
+a {
+    text-decoration: none;
+}
+
+.sr-only {
+    visibility: hidden;
+}
