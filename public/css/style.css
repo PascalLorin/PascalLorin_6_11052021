@@ -238,7 +238,7 @@ h1 {
   font-size: 13px;
 }
 .mod1__d_talt {
-  margin-top: 8px;
+  margin: 8px 0;
   height: auto;
   height: 17px;
   font-size: 13px;
@@ -423,15 +423,16 @@ input {
 
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.7em;
+  font-size: 0.7rem;
   font-weight: 900;
   color: #e54858;
   background-color: white;
   border: 2px solid black;
   display: block;
   margin: 7px 2px;
+  padding-left: 0.2rem;
   text-align: left;
-  line-height: 1.5em;
+  line-height: 1rem;
   opacity: 0;
   transition: 0.3s;
 }
@@ -613,16 +614,9 @@ input[data-error]::after {
     height: 170px;
   }
 
-  .formData[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.5em;
-    line-height: 0.6em;
-  }
-
-  input[data-error]::after {
-    content: attr(data-error);
-    font-size: 5px;
-    color: red;
+  .formData[data-error]::after,
+input[data-error]::after {
+    font-size: 0.8rem;
   }
 
   .mod3__showxt,
@@ -638,11 +632,14 @@ input[data-error]::after {
     object-fit: fill;
     transform: scale(1.8);
   }
+}
+@media (min-width: 1200px) and (min-width: 1400px) {
   .main-header__tags {
     position: absolute;
     top: 14px;
   }
-
+}
+@media (min-width: 1200px) {
   .main-titre {
     position: absolute;
     top: 0;
@@ -650,12 +647,14 @@ input[data-error]::after {
     font-size: 36px;
     color: #901C1C;
   }
-
+}
+@media (min-width: 1200px) {
   .cards-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-
+}
+@media (min-width: 1200px) {
   #mod1 {
     display: flex;
     flex-direction: column;
@@ -663,14 +662,16 @@ input[data-error]::after {
     justify-content: center;
     max-width: 1240px;
   }
-
+}
+@media (min-width: 1200px) {
   .mod1Head__logo {
     margin-left: 25px;
     width: 200px;
     object-fit: fill;
     transform: scale(1.25);
   }
-
+}
+@media (min-width: 1200px) {
   .mod1 {
     margin: auto;
     background-color: #FAFAFA;
@@ -724,18 +725,46 @@ input[data-error]::after {
     background-color: #d02828;
     color: black;
   }
-
-  .menuTri {
-    padding: 10px 0;
+  .mod1__menuTri {
+    width: 90px;
+    margin: 15px 0 30px;
     font-size: 18px;
     font-weight: 700;
-    text-decoration: none;
     color: black;
   }
-  .menuTri:hover {
+  .mod1__menuTri:hover {
+    text-transform: uppercase;
     color: #901C1C;
   }
-
+  .mod1__menuTri_container {
+    z-index: 9;
+    position: absolute;
+    top: 410px;
+    left: 260px;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 170px;
+    height: 168px;
+    border-radius: 5px;
+    background-color: #901C1C;
+    color: white;
+  }
+  .mod1__menuTri_btn {
+    border: none;
+    border-radius: 5px;
+    padding: 17px 20px;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: #901C1C;
+    color: white;
+  }
+  .mod1__menuTri_hr {
+    margin-left: 10px;
+    size: 1px;
+    width: 150px;
+    color: white;
+  }
   .mod1__show {
     margin-top: 10px;
     display: grid;
@@ -743,7 +772,8 @@ input[data-error]::after {
     grid-column-gap: 4rem;
     column-gap: 4rem;
   }
-
+}
+@media (min-width: 1200px) {
   .mod2c {
     padding: 1rem 1.7rem;
   }
@@ -775,36 +805,35 @@ input[data-error]::after {
   .mod2c__submit_b {
     padding: 23px 50px;
   }
-
+}
+@media (min-width: 1200px) {
   label {
     font-size: 34px;
     margin-top: 8px;
   }
-
+}
+@media (min-width: 1200px) {
   .text-control {
     height: 60px;
   }
-
+}
+@media (min-width: 1200px) {
   .text-message {
     height: 170px;
   }
-
-  .formData[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.5em;
-    line-height: 0.6em;
+}
+@media (min-width: 1200px) {
+  .formData[data-error]::after,
+input[data-error]::after {
+    font-size: 1rem;
   }
-
-  input[data-error]::after {
-    content: attr(data-error);
-    font-size: 5px;
-    color: red;
-  }
-
+}
+@media (min-width: 1200px) {
   #mod3 {
     padding: 100px;
   }
-
+}
+@media (min-width: 1200px) {
   .mod3__showxt,
 .carBtn i {
     font-size: 1.8rem;

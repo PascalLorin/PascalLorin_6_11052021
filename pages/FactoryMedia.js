@@ -1,18 +1,19 @@
-//la class factory se charge pour nous de comprendre quel élément on cherche à créer
-//on passe le contenu en argument directement au constructor lors de l'instanciation (new)
-//on se sert de l'argument par défaut "" pour dire que par défaut content vaut la chaine de caractère vide, ce qui évite des erreurs
-//on peut lui passer un objet json en paramètre lorsque l'on souhaiterai par exemple avoir des classes différentes pour chaque élément
+// La class factory détermine quel élément on cherche à créer
+// On lui passe un objet Json en argument au constructor lors de l'instanciation (new)
+// Elle utilise le contenu de l'objet pour créer des classes différentes
+// L'argument par défaut "" évite des erreurs
 class factory {
   constructor(content = {}) {
-    // ici on se sert de includes pour savoir quelle est l'extension du fichier.
-    // si c'est du mp4 on crée une vidéo,
-    // autrement on crée une image
-    if (content.image) return new factoryImage(content);
-    else return new factoryVideo(content);
+    // si l'argument contient une image, elle crée un élément image, sinon, une vidéo
+    if (content.image) {
+      return new factoryImage(content)
+    } else {
+      return new factoryVideo(content)
+    }
   }
 }
 
-//toujours la même classe permettant de créer une image
+// Classe permettant de créer une image
 class factoryImage {
   constructor(content) {
     this.el = document.createElement('img');
@@ -20,7 +21,7 @@ class factoryImage {
     this.el.setAttribute('alt', "Photo intitulée " + content.title)
     this.el.src = photographerDirectory + content.image;
   }
-  // un getter permet ici de récupérer l'élément html créé dans le constructeur
+  // le getter permet de récupérer l'élément html créé dans le constructeur
   getEl() {
     return this.el;
   }
@@ -29,20 +30,20 @@ class factoryImage {
   }
 }
 
-//toujours la même classe permettant de créer une vidéo
+// Classe permettant de créer une vidéo
 class factoryVideo {
   constructor(content) {
     this.el = document.createElement("video");
-    this.el.controls = true;    
-    this.el.autoplay = false;    
-    this.el.muted = true;    
-    this.el.setAttribute('width',viewWidth);
+    this.el.controls = true;
+    this.el.autoplay = false;
+    this.el.muted = true;
+    this.el.setAttribute('width', viewWidth);
     this.el.setAttribute('aria-label', "Vidéo intitulée " + content.title)
     this.el.setAttribute('alt', "Vidéo intitulée " + content.title)
     this.el.appendChild(document.createElement("source"));
     this.el.children[0].src = photographerDirectory + content.video;
   }
-  // un getter permet ici de récupérer l'élément html créé dans le constructeur
+  // le getter de récupérer l'élément html créé dans le constructeur
   getEl() {
     return this.el;
   }

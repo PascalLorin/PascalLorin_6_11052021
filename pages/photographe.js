@@ -36,7 +36,7 @@ function selectTagP(event) {
 function getPhotographeSel(id) {
   for (let p = 0; p < photographersSet.length; p++) {
     if (photographersSet[p].id == id) {
-      return new Photographer (photographersSet[p])
+      return new Photographer(photographersSet[p])
     }
   }
   alert("Photographe inconnu")
@@ -49,13 +49,25 @@ function affModale2() {
   modale2.style.display = "flex"
 }
 
+function affMenuTri(event) {
+  event.cancelBubble = true
+  event.preventDefault()
+  let menuTriDisplay = document.querySelector(".mod1__menuTri_container")
+  if ((event.type == 'click') && (menuTriDisplay.style.display != "none")) {
+    menuTriDisplay.style.display = "none"
+  } else {
+    menuTriDisplay.style.display = "block"
+    const btnTri = document.querySelectorAll(".mod1__menuTri_btn")
+    btnTri.forEach((btn) => btn.addEventListener("click", triCollection))
+  }
+}
+
+// début du script
 // la modale form ne s'affiche pas au lancement
 modale2 = document.getElementById('mod2')
 modale2.style.display = "none"
 modale1 = document.getElementById('mod1')
 modale1.style.display = "block"
-
-// début du script
 readStorage()
 pSel = getPhotographeSel(getParams())
 pSel.initPhotographerData()
@@ -63,6 +75,11 @@ pSel.affModale1()
 // DOM Elements : boutons des tags, bouton contact
 const navBtnP = document.querySelectorAll(".tagBtnP")
 const btnMod2 = document.querySelector(".mod1__btn_form")
-// event listener : click sur un bouton tag du photographe
+// event listener : clic sur un bouton tag du photographe
 navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP))
 btnMod2.addEventListener("click", affModale2)
+if (screen.width > 1199) {
+  const menuTriBtn = document.querySelector(".mod1__menuTri")
+  menuTriBtn.addEventListener('mouseover', affMenuTri)
+  menuTriBtn.addEventListener('click', affMenuTri)
+}

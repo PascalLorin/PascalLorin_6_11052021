@@ -111,13 +111,42 @@ class Photographer {
         break
       }
     })
-    let menuTri = document.createElement('nav')
-    menuTri.setAttribute('class', "menuTri")
+    // menu de tri, visible si screen.width > 1199px
+    let menuTri = document.createElement('div')
+    menuTri.setAttribute('class', "mod1__menuTri")
+    menuTri.textContent = "Trier par"
     if (screen.width < 1200) {
       menuTri.style.visibility = "hidden"
     }
-    menuTri.textContent = "Trier par"
     modale1.append(menuTri)
+    // le menu de tri apparaît sur menuTri:mouseover
+    let menuContainer = document.createElement('modal')
+    menuContainer.setAttribute('id', "mod1__menuTri_container")
+    menuContainer.setAttribute('class', "mod1__menuTri_container")
+    menuContainer.style.display = "none"
+    menuTri.append(menuContainer)
+    let menuBtn1 = document.createElement('button')
+    menuBtn1.setAttribute('id', "mod1__menuTri_b1")
+    menuBtn1.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn1.textContent = "Popularité"
+    menuContainer.append(menuBtn1)
+    let menuHr1 = document.createElement('hr')
+    menuHr1.setAttribute('class', "mod1__menuTri_hr")
+    menuContainer.append(menuHr1)
+    let menuBtn2 = document.createElement('button')
+    menuBtn2.setAttribute('id', "mod1__menuTri_b2")
+    menuBtn2.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn2.textContent = "Date"
+    menuContainer.append(menuBtn2)
+    let menuHr2 = document.createElement('hr')
+    menuHr2.setAttribute('class', "mod1__menuTri_hr")
+    menuContainer.append(menuHr2)
+    let menuBtn3 = document.createElement('button')
+    menuBtn3.setAttribute('id', "mod1__menuTri_b3")
+    menuBtn3.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn3.textContent = "Titre"
+    menuContainer.append(menuBtn3)
+    // Bouton contactez-moi
     let btnDiv = document.createElement('div')
     btnDiv.setAttribute('class', "mod1__btn")
     modale1.append(btnDiv)
@@ -174,7 +203,7 @@ class Photographer {
     for (let i = 0; i < this.tags.length; i++) {
       let tagPhotographe = document.createElement('div')
       let wtagLib = libTag(this.tags[i])
-      tagPhotographe.setAttribute('class', "pcard__tagsx") // tagBtnNav")
+      tagPhotographe.setAttribute('class', "pcard__tagsx")
       tagPhotographe.setAttribute('aria-label', "Une des catégories du photographe")
       tagPhotographe.textContent = wtagLib
       tagsPhotographe.append(tagPhotographe)
