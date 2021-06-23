@@ -11,27 +11,23 @@ class Photographer {
     this.portrait = arg.portrait
   }
 
-  // array des tagstags
-  loadTagsP = function () {
-    allMedias = true
-    this.tags.forEach(t => {
-      tagSetP.push(new Tag(t, false))
-    })
-  }
-
   // array des medias du photographe
+  // Charge la collection par rapport l'ensemble des médias
   loadCollectionP = function () {
     mediaSet.forEach(media => {
       if (this.id === media.photographerId) {
         collection.push(new Media(media))
+        totalLikes += this.likes
       }
     })
   }
 
-  // sauvegarde data pour caroussel
-  writeStorageCollection = function () {
-    localStorage.setItem('collection', JSON.stringify(collection))
-    localStorage.setItem('pSel', JSON.stringify(this))
+  // compte les likes du photographe
+  countAllLikes = function () {
+    totalLikes = 0
+    collection.forEach(media => {
+      totalLikes += media.likes
+    })
   }
 
   // construit le nom du répertoire du photographe
@@ -40,13 +36,29 @@ class Photographer {
     photographerDirectory = repMedia + firstName[0] + "/"
   }
 
-  
+  // array des tags du photographe
+  loadTagsP = function () {
+    allMedias = true
+    this.tags.forEach(t => {
+      tagSetP.push(new Tag(t, false))
+    })
+  }
+
   // initialisation des données du photographe sélectionné
   initPhotographerData = function () {
     this.setRepMedia()
-    this.loadCollectionP()
-    this.writeStorageCollection()
     this.loadTagsP()
+    this.loadCollectionP()
+    this.countAllLikes()
+    writeStorageCollection()
+  }
+
+  // lecture des données stockées du photographe sélectionné
+  loadPhotographerData = function () {
+    readStorageCollection()
+    this.setRepMedia()
+    setAllMedias(tagSetP)
+    this.countAllLikes()
   }
 
   // affiche la page du photographe sélectionné
@@ -55,6 +67,7 @@ class Photographer {
     article.setAttribute('id', this.id)
     article.setAttribute('class', 'mod1')
     article.setAttribute('aria-label', "Présentation de " + this.name)
+    article.setAttribute('tabindex', 1)
     modale1.append(article)
     let presD = document.createElement('div')
     presD.setAttribute('class', 'mod1__d')
@@ -91,51 +104,66 @@ class Photographer {
     let tagsPhotographe = document.createElement('nav')
     tagsPhotographe.setAttribute('id', "tags__select")
     tagsPhotographe.setAttribute('aria-label', "Catégories du photographe")
+    tagsPhotographe.setAttribute('tabindex', 1)
     tagsContainer.append(tagsPhotographe)
-    this.tags.forEach(t => {
+    tagSetP.forEach(t => {
       let tagPhotographe = document.createElement('button')
-      let wtagLib = libTag(t)
-      let ariaLib = tagAriaLabel(t)
-      tagPhotographe.setAttribute('id', t)
-      tagPhotographe.setAttribute('aria-label', ariaLib)
-      for (let i = 1; i < tagSetP.length; i++) {
-        if (tagSetP[i] != t) {
-          if (tagSetP[i].state) {
-            tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagSelect")
-          } else {
-            tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagNotSelect")
-          }
-        }
-        tagPhotographe.textContent = wtagLib
-        tagsPhotographe.append(tagPhotographe)
-        break
+      let wtagLib = libTag(t.name)
+      let ariaLib = tagAriaLabel(t.name)
+      tagPhotographe.setAttribute('id', t.name)
+      tagPhotographe.setAttribute('aria-label', "Médias de la catégorie " + ariaLib)
+      tagPhotographe.setAttribute('tabindex', 2)
+      if (t.state) {
+        tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagSelect")
+      } else {
+        tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagNotSelect")
       }
+      tagPhotographe.textContent = wtagLib
+      tagsPhotographe.append(tagPhotographe)
     })
     // menu de tri, visible si screen.width > 1199px
     let menuTri = document.createElement('div')
     menuTri.setAttribute('class', "mod1__menuTri")
+    menuTri.setAttribute('aria-label', "Survoler pour ouvrir le menu de tri des médias du photographe")
+    menuTri.setAttribute('tabindex', 1)
     menuTri.textContent = "Trier par"
     if (screen.width < 1200) {
       menuTri.style.visibility = "hidden"
+    } else {
+      menuTri.setAttribute('tabindex', 1)
     }
     modale1.append(menuTri)
     // le menu de tri apparaît sur menuTri:mouseover
     let menuContainer = document.createElement('modal')
     menuContainer.setAttribute('id', "mod1__menuTri_container")
     menuContainer.setAttribute('class', "mod1__menuTri_container")
+    menuContainer.setAttribute('aria-label', "Menu de tri des médias du photographe")
+    menuContainer.setAttribute('tabindex', 2)
     menuContainer.style.display = "none"
     menuTri.append(menuContainer)
+    let menuBtn1Container = document.createElement('div')
+    menuBtn1Container.setAttribute('class', "mod1__menuTri_btn1Cont")
+    menuContainer.append(menuBtn1Container)
     let menuBtn1 = document.createElement('button')
     menuBtn1.setAttribute('id', "mod1__menuTri_b1")
     menuBtn1.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn1.setAttribute('aria-label', "Trier par popularité décroissante")
+    menuBtn1.setAttribute('tabindex', 2)
     menuBtn1.textContent = "Popularité"
-    menuContainer.append(menuBtn1)
+    menuBtn1Container.append(menuBtn1)
+    let menuBtn1Icone = document.createElement('icon')
+    menuBtn1Icone.setAttribute('class', "fa fa-chevron-up mod1__menuTri_btn1ContIcon")
+    menuBtn1Icone.setAttribute('aria-label', "Fermer le menu de tri")
+    menuBtn1Icone.setAttribute('tabindex', 2)
+    menuBtn1Container.append(menuBtn1Icone)
     let menuHr1 = document.createElement('hr')
     menuHr1.setAttribute('class', "mod1__menuTri_hr")
     menuContainer.append(menuHr1)
     let menuBtn2 = document.createElement('button')
     menuBtn2.setAttribute('id', "mod1__menuTri_b2")
     menuBtn2.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn2.setAttribute('aria-label', "Trier par date décroissante")
+    menuBtn2.setAttribute('tabindex', 2)
     menuBtn2.textContent = "Date"
     menuContainer.append(menuBtn2)
     let menuHr2 = document.createElement('hr')
@@ -144,8 +172,29 @@ class Photographer {
     let menuBtn3 = document.createElement('button')
     menuBtn3.setAttribute('id', "mod1__menuTri_b3")
     menuBtn3.setAttribute('class', "mod1__menuTri_btn")
+    menuBtn3.setAttribute('aria-label', "Trier par titre dans l'ordre alphabétique")
+    menuBtn3.setAttribute('tabindex', 2)
     menuBtn3.textContent = "Titre"
     menuContainer.append(menuBtn3)
+    // Encart total likes et tarif journalier
+    let mod1Aside = document.createElement('aside')
+    mod1Aside.setAttribute('class', "mod1__aside")
+    modale1.append(mod1Aside)
+    let mod1AsideLikes = document.createElement('div')
+    mod1AsideLikes.setAttribute('class', "mod1__aside_likes")
+    mod1Aside.append(mod1AsideLikes)
+    let mod1AsideLikesN = document.createElement('div')
+    mod1AsideLikesN.setAttribute('class', "mod1__aside_likesN")
+    mod1AsideLikesN.textContent = totalLikes
+    mod1AsideLikes.append(mod1AsideLikesN)
+    let mod1AsideLikesIcon = document.createElement('icon')
+    mod1AsideLikesIcon.setAttribute('class', "fa fa-heart mod1__aside_likesIcon")
+    mod1AsideLikes.append(mod1AsideLikesIcon)
+    let mod1AsideTarif = document.createElement('div')
+    mod1AsideTarif.setAttribute('class', "mod1__aside_tarif")
+    mod1Aside.append(mod1AsideTarif)
+    mod1AsideTarif.textContent = this.price + " € / jour"
+    mod1Aside.append(mod1AsideTarif)
     // Bouton contactez-moi
     let btnDiv = document.createElement('div')
     btnDiv.setAttribute('class', "mod1__btn")
@@ -154,6 +203,7 @@ class Photographer {
     btnForm.textContent = "Contactez-moi"
     btnForm.setAttribute('class', "mod1__btn_form")
     btnForm.setAttribute('aria-label', "Cliquez pour ouvrir le formulaire de contact de " + this.name)
+    btnForm.setAttribute('tabindex', 1)
     btnDiv.append(btnForm)
     affCollectionP()
   }
@@ -166,7 +216,8 @@ class Photographer {
     cardPhotographe.setAttribute('id', this.id)
     cardPhotographe.setAttribute('class', "pcard")
     cardPhotographe.setAttribute('alt', "Cliquer pour choisir ce photographe")
-    cardPhotographe.setAttribute('aria-label', "Cliquer pour choisir ce photographe")
+    cardPhotographe.setAttribute('aria-label', "Cliquer pour choisir " + this.id)
+    cardPhotographe.setAttribute('tabindex', 1)
     cardsContainer[0].append(cardPhotographe)
     let pcardImg = document.createElement("div")
     pcardImg.setAttribute('class', "pcard__img")
@@ -175,36 +226,43 @@ class Photographer {
     pcardPortrait.setAttribute('src', repPhotoId + this.portrait)
     pcardPortrait.setAttribute('alt', "Photo de " + this.name)
     pcardPortrait.setAttribute('aria-label', "Photo de " + this.name)
+    pcardPortrait.setAttribute('tabindex', 2)
     pcardImg.append(pcardPortrait)
     let nomPhotographe = document.createElement('p')
     nomPhotographe.setAttribute('class', "pcard__name")
     nomPhotographe.setAttribute('aria-label', "Nom du photographe")
+    nomPhotographe.setAttribute('tabindex', 2)
     nomPhotographe.textContent = this.name
     cardPhotographe.append(nomPhotographe)
     let placePhotographe = document.createElement('p')
     placePhotographe.setAttribute('class', "pcard__place")
     placePhotographe.setAttribute('aria-label', "Localisation du photographe")
+    placePhotographe.setAttribute('tabindex', 2)
     placePhotographe.textContent = this.city + ", " + this.country
     cardPhotographe.append(placePhotographe)
     let altPhotographe = document.createElement('p')
     altPhotographe.setAttribute('class', "pcard__alt")
     altPhotographe.setAttribute('aria-label', "Slogan du photographe")
+    altPhotographe.setAttribute('tabindex', 2)
     altPhotographe.textContent = this.tagline
     cardPhotographe.append(altPhotographe)
     let pricePhotographe = document.createElement('p')
     pricePhotographe.setAttribute('class', "pcard__price")
     pricePhotographe.setAttribute('aria-label', "Tarif journalier du photographe")
+    pricePhotographe.setAttribute('tabindex', 2)
     pricePhotographe.textContent = this.price + " € / jour"
     cardPhotographe.append(pricePhotographe)
     let tagsPhotographe = document.createElement('section')
     tagsPhotographe.setAttribute('class', "pcard__tags")
     tagsPhotographe.setAttribute('aria-label', "Catégories du photographe")
+    tagsPhotographe.setAttribute('tabindex', 2)
     cardPhotographe.append(tagsPhotographe)
     for (let i = 0; i < this.tags.length; i++) {
       let tagPhotographe = document.createElement('div')
       let wtagLib = libTag(this.tags[i])
       tagPhotographe.setAttribute('class', "pcard__tagsx")
       tagPhotographe.setAttribute('aria-label', "Une des catégories du photographe")
+      tagPhotographe.setAttribute('tabindex', 3)
       tagPhotographe.textContent = wtagLib
       tagsPhotographe.append(tagPhotographe)
     }

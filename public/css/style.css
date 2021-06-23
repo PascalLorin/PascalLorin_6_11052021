@@ -34,7 +34,8 @@ h1 {
 #enter {
   position: absolute;
   top: 0;
-  left: 30%;
+  height: 10px;
+  width: 100%;
 }
 
 /****   Headers   ****/
@@ -69,17 +70,10 @@ h1 {
 
 /******   Affichage du logo page photographe   ******/
 .mod1Head__logo {
+  text-decoration: none;
+  border: none;
   width: 150px;
   object-fit: fill;
-}
-
-.tagSelect {
-  color: white;
-  background-color: #901C1C;
-}
-
-.tagNotSelect {
-  color: #901C1C;
   background-color: white;
 }
 
@@ -111,6 +105,14 @@ h1 {
   color: white;
   background-color: #901C1C;
 }
+#tags__select > .tagSelect {
+  color: white;
+  background-color: #901C1C;
+}
+#tags__select > .tagNotSelect {
+  color: #901C1C;
+  background-color: white;
+}
 
 .pcard__tags,
 .mod1__tags {
@@ -136,6 +138,16 @@ h1 {
   margin: 0px 4px;
   margin-bottom: 5px;
   float: left;
+}
+.pcard__tags > .tagSelect,
+.mod1__tags > .tagSelect {
+  color: white;
+  background-color: #901C1C;
+}
+.pcard__tags > .tagNotSelect,
+.mod1__tags > .tagNotSelect {
+  color: #901C1C;
+  background-color: white;
 }
 
 .cards-container {
@@ -665,10 +677,10 @@ input[data-error]::after {
 }
 @media (min-width: 1200px) {
   .mod1Head__logo {
-    margin-left: 25px;
-    width: 200px;
+    margin-left: 36px;
+    width: 220px;
     object-fit: fill;
-    transform: scale(1.25);
+    transform: scale(1.28);
   }
 }
 @media (min-width: 1200px) {
@@ -732,10 +744,6 @@ input[data-error]::after {
     font-weight: 700;
     color: black;
   }
-  .mod1__menuTri:hover {
-    text-transform: uppercase;
-    color: #901C1C;
-  }
   .mod1__menuTri_container {
     z-index: 9;
     position: absolute;
@@ -749,6 +757,14 @@ input[data-error]::after {
     border-radius: 5px;
     background-color: #901C1C;
     color: white;
+  }
+  .mod1__menuTri_btn1Cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .mod1__menuTri_btn1ContIcon {
+    padding: 18px;
   }
   .mod1__menuTri_btn {
     border: none;
@@ -771,6 +787,32 @@ input[data-error]::after {
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 4rem;
     column-gap: 4rem;
+  }
+  .mod1__aside {
+    z-index: 9;
+    position: fixed;
+    bottom: -3%;
+    right: 4%;
+    background-color: #DB8876;
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    width: 376px;
+    height: 89px;
+    border-radius: 5px;
+    padding: 21px 34px 37px 31px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mod1__aside_likes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .mod1__aside_likesN {
+    padding-right: 5px;
   }
 }
 @media (min-width: 1200px) {

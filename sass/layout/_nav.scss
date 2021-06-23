@@ -1,14 +1,4 @@
 // affichage & sélection des tags page principale et page photographe
-.tagSelect {
-    color: white;
-    background-color: $colour-primary;
-}
-
-.tagNotSelect {
-    color: $colour-primary;
-    background-color: white;
-}
-
 #tags__select {
     @include tags__container;
 
@@ -21,15 +11,33 @@
             background-color: $colour-primary;
         }
     }
+
+    &>.tagSelect {
+        color: white;
+        background-color: $colour-primary;
+    }
+
+    &>.tagNotSelect {
+        color: $colour-primary;
+        background-color: white;
+    }
 }
 
-.pcard,
-.mod1 {
-    &__tags {
-        @include tags__container;
+.pcard__tags,
+.mod1__tags {
+    @include tags__container;
 
-        &x {
-            @include tag__display;
-        }
+    &x {
+        @include tag__display;
+    }
+
+    &>.tagSelect {
+        color: white;
+        background-color: $colour-primary;
+    }
+
+    &>.tagNotSelect {
+        color: $colour-primary;
+        background-color: white;
     }
 }

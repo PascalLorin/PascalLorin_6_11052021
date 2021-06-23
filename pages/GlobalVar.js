@@ -1,3 +1,4 @@
+"use strict"
 // constantes et variables globales
 const fichierJson = "./public/data/FishEyeData.json";
 const repPhotoId = "./public/img/PhotographersIDPhotos/";

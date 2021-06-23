@@ -159,10 +159,10 @@
     }
 
     .mod1Head__logo {
-        margin-left: 25px;
-        width: 200px;
+        margin-left: 36px;
+        width: 220px;
         object-fit: fill;
-        transform: scale(1.25);
+        transform: scale(1.28);
     }
 
     .mod1 {
@@ -237,11 +237,6 @@
             font-weight: 700;
             color: black;
 
-            &:hover {
-                text-transform: uppercase;
-                color: $colour-primary;
-            }
-
             &_container {
                 z-index: 9;
                 position: absolute;
@@ -255,6 +250,16 @@
                 border-radius: 5px;
                 background-color: $colour-primary;
                 color: white;
+            }
+
+            &_btn1Cont {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                &Icon {
+                    padding: 18px;
+                }
             }
 
             &_btn {
@@ -281,6 +286,35 @@
             grid-template-columns: 1fr 1fr 1fr;
             grid-column-gap: 4rem;
             column-gap: 4rem;
+        }
+
+        &__aside {
+            z-index: 9;
+            position: fixed;
+            bottom: -3%;
+            right: 4%;
+            background-color: $colour-aside;
+            color: black;
+            font-size: 24px;
+            font-weight: 500;
+            width: 376px;
+            height: 89px;
+            border-radius: 5px;
+            padding: 21px 34px 37px 31px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &_likes {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &N {
+                    padding-right: 5px;
+                }
+            }
         }
     }
 

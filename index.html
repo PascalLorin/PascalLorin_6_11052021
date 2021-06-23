@@ -16,25 +16,26 @@
 </head>
 
 <body>
-	<div id="enter" class="sr-only" aria-label="passer au contenu">
+	<div id="enter" class="sr-only" aria-label="Passer au contenu du site Fisheye" tabindex=1>
 		<span>Passer au contenu</span>
 	</div>
 	<!-- Début du header -->
 	<header class="main-header">
 		<div class="main-header__logo">
-			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
+			<img src="./public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye" tabindex=1>
 		</div>
 		<!--  Sélection de catégories  (tags)  -->
 		<div class="main-header__tags">
-			<nav id="tags__select" class="tags__select" aria-label="Sélection des catégories de photos">
+			<nav id="tags__select" class="tags__select" aria-label="Sélection des catégories de photos" tabindex=1>
 			</nav>
 		</div>
+		<span class="main-titre" tabindex=1></span>
 	</header>
 	<!-- Affichage du titre et des photographes correspondants au(x) tag(s) sélectionné(s) -->
 	<!-- Lors du chargement de la page, tous les photographes sont affichés                -->
 	<main class="site-container">
-		<aside aria-label="Présentation de nos photographes">
-			<h1 class="main-titre">Nos photographes</h1>
+		<aside>
+			<h1 class="main-titre" aria-label="Présentation de nos photographes" tabindex=1>Nos photographes</h1>
 		</aside>
 		<article class="cards-container" aria-label="Fiches de présentation de nos photographes">
 		</article>

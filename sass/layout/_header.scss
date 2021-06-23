@@ -2,7 +2,8 @@
 #enter {
     position: absolute;
     top: 0;
-    left: 30%;
+    height: 10px;
+    width: 100%;
 }
 
 /****   Headers   ****/
@@ -39,6 +40,9 @@
 
 /******   Affichage du logo page photographe   ******/
 .mod1Head__logo {
+    text-decoration: none;
+    border: none;
     width: 150px;
     object-fit: fill;
+    background-color: white;
 }

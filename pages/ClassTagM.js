@@ -65,8 +65,20 @@ function affTagsM() {
     let ariaLib = tagAriaLabel(t.name)
     btnTag.setAttribute('id', t.name)
     btnTag.setAttribute('class', "tagNotSelect tagBtnNav")
-    btnTag.setAttribute('aria-label', ariaLib)
+    btnTag.setAttribute('aria-label', "Catégorie de médias " + ariaLib)
+    btnTag.setAttribute('tabindex', 1)
     btnTag.textContent = wtagLib
     tagsContainer.append(btnTag)
   })
-};
+}
+
+// détermine si l'on affiche tous les médias du photographe
+function setAllMedias(set) {
+  allMedias = true
+  for (let i = 0; i < set.length; i++) {
+    if (set[i].state) {
+      allMedias = false
+      break
+    }
+  }
+}

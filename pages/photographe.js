@@ -1,15 +1,21 @@
 // page d'un photographe
 // l'Id du photographe est passée en paramètre lors de l'appel de la page
-// initialisation des données du photographe sélectionné, tags et média  
-var collection = [];
+// initialisation des données du photographe sélectionné, tags et médias
+// ou récupération de sa collection si retour du caroussel  
+var collection = []
+pSel = {}
+var totalLikes = 0;
 
 // clic sur une icone : incrémentation du nombre de likes
 function incrLikes(event) {
   let currentMedia = event.currentTarget.id
   document.getElementById(currentMedia).previousSibling.textContent++
+  document.querySelector(".mod1__aside_likesN").textContent++ 
+  totalLikes++
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].id == currentMedia) {
       collection[i].likes++
+      writeStorageCollection()
       break
     }
   }
@@ -19,17 +25,18 @@ function incrLikes(event) {
 function selectTagP(event) {
   let sTag = event.currentTarget.id
   for (let t of tagSetP) {
-    if (t.name == sTag) {
+    if (sTag == t.name) {
       t.switchTag()
       if (t.state) {
-        event.currentTarget.setAttribute('class', "tagBtnP mod1__tagsx tagSelect")
+        event.currentTarget.setAttribute('class', "tagSelect tagBtnP mod1__tagsx")
       } else {
-        event.currentTarget.setAttribute('class', "tagBtnP mod1__tagsx tagNotSelect")
+        event.currentTarget.setAttribute('class', "tagNotSelect tagBtnP mod1__tagsx")
       }
       break
     }
   }
-  setAllMedias()
+  writeStorageCollection()
+  setAllMedias(tagSetP)
   affCollectionP()
 };
 
@@ -40,7 +47,7 @@ function getPhotographeSel(id) {
     }
   }
   alert("Photographe inconnu")
-  window.close()
+  closeModale1()
 }
 
 // affiche la modale2 : formulaire de contact du photographe sélectionné
@@ -62,24 +69,42 @@ function affMenuTri(event) {
   }
 }
 
+function closeModale1() {
+  debugger
+  removeCollection()
+  history.back()
+}
+
 // début du script
 // la modale form ne s'affiche pas au lancement
 modale2 = document.getElementById('mod2')
 modale2.style.display = "none"
 modale1 = document.getElementById('mod1')
 modale1.style.display = "block"
-readStorage()
-pSel = getPhotographeSel(getParams())
-pSel.initPhotographerData()
+tagSetP = []
+let psel = JSON.parse(localStorage.getItem('pSel'))
+if (psel != null) {
+  pSel = new Photographer(psel)
+  pSel.loadPhotographerData()
+} else {
+  readStorageMain()
+  pSel = getPhotographeSel(getParams())
+  pSel.initPhotographerData()
+}
 pSel.affModale1()
 // DOM Elements : boutons des tags, bouton contact
+const ecran = document.querySelector("#mod1")
+const logoBtn = document.querySelector(".mod1Head__logo")
 const navBtnP = document.querySelectorAll(".tagBtnP")
 const btnMod2 = document.querySelector(".mod1__btn_form")
 // event listener : clic sur un bouton tag du photographe
+ecran.addEventListener('close',closeModale1)
+logoBtn.addEventListener('click', closeModale1)
 navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP))
-btnMod2.addEventListener("click", affModale2)
+btnMod2.addEventListener('click', affModale2)
 if (screen.width > 1199) {
   const menuTriBtn = document.querySelector(".mod1__menuTri")
+  const menuTriBtnI = document.querySelector(".mod1__menuTri_btn1ContIcon")
   menuTriBtn.addEventListener('mouseover', affMenuTri)
-  menuTriBtn.addEventListener('click', affMenuTri)
+  menuTriBtnI.addEventListener('click', affMenuTri)
 }

@@ -11,13 +11,13 @@ function triCollection(event) {
       })
       break
     case "mod1__menuTri_b2":
-      collection.sort(compareValues('date','decr'))
+      collection.sort(compareValues('date', 'decr'))
       break
     case "mod1__menuTri_b3":
       collection.sort(compareValues('title'))
       break
   }
-  pSel.writeStorageCollection()
+  writeStorageCollection()
   affCollectionP()
 }
 

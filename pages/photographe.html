@@ -21,13 +21,13 @@
 		<!-- Affichage du photographe sélectionné -->
 		<modal id="mod1" class="mod1">
 			<header class="mod1Head">
-				<div class="mod1Head__logo">
-					<img src="../public/img/logo/logo.jpg" alt="Logo du site Fisheye" aria-label="Logo du site Fisheye">
-				</div>
+				<button class="mod1Head__logo">
+					<img src="../public/img/logo/logo.jpg" tabindex=1 alt="Logo du site Fisheye" aria-label="Logo du site Fisheye. Cliquez pour retourner à l'accueil">
+				</button>
 			</header>
 		</modal>
 		<!-- Affichage du formulaire de contact -->
-		<modal hidden id="mod2">
+		<modal aria-hidden="true" id="mod2">
 			<div class="mod2c">
 				<!--   header modale   -->
 				<div class="mod2ch">
@@ -73,14 +73,14 @@
 	</main>
 	<script type="text/javascript" src="./GlobalVar.js"></script>
 	<script type="text/javascript" src="./GetParams.js"></script>
-	<script type="text/javascript" src="./ReadStorage.js"></script>
 	<script type="text/javascript" src="./ClassTagM.js"></script>
 	<script type="text/javascript" src="./ClassPhotographer.js"></script>
 	<script type="text/javascript" src="./ClassMedia.js"></script>
 	<script type="text/javascript" src="./GetParams.js"></script>
 	<script type="text/javascript" src="./FactoryMedia.js"></script>
 	<script type="text/javascript" src="./modalForm.js"></script>
-	<script type="text/javascript" src="./TriMedia.js"></script>
+	<script type="text/javascript" src="./sortMedia.js"></script>
+	<script type="text/javascript" src="./manageStorage.js"></script>
 	<script type="text/javascript" src="./photographe.js"></script>
 </body>
 

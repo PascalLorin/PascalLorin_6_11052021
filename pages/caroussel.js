@@ -4,16 +4,9 @@
 var collection = []
 var currentIndex = 0
 var index = 0
-// offset Left, Top & Width du média affiché pour positionner les boutons du caroussel
+var totalLikes = 0
+// offset Left, Top & Width du container des médias pour positionner les boutons du caroussel
 var x, y, z;
-
-function readStorageCollection() {
-  pSel = new Photographer(JSON.parse(localStorage.getItem('pSel')))
-  let medias = JSON.parse(localStorage.getItem('collection'))
-  for (let media of medias) {
-    collection.push(new Media(media))
-  }
-}
 
 // affiche le média précédant ou le dernier suivant média en cours
 function mediaPrev() {
@@ -73,15 +66,8 @@ function affBtn() {
   btnPrevI.setAttribute('class', "fa fa-chevron-left carBtn_i")
   btnPrevI.setAttribute('aria-label', "Cliquez pour voir le média précedant")
   btnPrevI.setAttribute('alt', "Cliquez pour voir le média précedant")
+  btnPrevI.setAttribute('tabindex', 1)
   btnPrev.append(btnPrevI)
-/*
-  let newDiv = document.createElement("p")
-  btnPrevIL = btnPrev.insertAdjacentElement('afterend',newDiv)
-  btnPrevIL.style.visibility = "hidden"
-  btnPrevIL.position = "fixed"
-  btnPrevIL.style.top = (fromTop + 50) + "px"
-  btnPrevIL.style.left = x + "px"
-*/
   // bouton "suivant"
   let btnNext = document.createElement('button')
   btnNext.setAttribute('class', "carBtn carBtnN")
@@ -94,12 +80,8 @@ function affBtn() {
   btnNextI.setAttribute('class', "fa fa-chevron-right carBtn_i")
   btnNextI.setAttribute('aria-label', "Cliquez pour voir le média suivant")
   btnNextI.setAttribute('alt', "Cliquez pour voir le média suivant")
+  btnNextI.setAttribute('tabindex', 1)
   btnNext.append(btnNextI)
-/*
-  //  newDiv = document.createElement("div")
-  btnNextIL= btnPrevI.insertAdjacentElement('afterend',newDiv)
-  btnNextIL.style.visibility = "hidden"
-*/
   // bouton "fermer"
   let btnClose = document.createElement('button')
   btnClose.setAttribute('class', "carBtn carBtnC")
@@ -112,15 +94,12 @@ function affBtn() {
   btnCloseI.setAttribute('class', "fa fa-times carBtn_i")
   btnCloseI.setAttribute('aria-label', "Cliquez pour fermer le caroussel")
   btnCloseI.setAttribute('alt', "Cliquez pour fermer le caroussel")
+  btnCloseI.setAttribute('tabindex', 1)
   btnClose.append(btnCloseI)
-/*
-  newDiv = document.createElement("div")
-  btnCloseIL= btnPrevI.insertAdjacentElement('afterend',newDiv)
-  btnCloseIL.style.visibility = "hidden"
-*/
 }
 
 function initCaroussel() {
+  pSel = new Photographer(JSON.parse(localStorage.getItem('pSel')))
   paramMedia = getParams()
   readStorageCollection()
   pSel.setRepMedia()
@@ -131,6 +110,8 @@ initCaroussel()
 let doc = document.getElementById('mod3')
 mediaShow = document.createElement('section')
 mediaShow.setAttribute('class', "mod3__show")
+mediaShow.setAttribute('aria-label',"Caroussel des médias de "+ pSel.name)
+mediaShow.setAttribute('tabindex', 1)
 doc.append(mediaShow)
 viewWidth = doc.clientWidth - 60
 if (viewWidth > 1200) {

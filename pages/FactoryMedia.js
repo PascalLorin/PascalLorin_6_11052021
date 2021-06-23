@@ -1,10 +1,10 @@
 // La class factory détermine quel élément on cherche à créer
-// On lui passe un objet Json en argument au constructor lors de l'instanciation (new)
+// On passe un objet Json en argument au constructor lors de l'instanciation (new)
 // Elle utilise le contenu de l'objet pour créer des classes différentes
 // L'argument par défaut "" évite des erreurs
 class factory {
-  constructor(content = {}) {
-    // si l'argument contient une image, elle crée un élément image, sinon, une vidéo
+  constructor(content = {}){
+    // si l'argument contient une image, elle crée un élément image, sinon un élément vidéo
     if (content.image) {
       return new factoryImage(content)
     } else {
@@ -25,9 +25,6 @@ class factoryImage {
   getEl() {
     return this.el;
   }
-  affich() {
-    document.appendChild(this.el);
-  }
 }
 
 // Classe permettant de créer une vidéo
@@ -47,11 +44,8 @@ class factoryVideo {
   getEl() {
     return this.el;
   }
-  affich() {
-    document.appendChild(this.el);
-  }
 }
-
+/*
 //la création se fait maintenant toujours avec la même classe factory
 const image = new factory({
   image: this.image
@@ -59,7 +53,4 @@ const image = new factory({
 const video = new factory({
   video: this.video
 });
-
-//on peut toujours s'en servir de la même manière peu importe le type d'élément html
-//image.affich();
-//video.affich();
+*/

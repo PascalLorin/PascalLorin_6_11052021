@@ -1,4 +1,4 @@
-// Contructeurs des media 
+// Contructeurs des médias
 class Media {
   constructor(arg) {
     this.id = arg.id
@@ -21,6 +21,7 @@ class Media {
     carousselLink.setAttribute('href', "./caroussel.html?id=" + this.id)
     carousselLink.setAttribute('alt', "Cliquer pour afficher le caroussel de ce photographe")
     carousselLink.setAttribute('aria-label', "Cliquer pour afficher le caroussel de ce photographe")
+    carousselLink.setAttribute('tabindex', 2)
     card.append(carousselLink)
     let viewData = new factory(this)
     let view = viewData.getEl()
@@ -52,6 +53,7 @@ class Media {
     let iconLikei = document.createElement('i')
     iconLikei.setAttribute('class', "fas fa-heart")
     iconLikei.setAttribute('id', this.id)
+    iconLikei.setAttribute('tabindex', 3)
     likes.append(iconLikei)
   }
 
@@ -69,6 +71,7 @@ class Media {
     let viewData = new factory(this)
     var view = viewData.getEl()
     view.setAttribute('class', "mod3__showxv")
+    view.setAttribute('tabindex', 2)
     view.setAttribute('width', viewWidth)
     if (viewWidth == 950) {
       view.setAttribute('height', viewWidth * proportion3)
@@ -88,13 +91,13 @@ class Media {
     }
   }
 }
-
 // affiche la collection des medias du photographe suivant les tags sélectionnés
 function affCollectionP() {
   effaceMedias()
   mediaShow = document.createElement('section')
   mediaShow.setAttribute('class', "mod1__show")
   mediaShow.setAttribute('aria-label', "Réalisations de ce photographe")
+  mediaShow.setAttribute('tabindex', 1)
   modale1.append(mediaShow)
   collection.forEach(media => {
     if (allMedias) {
@@ -110,17 +113,6 @@ function affCollectionP() {
   // après l'affichage, écoute des icones "Like" pour incrémenter leur nombre
   const iconLikes = document.querySelectorAll("i")
   iconLikes.forEach((item) => item.addEventListener("click", incrLikes))
-}
-
-// détermine si l'on affiche tous les médias du photographe
-function setAllMedias() {
-  allMedias = true
-  for (let i = 0; i < tagSetP.length; i++) {
-    if (tagSetP[i].state) {
-      allMedias = false
-      break
-    }
-  }
 }
 
 // initialisation de l'affichage des medias

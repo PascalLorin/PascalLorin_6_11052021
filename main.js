@@ -4,20 +4,20 @@ function effaceCards() {
   let listeCards = document.getElementsByClassName('pcard');
   let length = listeCards.length;
   if (length > 0) {
-    let parentCard = listeCards[0].parentNode;
+    let parentCard = listeCards[0].parentNode
     for (let i = 0; i < length; i++) {
-      parentCard.removeChild(listeCards[0]);
+      parentCard.removeChild(listeCards[0])
     }
   }
 }
 
-// affichage de la page principale avec tous les photographes au lancement 
+// affichage de la page principale avec tous les photographes au lancement
 function displayPhotographersAll() {
   effaceCards()
   photographersSet.forEach(p => {
     p.displayPhotographerM()
   })
-};
+}
 
 // affichage des photographes possédant au moins un des tags sélectionné(s)
 function displayPhotographersMain() {
@@ -37,27 +37,25 @@ function displayPhotographersMain() {
       }
     }
   })
-};
+}
 
 // clic sur un tag : sélection ou annulation de la sélection
 // réaffiche les photographes en fonction du nouvel état des tags
 function selectTagMain(event) {
   let sTag = event.currentTarget.id
-  let affAll = true
   for (let t of tagSetM) {
     if (sTag == t.name) {
       t.switchTag()
       if (t.state) {
-        event.currentTarget.setAttribute('class', "tagBtnNav tagSelect")
+        event.currentTarget.setAttribute('class', "tagSelect tagBtnNav")
       } else {
-        event.currentTarget.setAttribute('class', "tagBtnNav tagNotSelect")
+        event.currentTarget.setAttribute('class', "tagNotSelect tagBtnNav")
       }
-    }
-    if (t.state) {
-      affAll = false
+      break
     }
   }
-  if (affAll) {
+  setAllMedias(tagSetM)
+  if (allMedias) {
     displayPhotographersAll()
   } else {
     displayPhotographersMain()
@@ -72,6 +70,7 @@ function loadJson() {
     .then(function (data) {
       let photographers = data.photographers
       let medias = data.media
+      localStorage.clear()
       localStorage.setItem('pSet', JSON.stringify(photographers))
       localStorage.setItem('mSet', JSON.stringify(medias))
       for (let i of photographers) {
