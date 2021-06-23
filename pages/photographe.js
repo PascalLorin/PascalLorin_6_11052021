@@ -10,7 +10,7 @@ var totalLikes = 0;
 function incrLikes(event) {
   let currentMedia = event.currentTarget.id
   document.getElementById(currentMedia).previousSibling.textContent++
-  document.querySelector(".mod1__aside_likesN").textContent++ 
+  document.querySelector(".mod1__aside_likesN").textContent++
   totalLikes++
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].id == currentMedia) {
@@ -69,8 +69,17 @@ function affMenuTri(event) {
   }
 }
 
+// Traitement de la touche enfoncée
+function actionKey(event) {
+  event.preventDefault()
+  // Escape => page précédente
+  switch (event.key) {
+    case "Escape":
+      closeModale1()
+  }
+}
+
 function closeModale1() {
-  debugger
   removeCollection()
   history.back()
 }
@@ -98,7 +107,7 @@ const logoBtn = document.querySelector(".mod1Head__logo")
 const navBtnP = document.querySelectorAll(".tagBtnP")
 const btnMod2 = document.querySelector(".mod1__btn_form")
 // event listener : clic sur un bouton tag du photographe
-ecran.addEventListener('close',closeModale1)
+ecran.addEventListener('close', closeModale1)
 logoBtn.addEventListener('click', closeModale1)
 navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP))
 btnMod2.addEventListener('click', affModale2)
@@ -108,3 +117,4 @@ if (screen.width > 1199) {
   menuTriBtn.addEventListener('mouseover', affMenuTri)
   menuTriBtnI.addEventListener('click', affMenuTri)
 }
+window.addEventListener('keydown', actionKey)

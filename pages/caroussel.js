@@ -10,32 +10,57 @@ var x, y, z;
 
 // affiche le média précédant ou le dernier suivant média en cours
 function mediaPrev() {
+  mediaClear()
   if (currentIndex == 0) {
     currentIndex = collection.length - 1
   } else {
     currentIndex--
   }
+  mediaDisplay()
 }
 
 // affiche le média suivant ou le premier suivant média en cours
 function mediaNext() {
+  mediaClear()
   if (currentIndex == (collection.length - 1)) {
     currentIndex = 0
   } else {
     currentIndex++
   }
+  mediaDisplay()
+}
+
+function mediaClear() {
+  caroussel[currentIndex].style.display = "none"
+}
+
+function mediaDisplay() {
+  caroussel[currentIndex].style.display = "flex"
+}
+
+// Traitement de la touche enfoncée
+function actionKey(event) {
+  event.preventDefault()
+  // Escape => page précédente
+  switch (event.key) {
+    case "Escape":
+      history.back()
+    case "ArrowLeft":
+      mediaPrev()
+      break
+    case "ArrowRight":
+      mediaNext()
+      break
+  }
 }
 
 // traitement du bouton cliqué
 function actionBtn(event) {
-  let selBtn = (event.currentTarget.id)
-  if (selBtn == "carBtnC") {
-    // clic sur fermer, renvoie sur la page précédente
-    history.back()
-  }
-  caroussel = document.getElementsByClassName('mod3__showx')
-  caroussel[currentIndex].style.display = "none"
+  let selBtn = event.currentTarget.id
+  // clic sur Close => la page précédente
   switch (selBtn) {
+    case "carBtnC":
+      history.back()
     case "carBtnV":
       mediaPrev()
       break
@@ -43,7 +68,6 @@ function actionBtn(event) {
       mediaNext()
       break
   }
-  caroussel[currentIndex].style.display = "flex"
 }
 
 // afffichage des boutons autour du média
@@ -99,6 +123,7 @@ function affBtn() {
 }
 
 function initCaroussel() {
+  debugger
   pSel = new Photographer(JSON.parse(localStorage.getItem('pSel')))
   paramMedia = getParams()
   readStorageCollection()
@@ -110,7 +135,7 @@ initCaroussel()
 let doc = document.getElementById('mod3')
 mediaShow = document.createElement('section')
 mediaShow.setAttribute('class', "mod3__show")
-mediaShow.setAttribute('aria-label',"Caroussel des médias de "+ pSel.name)
+mediaShow.setAttribute('aria-label', "Caroussel des médias de " + pSel.name)
 mediaShow.setAttribute('tabindex', 1)
 doc.append(mediaShow)
 viewWidth = doc.clientWidth - 60
@@ -124,7 +149,9 @@ collection.forEach(media => {
 })
 // affichage des boutons autour du caroussel
 affBtn()
+caroussel = document.getElementsByClassName('mod3__showx')
 // DOM Elements
 const carBtn = document.querySelectorAll(".carBtn")
 // event listener : click sur l'un des boutons
-carBtn.forEach((btn) => btn.addEventListener("click", actionBtn))
+carBtn.forEach((btn) => btn.addEventListener('click', actionBtn))
+window.addEventListener('keydown', actionKey)
