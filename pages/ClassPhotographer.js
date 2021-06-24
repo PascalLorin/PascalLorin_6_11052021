@@ -108,17 +108,15 @@ class Photographer {
     tagsContainer.append(tagsPhotographe)
     tagSetP.forEach(t => {
       let tagPhotographe = document.createElement('button')
-      let wtagLib = libTag(t.name)
-      let ariaLib = tagAriaLabel(t.name)
       tagPhotographe.setAttribute('id', t.name)
-      tagPhotographe.setAttribute('aria-label', "Médias de la catégorie " + ariaLib)
+      tagPhotographe.setAttribute('aria-label', "Médias de la catégorie " + t.tagAriaLabel())
       tagPhotographe.setAttribute('tabindex', 2)
       if (t.state) {
         tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagSelect")
       } else {
         tagPhotographe.setAttribute('class', "tagBtnP tagBtnNav tagNotSelect")
       }
-      tagPhotographe.textContent = wtagLib
+      tagPhotographe.textContent = t.libTag()
       tagsPhotographe.append(tagPhotographe)
     })
     // menu de tri, visible si screen.width > 1199px
