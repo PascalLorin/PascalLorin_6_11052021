@@ -124,15 +124,25 @@ class Photographer {
     // menu de tri, visible si screen.width > 1199px
     let menuTri = document.createElement('div')
     menuTri.setAttribute('class', "mod1__menuTri")
-    menuTri.setAttribute('aria-label', "Survoler pour ouvrir le menu de tri des médias du photographe")
     menuTri.setAttribute('tabindex', 1)
-    menuTri.textContent = "Trier par"
     if (screen.width < 1200) {
       menuTri.style.visibility = "hidden"
     } else {
       menuTri.setAttribute('tabindex', 1)
     }
     modale1.append(menuTri)
+    let menuTriL = document.createElement('div')
+    menuTriL.setAttribute('class', "mod1__menuTriL")
+    menuTriL.setAttribute('aria-label', "Survoler pour ouvrir le menu de tri des médias du photographe")
+    menuTriL.setAttribute('tabindex', 1)
+    menuTriL.textContent = "Trier par"
+    menuTri.append(menuTriL)
+    let menuTriC = document.createElement('div')
+    menuTriC.setAttribute('class', "mod1__menuTriC")
+    menuTriC.setAttribute('aria-label', "Critère de tri sélectionné")
+    menuTriC.setAttribute('tabindex', 1)
+    menuTriC.textContent = libCrit[triCrit]
+    menuTri.append(menuTriC)
     // le menu de tri apparaît sur menuTri:mouseover
     let menuContainer = document.createElement('modal')
     menuContainer.setAttribute('id', "mod1__menuTri_container")

@@ -738,11 +738,20 @@ input[data-error]::after {
     color: black;
   }
   .mod1__menuTri {
-    width: 90px;
-    margin: 15px 0 30px;
+    display: flex;
+    flex-direction: row;
+    margin: 15px 30px;
+    align-items: center;
+    width: auto;
     font-size: 18px;
     font-weight: 700;
     color: black;
+  }
+  .mod1__menuTriL {
+    margin-right: 5px;
+  }
+  .mod1__menuTriC {
+    color: #901C1C;
   }
   .mod1__menuTri_container {
     z-index: 9;

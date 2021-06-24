@@ -23,3 +23,4 @@ var viewWidth; // largeur d'affichage d'un média pour proportion H/W suivant la
 var proportion1 = 0.567; // proportion H/W d'affichage d'un média page photographe (mobile et tablettes)
 var proportion2 = 0.857; // proportion H/W d'affichage d'un média sur le caroussel et page photographe sur laptop
 var proportion3 = 0.75;  // proportion H/W d'affichage d'un média sur le caroussel (4:3 si laptop)
+var triCrit = 0 // valeur du critère de tri (laptop)

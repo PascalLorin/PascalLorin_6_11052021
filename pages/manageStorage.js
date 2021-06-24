@@ -15,6 +15,12 @@ function readStorageMain() {
 function readStorageCollection() {
   let medias = JSON.parse(localStorage.getItem('collection'))
   let pTags = JSON.parse(localStorage.getItem('pTags'))
+  let pCrit = JSON.parse(localStorage.getItem('pCrit'))
+  if (pCrit == undefined) {
+    triCrit = 0
+  } else {
+    triCrit = pCrit
+  }
   for (let media of medias) {
     collection.push(new Media(media))
     totalLikes += media.likes
@@ -31,6 +37,7 @@ function writeStorageCollection () {
   localStorage.setItem('collection', JSON.stringify(collection))
   localStorage.setItem('pSel', JSON.stringify(pSel))
   localStorage.setItem('pTags', JSON.stringify(tagSetP))
+  localStorage.setItem('pCrit', JSON.stringify(triCrit))
 }
 
 // Efface les données avant de revenir à la page main
@@ -38,4 +45,5 @@ function removeCollection() {
   localStorage.removeItem('collection')
   localStorage.removeItem('pSel')
   localStorage.removeItem('pTags')
+  localStorage.removeItem('pCrit')
 }

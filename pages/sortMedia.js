@@ -2,22 +2,27 @@
 function triCollection(event) {
   let selBtn = (event.currentTarget.id)
   let menuTri = document.querySelector(".mod1__menuTri_container")
-  event.cancelBubble = true
+  let menuTriC = document.querySelector(".mod1__menuTriC")
   menuTri.style.display = "none"
+  event.cancelBubble = true
   switch (selBtn) {
     case "mod1__menuTri_b1":
+      triCrit = 1
       collection.sort(function (a, b) {
         return -(a.likes - b.likes)
       })
       break
     case "mod1__menuTri_b2":
+      triCrit = 2
       collection.sort(compareValues('date', 'decr'))
       break
     case "mod1__menuTri_b3":
+      triCrit = 3
       collection.sort(compareValues('title'))
       break
   }
   writeStorageCollection()
+  menuTriC.textContent = libCrit[triCrit]
   affCollectionP()
 }
 

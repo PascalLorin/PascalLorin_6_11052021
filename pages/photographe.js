@@ -4,7 +4,8 @@
 // ou récupération de sa collection si retour du caroussel  
 var collection = []
 pSel = {}
-var totalLikes = 0;
+var totalLikes = 0
+const libCrit = [" ","popularité décroissante","date décroissante","ordre alphabétique"]
 
 // clic sur une icone : incrémentation du nombre de likes
 function incrLikes(event) {
@@ -71,10 +72,10 @@ function affMenuTri(event) {
 
 // Traitement de la touche enfoncée
 function actionKey(event) {
-  event.preventDefault()
   // Escape => page précédente
   switch (event.key) {
     case "Escape":
+      event.preventDefault()
       closeModale1()
   }
 }
@@ -101,13 +102,11 @@ if (psel != null) {
   pSel.initPhotographerData()
 }
 pSel.affModale1()
-// DOM Elements : boutons des tags, bouton contact
-const ecran = document.querySelector("#mod1")
+// DOM Elements : boutons des tags, bouton contact, clic sur logo (fermeture)
 const logoBtn = document.querySelector(".mod1Head__logo")
 const navBtnP = document.querySelectorAll(".tagBtnP")
 const btnMod2 = document.querySelector(".mod1__btn_form")
 // event listener : clic sur un bouton tag du photographe
-ecran.addEventListener('close', closeModale1)
 logoBtn.addEventListener('click', closeModale1)
 navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP))
 btnMod2.addEventListener('click', affModale2)

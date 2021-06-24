@@ -2,12 +2,15 @@
 const formData = document.querySelectorAll(".formData")
 const closeBtn = document.querySelector(".mod2ch__close")
 const signUpBtn = document.querySelector(".signUpBtn")
+let first;
+let last; 
+let email;
+let message;
+let inputsOk;
 
-// let nameOk = /^[A-Z][a-zàçéèëêîï]+(['\-\s][A-Z][a-zàçéèëêîï])?$/
 let nameOk = /[A-Z][a-zàçéèëêîï]+(['\-\s][A-Z][a-zàçéèëêîï])?$/
 let emailOk = /(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
 let msgOk = /\w/
-let inputsOk = true
 
 // add event listeners
 closeBtn.addEventListener("click", closeModale2)
@@ -37,7 +40,13 @@ function validate() {
   inputsOk = true
   checkInputs()
   if (inputsOk == true) {
-    alert("Merci pour ce message")
+    let msg = "Merci pour ce message."+"\n\n"+
+              "Voici les données transmises :"+"\n\n"+
+              " Prénom   : "+ first.value + "\n" +
+              " Nom      : "+ last.value +"\n"+
+              " Email    : "+ email.value + "\n" +
+              " Message  : "+ message.value 
+    alert(msg)
     closeModale2()
     return true
   } else {
@@ -47,10 +56,10 @@ function validate() {
 
 // checks the inputs and switch var inputsOk to false if not OK
 function checkInputs() {
-  let first = document.getElementById("mod2c__form_f")
-  let last = document.getElementById("mod2c__form_l")
-  let email = document.getElementById("mod2c__form_e")
-  let message = document.getElementById("mod2c__form_m")
+  first = document.getElementById("mod2c__form_f")
+  last = document.getElementById("mod2c__form_l")
+  email = document.getElementById("mod2c__form_e")
+  message = document.getElementById("mod2c__form_m")
 
   if ((first.value.length < 3) || (!nameOk.test(first.value))) {
     formData[0].dataset.error = "Majuscule initiale puis lettres, espace, apostrophe et tiret sont valides"
