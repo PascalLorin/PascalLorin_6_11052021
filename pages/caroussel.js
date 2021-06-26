@@ -123,7 +123,6 @@ function affBtn() {
 }
 
 function initCaroussel() {
-  debugger
   pSel = new Photographer(JSON.parse(localStorage.getItem('pSel')))
   paramMedia = getParams()
   readStorageCollection()
