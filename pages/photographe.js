@@ -5,13 +5,15 @@
 var collection = []
 pSel = {}
 var totalLikes = 0
-const libCrit = [" ","popularité décroissante","date décroissante","ordre alphabétique"]
+const libCrit = [" ", "popularité décroissante", "date décroissante", "ordre alphabétique"]
 
 // clic sur une icone : incrémentation du nombre de likes
 function incrLikes(event) {
   let currentMedia = event.currentTarget.id
   document.getElementById(currentMedia).previousSibling.textContent++
-  document.querySelector(".mod1__aside_likesN").textContent++
+  if (screen.width > 1199) {
+    document.querySelector(".mod1__aside_likesN").textContent++
+  }
   totalLikes++
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].id == currentMedia) {
@@ -53,6 +55,7 @@ function getPhotographeSel(id) {
 
 // affiche la modale2 : formulaire de contact du photographe sélectionné
 function affModale2() {
+  debugger
   modale1.style.display = "none"
   modale2.style.display = "flex"
 }

@@ -26,9 +26,9 @@
 						aria-label="Logo du site Fisheye. Cliquez pour retourner à l'accueil">
 				</button>
 			</header>
-		</section>
+		</article>
 		<!-- Affichage du formulaire de contact -->
-		<section aria-hidden="true" id="mod2">
+		<article id="mod2">
 			<div class="mod2c">
 				<!--   header modale   -->
 				<div class="mod2ch" aria-label="Formulaire pour contacter ce photographe">
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<!--   Formulaire   -->
-				<form id="mod2c__form" name="mod2c__form" action="none" method="get" onsubmit="return validate();">
+				<form id="mod2c__form" name="mod2c__form" action="none" method="dialog" onsubmit="return validate();">
 					<div class="formData">
 						<label for="mod2c__form_f">Prénom</label><br>
 						<input class="text-control" type="text" id="mod2c__form_f" name="mod2c__form_f"
@@ -71,7 +71,7 @@
 					</div>
 				</form>
 			</div>
-		</section>
+		</article>
 	</main>
 	<script src="./GlobalVar.js"></script>
 	<script src="./GetParams.js"></script>

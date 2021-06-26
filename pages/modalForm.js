@@ -97,9 +97,10 @@ function checkInputs() {
     formData[3].dataset.errorVisible = "false"
   }
 }
-
+/*
 // affiche la modale2 : formulaire de contact du photographe sélectionné
 function affModale2() {
   modale1.style.display = "none"
   modale2.style.display = "flex"
 }
+*/
