@@ -9,12 +9,11 @@ const libCrit = [" ", "popularité décroissante", "date décroissante", "ordre 
 
 // clic sur une icone : incrémentation du nombre de likes
 function incrLikes(event) {
-  let currentMedia = event.currentTarget.id
-  document.getElementById(currentMedia).previousSibling.textContent++
+  document.getElementById(event.currentTarget.id).previousSibling.textContent++
   if (screen.width > 1199) {
     document.querySelector(".mod1__aside_likesN").textContent++
+    totalLikes++
   }
-  totalLikes++
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].id == currentMedia) {
       collection[i].likes++
@@ -55,14 +54,13 @@ function getPhotographeSel(id) {
 
 // affiche la modale2 : formulaire de contact du photographe sélectionné
 function affModale2() {
-  debugger
   modale1.style.display = "none"
   modale2.style.display = "flex"
 }
 
 function affMenuTri(event) {
-  event.cancelBubble = true
-  event.preventDefault()
+//  event.cancelBubble = true
+//  event.preventDefault()
   let menuTriDisplay = document.querySelector(".mod1__menuTri_container")
   if ((event.type == 'click') && (menuTriDisplay.style.display != "none")) {
     menuTriDisplay.style.display = "none"
@@ -90,10 +88,10 @@ function closeModale1() {
 
 // début du script
 // la modale form ne s'affiche pas au lancement
-modale2 = document.getElementById('mod2')
-modale2.style.display = "none"
 modale1 = document.getElementById('mod1')
 modale1.style.display = "block"
+modale2 = document.getElementById('mod2')
+modale2.style.display = "none"
 tagSetP = []
 let psel = JSON.parse(localStorage.getItem('pSel'))
 if (psel != null) {
@@ -114,7 +112,7 @@ logoBtn.addEventListener('click', closeModale1)
 navBtnP.forEach((btn) => btn.addEventListener("click", selectTagP))
 btnMod2.addEventListener('click', affModale2)
 if (screen.width > 1199) {
-  const menuTriBtn = document.querySelector(".mod1__menuTri")
+  const menuTriBtn = document.querySelector(".mod1__menuTriL")
   const menuTriBtnI = document.querySelector(".mod1__menuTri_btn1ContIcon")
   menuTriBtn.addEventListener('mouseover', affMenuTri)
   menuTriBtnI.addEventListener('click', affMenuTri)

@@ -233,18 +233,15 @@
         &__menuTri {
             display: flex;
             flex-direction: row;
-            margin: 15px 30px;
+            margin: 15px 5px 15px 30px;
             align-items: center;
             width:fit-content;
             font-size: 18px;
             font-weight: 700;
             color: black;
 
-            &L{ 
-                margin-right: 5px;
-            }
-
             &C {
+                margin-left: 5px;
                 color: $colour-primary;
             }
 
@@ -252,7 +249,7 @@
                 z-index: 9;
                 position: absolute;
                 top: 410px;
-                left: 260px;
+                left: 265px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: left;

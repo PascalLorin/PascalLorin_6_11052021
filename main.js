@@ -1,8 +1,8 @@
 // initialisation de l'affichage
 // supprime les cards affichées (s'il y en a...)
 function effaceCards() {
-  let listeCards = document.getElementsByClassName('pcard');
-  let length = listeCards.length;
+  let listeCards = document.getElementsByClassName('pcard')
+  let length = listeCards.length
   if (length > 0) {
     let parentCard = listeCards[0].parentNode
     for (let i = 0; i < length; i++) {
@@ -21,7 +21,7 @@ function displayPhotographersAll() {
 
 // affichage des photographes possédant au moins un des tags sélectionné(s)
 function displayPhotographersMain() {
-  effaceCards();
+  effaceCards()
   photographersSet.forEach(p => {
     let displayP = false
     for (let t of p.tags) {
@@ -60,7 +60,7 @@ function selectTagMain(event) {
   } else {
     displayPhotographersMain()
   }
-};
+}
 
 // fonction de récupération des données JSON au chargement de la page
 // et exécution de la page principale
@@ -83,7 +83,7 @@ function loadJson() {
       const navBtn = document.querySelectorAll(".tagBtnNav")
       navBtn.forEach((btn) => btn.addEventListener("click", selectTagMain))
     })
-};
+}
 
 //************ exécution du script ****************
-loadJson();
+loadJson()

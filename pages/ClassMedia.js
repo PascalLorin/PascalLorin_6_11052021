@@ -30,7 +30,6 @@ class Media {
     viewWidth = view.clientWidth
     if (screen.width > 1199) {
       view.setAttribute('height', viewWidth * proportion2)
-
     } else {
       view.setAttribute('height', viewWidth * proportion1)
     }

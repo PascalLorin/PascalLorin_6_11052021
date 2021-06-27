@@ -61,6 +61,7 @@ function actionBtn(event) {
   switch (selBtn) {
     case "carBtnC":
       history.back()
+      break
     case "carBtnV":
       mediaPrev()
       break

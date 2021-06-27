@@ -68,6 +68,7 @@
 // la modale form s'affichera par dessus 
 #mod1,
 #mod2 {
+    display: none;
     padding: 20px 20px;
     background-color: white;
 }
@@ -381,7 +382,9 @@ input[data-error]::after {
 
         // l'image ou la vidéo
         &v {
-            object-fit: cover;
+            box-sizing:content-box;
+            object-fit: contain;
+            border: 1px solid $colour-border;
             border-radius: .5rem;
             width: 100%;
         }
@@ -431,23 +434,5 @@ input[data-error]::after {
         &:hover {
             cursor: pointer;
         }
-
-        // affichage "bulle d'aide" à revoir
-        /*
-        &:hover::after {
-            background-color: $colour-secondary;
-            padding: .3rem;
-            font-size: .8rem;
-            line-height: auto;
-            z-index: 1;
-            white-space: nowrap;
-            visibility: visible;
-            content: attr(aria-label);
-            position: absolute;
-            
-            top: 2rem;
-            left: 0;
-        }
-        */
     }
 }
