@@ -15,7 +15,7 @@ function incrLikes(event) {
     totalLikes++
   }
   for (let i = 0; i < collection.length; i++) {
-    if (collection[i].id == currentMedia) {
+    if (collection[i].id == event.currentTarget.id) {
       collection[i].likes++
       writeStorageCollection()
       break

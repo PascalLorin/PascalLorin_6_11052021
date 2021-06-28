@@ -45,6 +45,7 @@ function actionKey(event) {
   switch (event.key) {
     case "Escape":
       history.back()
+      break
     case "ArrowLeft":
       mediaPrev()
       break
