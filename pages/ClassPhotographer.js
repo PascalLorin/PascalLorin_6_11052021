@@ -129,6 +129,8 @@ class Photographer {
     }
     modale1.append(menuTri)
     if (screen.width > 1199) {
+      let x = menuTri.offsetLeft
+      let y = menuTri.offsetTop
       let menuTriL = document.createElement('div')
       menuTriL.setAttribute('class', "mod1__menuTriL")
       menuTriL.setAttribute('aria-label', "Survoler pour ouvrir le menu de tri des médias du photographe")
@@ -147,8 +149,11 @@ class Photographer {
       menuContainer.setAttribute('class', "mod1__menuTri_container")
       menuContainer.setAttribute('aria-label', "Menu de tri des médias du photographe")
       menuContainer.setAttribute('tabindex', 2)
+      menuContainer.style.position = "absolute"
+      menuContainer.style.left = (x + 75) + "px"
+      menuContainer.style.top = (y - 15) + "px"
       menuContainer.style.display = "none"
-      menuTri.append(menuContainer)
+      modale1.append(menuContainer)
       let menuBtn1Container = document.createElement('div')
       menuBtn1Container.setAttribute('class', "mod1__menuTri_btn1Cont")
       menuContainer.append(menuBtn1Container)

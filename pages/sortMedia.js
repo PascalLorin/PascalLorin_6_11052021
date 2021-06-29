@@ -4,6 +4,7 @@ function triCollection(event) {
   let menuTri = document.querySelector(".mod1__menuTri_container")
   let menuTriC = document.querySelector(".mod1__menuTriC")
   menuTri.style.display = "none"
+  menuTriC.style.display = "flex"
   event.cancelBubble = true
   switch (selBtn) {
     case "mod1__menuTri_b1":

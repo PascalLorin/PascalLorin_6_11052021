@@ -99,7 +99,7 @@ function affBtn() {
   btnNext.setAttribute('class', "carBtn carBtnN")
   btnNext.setAttribute('id', "carBtnN")
   btnNext.style.position = "absolute"
-  btnNext.style.top = (y + h) + "px"
+  btnNext.style.top = fromTop + "px"
   btnNext.style.left = (x + z) + "px"
   mediaShow.append(btnNext)
   let btnNextI = document.createElement('icon')

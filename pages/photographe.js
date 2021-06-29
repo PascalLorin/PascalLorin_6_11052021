@@ -58,13 +58,14 @@ function affModale2() {
   modale2.style.display = "flex"
 }
 
-function affMenuTri(event) {
-//  event.cancelBubble = true
-//  event.preventDefault()
+function affMenuTri() {
   let menuTriDisplay = document.querySelector(".mod1__menuTri_container")
-  if ((event.type == 'click') && (menuTriDisplay.style.display != "none")) {
+  let menuTriCrit = document.querySelector(".mod1__menuTriC")
+  if (menuTriDisplay.style.display != "none") {
     menuTriDisplay.style.display = "none"
+    menuTriCrit.style.display = "flex"
   } else {
+    menuTriCrit.style.display = "none"
     menuTriDisplay.style.display = "block"
     const btnTri = document.querySelectorAll(".mod1__menuTri_btn")
     btnTri.forEach((btn) => btn.addEventListener("click", triCollection))
